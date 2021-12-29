@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes déjà connecté en tant que {{ app.user.email }}, <a href="{{ path('logout') }}">Se déconnecter</a>
+        </div>
+    {% endif %}
+
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
