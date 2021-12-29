@@ -1,9 +1,19 @@
+## Datababse
 migrate:
 	bin/console doctrine:migrations:migrate
 
-deploy:
-	rsync -av ./ 665kj_webapp@smnnt.fr:~/smnnt_app --exclude-from=.gitignore --exclude=".git/"
+## Encore
+watch:
+	yarn encore dev --watch
 
+build:
+	yarn encore production
+
+## Production
+deploy: build
+	rsync -av ./ 665kj_webapp@smnnt.fr:~/smnnt_app --include=public/build --exclude-from=.gitignore --exclude=".git/"
+
+## On server
 install:
 	composer2 install --no-dev --optimize-autoloader
 
