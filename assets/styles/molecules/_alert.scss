@@ -1,0 +1,39 @@
+.alert {
+  display: flex;
+  border-radius: var(--radius);
+  background-color: var(--molecule-bg);
+  line-height: 1.2;
+  box-shadow: 0 2px 4px var(--shadow);
+  margin: 12px auto;
+  min-height: 54px;
+  overflow: hidden;
+}
+
+.alert__icon {
+  min-width: 54px;
+  background-color: var(--muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert__desc {
+  padding: 8px 14px;
+  align-self: center;
+}
+
+.alert-success strong {
+  color: var(--success);
+}
+
+.alert-warning strong {
+  color: var(--warning);
+}
+
+.alert-error strong {
+  color: var(--error);
+}
+
+.alert-info strong {
+  color: var(--info);
+}

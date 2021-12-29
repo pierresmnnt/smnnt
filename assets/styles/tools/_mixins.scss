@@ -1,0 +1,10 @@
+@mixin dark {
+  @media (prefers-color-scheme: dark) {
+    body:not([class~="theme-light"]) {
+      @content;
+    }
+  }
+  .theme-dark {
+    @content;
+  }
+}

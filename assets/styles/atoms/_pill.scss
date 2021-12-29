@@ -1,0 +1,19 @@
+.pill {
+  padding: 2px 8px;
+  border-radius: 23px;
+  display: inline-flex;
+  color: var(--contrast);
+}
+
+.pill-small {
+  padding: 0 8px;
+  font-size: 0.8rem;
+}
+
+.pill-primary {
+  background-color: var(--primary);
+}
+
+.pill-secondary {
+  background-color: var(--secondary);
+}

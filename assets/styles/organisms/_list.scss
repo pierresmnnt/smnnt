@@ -1,0 +1,17 @@
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stack-column {
+  --gap: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: calc(var(--gap) * var(--space));
+  align-content: flex-start;
+}
+
+.stack > * {
+  margin: 5px;
+}

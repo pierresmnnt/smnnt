@@ -1,0 +1,14 @@
+figure {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+figure img {
+  display: block;
+  border-radius: var(--radius);
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: var(--info);
+}

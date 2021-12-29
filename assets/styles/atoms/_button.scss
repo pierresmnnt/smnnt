@@ -1,0 +1,12 @@
+button {
+  background-color: var(--primary);
+  color: var(--contrast);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  padding: 6px 12px;
+}
+
+.form-submit {
+  text-align: center;
+}

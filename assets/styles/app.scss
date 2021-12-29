@@ -1,0 +1,75 @@
+// Variables
+// Static variables
+$font: "Arial", sans-serif;
+// Dynamic variables
+:root {
+  --background: #ecf0f4;
+  --molecule-bg: #fff;
+  --color: #222;
+  --primary: #ad3edf;
+  --secondary: #ff6b6b;
+  --contrast: #f0f0f0;
+  --border: #dce1ea;
+  --shadow: #d2d7e1;
+
+  --success: #76ff5b;
+  --warning: #ffb555;
+  --error: #ff5874;
+  --info: #656d79;
+  --muted: #ededf0;
+
+  --gap: 20px;
+  --space: 8px;
+  --radius: 8px;
+}
+
+// Tools
+@import "tools/reset";
+@import "tools/mixins";
+@import "tools/layout";
+@import "tools/typography";
+
+// Atoms
+@import "atoms/scroll";
+@import "atoms/link";
+@import "atoms/title";
+@import "atoms/pill";
+@import "atoms/button";
+@import "atoms/input";
+@import "atoms/image";
+
+// Molecules
+@import "molecules/alert";
+@import "molecules/card";
+@import "molecules/figure";
+
+// Organisms
+@import "organisms/list";
+@import "organisms/form";
+@import "organisms/article";
+
+// Templates
+
+@include dark {
+  --background: #313a4f;
+  --molecule-bg: #5c6780;
+  --color: #f0f0f0;
+  --border: #4c5668;
+  --shadow: #252e44;
+  --info: #e4e8ee;
+  --muted: #8e98ae;
+}
+
+body {
+  font-family: $font;
+  background-color: var(--background);
+  font-size: 16px;
+  color: var(--color);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--primary);
+  color: #f0f0f0;
+}

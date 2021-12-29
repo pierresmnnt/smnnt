@@ -1,0 +1,157 @@
+%input {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--muted);
+  width: 100%;
+}
+
+.horizontal-input-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.horizontal-input-group > .input-group {
+  min-width: fit-content;
+  flex: 1;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input,
+select {
+  @extend %input;
+}
+
+textarea {
+  @extend %input;
+  resize: none;
+}
+
+.input-group label {
+  margin-left: 6px;
+  margin-bottom: 4px;
+}
+
+.input-error {
+  color: var(--error);
+  margin: 4px 6px 0 6px;
+}
+
+form .help-text {
+  color: var(--info);
+  margin: 0 6px;
+}
+
+// Checkbox
+.input-checkbox {
+  position: relative;
+  width: 100%;
+}
+
+.input-checkbox input[type="checkbox"],
+.multiple-checkbox input[type="checkbox"],
+.multiple-checkbox input[type="radio"] {
+  opacity: 0;
+  width: auto;
+  display: none;
+}
+
+.input-checkbox label {
+  cursor: pointer;
+  line-height: 24px;
+  padding-right: 24px;
+  margin-bottom: 0;
+}
+
+.input-checkbox label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--muted);
+  border-radius: 100px;
+  top: 1px;
+  right: 0;
+}
+
+.input-checkbox label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 6px;
+  right: 5px;
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+.input-checkbox input[type="checkbox"]:checked + label::after {
+  background-color: var(--primary);
+}
+
+// Multiple Checkbox
+.multiple-checkbox {
+  margin-top: 1rem;
+}
+
+.multiple-checkbox label {
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 23px;
+  display: inline-block;
+}
+
+.multiple-checkbox input[type="checkbox"]:checked + label {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+// Toggle
+.checkbox-toggle label::before {
+  width: 44px;
+}
+
+.checkbox-toggle label {
+  padding-right: 44px;
+}
+
+.checkbox-toggle label::after {
+  transform: translate3d(0, 0, 0);
+  background-color: var(--color);
+  right: 25px;
+}
+
+.checkbox-toggle input:checked + label::after {
+  transform: translate3d(20px, 0, 0);
+  background-color: var(--primary);
+}
+
+.input-disabled {
+  opacity: 0.5;
+}
+
+.input-disabled,
+.input-disabled label,
+.input-disabled input {
+  cursor: not-allowed;
+}
+
+.input-disabled label {
+  color: var(--muted);
+}
+
+// Select
+.custom-select {
+  width: 100%;
+}

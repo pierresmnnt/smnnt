@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Design System{% endblock %}
+
+{% block body %}
+<div class="stack-column" style="--gap:4">
+    <section>
+        <div>
+            <h1>H1 title</h1>
+            <h2>H2 title</h2>
+            <h3>H3 title</h3>
+            <h4>H4 title</h4>
+            <h5>H5 title</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repellendus distinctio eius ad quaerat veritatis minus error nulla assumenda, quis nam et vero eveniet impedit dolorem? Architecto sunt eos.</p>
+        </div>
+        <div>
+            <a href="#">Internal link</a>
+            <a href="#" rel="external noopener noreferrer" target="_blank">External link</a>
+            <a href="#" class="underline">Underlined link</a>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Colors</h2>
+        <div class="stack">
+            <div>
+                <p>Text color</p>
+                <div style="width: 70px; height: 70px; background-color: var(--color)"></div>
+            </div>
+            <div>
+                <p>Primary</p>
+                <div style="width: 70px; height: 70px; background-color: var(--primary)"></div>
+            </div>
+            <div>
+                <p>Secondary</p>
+                <div style="width: 70px; height: 70px; background-color: var(--secondary)"></div>
+            </div>
+            <div>
+                <p>Success</p>
+                <div style="width: 70px; height: 70px; background-color: var(--success)"></div>
+            </div>
+            <div>
+                <p>Warning</p>
+                <div style="width: 70px; height: 70px; background-color: var(--warning)"></div>
+            </div>
+            <div>
+                <p>Error</p>
+                <div style="width: 70px; height: 70px; background-color: var(--error)"></div>
+            </div>
+            <div>
+                <p>Info</p>
+                <div style="width: 70px; height: 70px; background-color: var(--info)"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Alerts</h2>
+        <div class="min-container">
+            <div class="alert alert-success">
+                <div class="alert__icon"><div>&#129001;</div></div>
+                <div class="alert__desc">
+                    <strong>Alert title</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="alert alert-warning">
+                <div class="alert__icon"><div>&#128999;</div></div>
+                <div class="alert__desc">
+                    <strong>Alert title</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="alert alert-error">
+                <div class="alert__icon"><div>&#128997;</div></div>
+                <div class="alert__desc">
+                    <strong>Alert title</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <div class="alert__icon"><div>&#128998;</div></div>
+                <div class="alert__desc">
+                    <strong>Alert title</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Pills</h2>
+        <div class="stack">
+            <div class="pill pill-primary">Pill primary</div><div class="pill pill-secondary">Pill secondary</div><div class="pill pill-small pill-primary">Pill small primary</div><div class="pill pill-small  pill-secondary">Pill small secondary</div>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Card</h2>
+        <div class="min-container stack-column">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </div>
+                <div class="card__img">
+                    <img src="https://picsum.photos/id/1018/800/600" alt="card image">
+                </div>
+                <div class="card__body">
+                    <div class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi enim fugit illum iure nemo pariatur sint
+                        vitae. Architecto cupiditate delectus eos est non quis reiciendis suscipit totam veritatis voluptas.
+                        Vero?
+                    </div>
+                </div>
+                <div class="card__footer stack"><div class="pill pill-small pill-primary">Pill small primary</div><div class="pill pill-small pill-primary">Pill small primary</div></div>
+                <a class="card__link" href="#"></a>
+            </div>
+            <div class="card card-no-img">
+                <div class="card__header">
+                    <div class="card__title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </div>
+                <div class="card__body">
+                    <div class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi enim fugit illum iure nemo pariatur sint
+                        vitae. Architecto cupiditate delectus eos est non quis reiciendis suscipit totam veritatis voluptas.
+                        Vero?
+                    </div>
+                </div>
+            </div>
+            <div class="card card-body-only">
+                <div class="card__body">
+                    <div class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi enim fugit illum iure nemo pariatur sint
+                        vitae. Architecto cupiditate delectus eos est non quis reiciendis suscipit totam veritatis voluptas.
+                        Vero?
+                    </div>
+                </div>
+            </div>
+            <div class="card card-photo">
+                <div class="card__img">
+                    <img src="https://picsum.photos/id/1018/600/800" alt="card image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Layout</h2>
+        <div class="stack-column">
+            <div class="stack">
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+                <div style="width: 50px; height: 50px; background-color: var(--molecule-bg)"></div>
+            </div>
+            <div class="stack-column">
+                <div style="height:50px; background-color: var(--molecule-bg)"></div>
+                <div style="height:50px; background-color: var(--molecule-bg)"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Form</h2>
+        <div class="min-container">
+            <form class="stack-column">
+                <div class="input-group">
+                    <label for="input">Label</label>
+                    <input type="email" name="input" id="input">
+                    <p class="help-text">Help text</p>
+                </div>
+                <div class="horizontal-input-group">
+                    <div class="input-group">
+                        <label for="text">Label</label>
+                        <input type="text" name="text" id="text">
+                    </div>
+                    <div class="input-group">
+                        <label for="text2">Label</label>
+                        <input type="text" name="text2" id="text2">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-checkbox checkbox-toggle">
+                        <input type="checkbox" id="toggle" name="toggle">
+                        <label for="toggle">Toggle</label>
+                    </div>
+                    <p class="help-text">Help text</p>
+                </div>
+                <div class="input-group">
+                    <label for="select">Select</label>
+                    <select id="select" name="select">
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="textarea">Textarea</label>
+                    <textarea id="textarea" name="textarea"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="file">File</label>
+                    <input type="file" id="file" name="file" accept="image/jpeg" multiple>
+                </div>
+                <div class="form-submit">
+                    <button class="button-primary" type="submit">Button</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section>
+        <h2 class="section__title">Article</h2>
+        <div class="article stack-column">
+            <div class="article__header stack-column">
+                <div class="article__category stack">
+                    <div class="pill pill-primary">Article category</div><div class="pill pill-secondary">Article category</div>
+                </div>
+                <div class="article__title">H1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+                <div class="article__subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet rerum error eum necessitatibus beatae dolor iusto nulla, sit sint perspiciatis reprehenderit labore id impedit ut quaerat doloremque, enim totam repellat.</div>
+                <div class="article__info">Article information</div>
+                <figure class="article__heroimg">
+                    <img src="https://picsum.photos/id/1018/800/600" alt="article hero image">
+                    <figcaption>Legend of the image</figcaption>
+                </figure>
+            </div>
+            <div class="article__body stack-column">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus atque doloribus voluptatibus, voluptate deserunt obcaecati iste quasi rerum ea reprehenderit modi earum laudantium quas dolorum laboriosam at provident possimus.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus atque doloribus voluptatibus, voluptate deserunt obcaecati iste quasi rerum ea reprehenderit modi earum laudantium quas dolorum laboriosam at provident possimus.</p>
+                <div class="article__chapter_title">H2 chapter title</div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus atque doloribus voluptatibus, voluptate deserunt obcaecati iste quasi rerum ea reprehenderit modi earum laudantium quas dolorum laboriosam at provident possimus.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus atque doloribus voluptatibus, voluptate deserunt obcaecati iste quasi rerum ea reprehenderit modi earum laudantium quas dolorum laboriosam at provident possimus.</p>
+            </div>
+            <div class="article__footer">Article footer</div>
+        </div>
+    </section>
+</div>
+{% endblock %}
