@@ -1,0 +1,33 @@
+<nav class="navbar">
+    <div class="navbar-toggler">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#js-nav" aria-controls="js-nav" aria-expanded="false" aria-label="Toggle navigation" id="js-toggleBtn">
+            <span class="navbar-toggler-icon">&#129386;</span>
+        </button>
+    </div>
+    <div class="navbar-brand">
+        <a href={{ path("default") }}>SMNNT</a>
+    </div>
+    <div class="navbar-nav-wrapper" id="js-nav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Feed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Columns</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Misc</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-auth nav-item">
+        {% if app.user %}
+            <a href="{{ path("admin") }}">Admin</a>
+        {% else %}
+            <a href="{{ path("login") }}">Login</a>
+        {% endif %}
+    </div>
+</nav>

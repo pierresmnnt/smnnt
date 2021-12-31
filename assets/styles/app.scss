@@ -21,6 +21,7 @@ $font: "Arial", sans-serif;
   --gap: 20px;
   --space: 8px;
   --radius: 8px;
+  --topBarHeight: 42px;
 }
 
 // Tools
@@ -47,6 +48,7 @@ $font: "Arial", sans-serif;
 @import "organisms/list";
 @import "organisms/form";
 @import "organisms/article";
+@import "organisms/nav";
 
 // Templates
 
