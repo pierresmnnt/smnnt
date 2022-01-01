@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+<h1>Portfolio</h1>
+{% for image in images %}
+    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="">
+    <a href="{{ path('portfolio_edit', {'id': image.id}) }}">Edit</a>
+    {{ include('portfolio/_delete.html.twig') }}
+{% endfor %}
+{% endblock %}
