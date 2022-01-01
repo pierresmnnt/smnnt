@@ -11,10 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/portfolio')]
 class PortfolioController extends AbstractController
 {
-    #[Route('/', name: 'portfolio')]
+    #[Route('/portfolio', name: 'portfolio')]
     public function index(ImageRepository $imageRepository): Response
     {
         return $this->render('portfolio/index.html.twig', [
@@ -22,7 +21,7 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'portfolio_new')]
+    #[Route('/admin/portfolio/new', name: 'portfolio_new')]
     public function image(Request $request, ManagerRegistry $doctrine): Response
     {
         $image = new Image;
@@ -42,7 +41,7 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'portfolio_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/portfolio/{id}/edit', name: 'portfolio_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Image $image, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(ImageType::class, $image);
@@ -59,7 +58,7 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/delete', name: 'portfolio_delete', methods: ['POST'])]
+    #[Route('/admin/portfolio/{id}/delete', name: 'portfolio_delete', methods: ['POST'])]
     public function delete(Request $request, Image $image, ManagerRegistry $doctrine): Response
     {
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {

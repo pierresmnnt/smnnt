@@ -3,8 +3,8 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
-    <h1>Login</h1>
     <div class="min-container">
+        <h1>Login</h1>
         {% if app.user %}
             <div class="mb-3">
                 Vous êtes déjà connecté en tant que {{ app.user.email }}, <a href="{{ path('logout') }}">Se déconnecter</a>

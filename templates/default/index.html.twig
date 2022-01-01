@@ -3,6 +3,8 @@
 {% block title %}Welcome !{% endblock %}
 
 {% block body %}
-    <h1>Homepage</h1>
-    {% if app.user %}<a href="{{ path('admin') }}">Administration</a>{% else %}<a href="{{ path('login') }}">Se connecter</a>{% endif %}
+    <div class="container">
+        <h1>Homepage</h1>
+        {% if app.user %}<a href="{{ path('admin') }}">Administration</a>{% else %}<a href="{{ path('login') }}">Se connecter</a>{% endif %}
+    </div>
 {% endblock %}

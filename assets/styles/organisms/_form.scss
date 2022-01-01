@@ -1,4 +1,4 @@
-form {
+form:not(.delete-form) {
   background-color: var(--molecule-bg);
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--shadow);

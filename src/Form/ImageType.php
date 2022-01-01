@@ -22,7 +22,6 @@ class ImageType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
-            ->add('save', SubmitType::class)
         ;
     }
 

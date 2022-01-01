@@ -3,10 +3,23 @@
 {% block title %}Portfolio{% endblock %}
 
 {% block body %}
-<h1>Portfolio</h1>
-{% for image in images %}
-    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="">
-    <a href="{{ path('portfolio_edit', {'id': image.id}) }}">Edit</a>
-    {{ include('portfolio/_delete.html.twig') }}
-{% endfor %}
+<div class="container">
+    <h1>Portfolio</h1>
+    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('portfolio_new') }}">New</a>{% endif %}
+    <div class="min-container stack-column">
+    {% for image in images %}
+        <div class="card card-photo">
+            <div class="card__img">
+                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('widen_filter')}}" alt="card image">
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="card__footer stack">
+                <a href="{{ path('portfolio_edit', {'id': image.id}) }}">Edit</a>
+                {{ include('portfolio/_delete.html.twig') }}
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}
