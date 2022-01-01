@@ -6,7 +6,7 @@ $font: "Arial", sans-serif;
   --background: #ecf0f4;
   --molecule-bg: #fff;
   --color: #222;
-  --primary: #ad3edf;
+  --primary: #6b82ff;
   --secondary: #ff6b6b;
   --contrast: #f0f0f0;
   --border: #dce1ea;
@@ -38,6 +38,7 @@ $font: "Arial", sans-serif;
 @import "atoms/button";
 @import "atoms/input";
 @import "atoms/image";
+@import "atoms/blockquote";
 
 // Molecules
 @import "molecules/alert";
@@ -53,11 +54,11 @@ $font: "Arial", sans-serif;
 // Templates
 
 @include dark {
-  --background: #313a4f;
-  --molecule-bg: #5c6780;
+  --background: #28334d;
+  --molecule-bg: #3c4863;
   --color: #f0f0f0;
   --border: #4c5668;
-  --shadow: #252e44;
+  --shadow: #1d273e;
   --info: #e4e8ee;
   --muted: #8e98ae;
 }

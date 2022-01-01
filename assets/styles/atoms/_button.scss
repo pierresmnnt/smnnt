@@ -1,12 +1,22 @@
 button {
-  background-color: var(--primary);
-  color: var(--contrast);
   border: none;
   border-radius: var(--radius);
   font-size: 1rem;
   padding: 6px 12px;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: var(--primary);
+  color: var(--contrast);
+}
+
+.button-cancel {
+  background-color: unset;
+  border: 1px solid var(--primary);
+  color: var(--color);
 }
 
 .form-submit {
-  text-align: center;
+  text-align: right;
 }
