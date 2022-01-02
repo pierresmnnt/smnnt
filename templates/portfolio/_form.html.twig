@@ -14,12 +14,76 @@
             {{ form_errors(form.categories) }}
         </div>
     </div>
-     <div class="input-group">
+    <div class="input-group">
+        {{ form_label(form.description) }}
+        {{ form_help(form.description) }}
+        {{ form_widget(form.description) }}
+        <div class="input-error">
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+    <div class="input-group">
         {{ form_label(form.alt) }}
         {{ form_help(form.alt) }}
         {{ form_widget(form.alt) }}
         <div class="input-error">
             {{ form_errors(form.alt) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.camera) }}
+        {{ form_help(form.camera) }}
+        {{ form_widget(form.camera) }}
+        <div class="input-error">
+            {{ form_errors(form.camera) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.lens) }}
+        {{ form_help(form.lens) }}
+        {{ form_widget(form.lens) }}
+        <div class="input-error">
+            {{ form_errors(form.lens) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.exposure) }}
+        {{ form_help(form.exposure) }}
+        {{ form_widget(form.exposure) }}
+        <div class="input-error">
+            {{ form_errors(form.exposure) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.aperture) }}
+        {{ form_help(form.aperture) }}
+        {{ form_widget(form.aperture) }}
+        <div class="input-error">
+            {{ form_errors(form.aperture) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.iso) }}
+        {{ form_help(form.iso) }}
+        {{ form_widget(form.iso) }}
+        <div class="input-error">
+            {{ form_errors(form.iso) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.focal) }}
+        {{ form_help(form.focal) }}
+        {{ form_widget(form.focal) }}
+        <div class="input-error">
+            {{ form_errors(form.focal) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.date) }}
+        {{ form_help(form.date) }}
+        {{ form_widget(form.date) }}
+        <div class="input-error">
+            {{ form_errors(form.date) }}
         </div>
     </div>
     <div class="form-submit">

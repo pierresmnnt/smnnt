@@ -6,6 +6,8 @@ use App\Entity\Category;
 use App\Entity\Image;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,8 +35,33 @@ class ImageType extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ])
+            ->add('description', TextType::class, [
+                'required' => false
+            ])
             ->add('alt', TextType::class, [
                 'required' => true
+            ])
+            ->add('camera', TextType::class, [
+                'required' => false
+            ])
+            ->add('lens', TextType::class, [
+                'required' => false
+            ])
+            ->add('exposure', TextType::class, [
+                'required' => false
+            ])
+            ->add('aperture', TextType::class, [
+                'required' => false
+            ])
+            ->add('iso', IntegerType::class, [
+                'required' => false
+            ])
+            ->add('focal', IntegerType::class, [
+                'required' => false
+            ])
+            ->add('date', DateType::class, [
+                'required' => false,
+                'widget' => 'single_text'
             ])
         ;
     }

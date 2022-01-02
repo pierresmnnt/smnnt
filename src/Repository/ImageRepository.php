@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Data\SearchData;
 use App\Entity\Image;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -28,7 +29,7 @@ class ImageRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('i')
             ->leftJoin('i.categories', 'c')
             ->addSelect('c')
-        ;
+            ->orderBy('i.id', 'DESC');
 
         if (!empty($data->getCategories())) {
             $query
@@ -37,7 +38,6 @@ class ImageRepository extends ServiceEntityRepository
         }
 
         return $query
-            ->orderBy('i.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;

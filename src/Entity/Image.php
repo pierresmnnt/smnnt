@@ -37,6 +37,30 @@ class Image
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $alt;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $description;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $camera;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $lens;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $exposure;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $aperture;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $iso;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $focal;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private $date;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -116,6 +140,102 @@ class Image
     public function setAlt(?string $alt): self
     {
         $this->alt = $alt;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCamera(): ?string
+    {
+        return $this->camera;
+    }
+
+    public function setCamera(?string $camera): self
+    {
+        $this->camera = $camera;
+
+        return $this;
+    }
+
+    public function getLens(): ?string
+    {
+        return $this->lens;
+    }
+
+    public function setLens(?string $lens): self
+    {
+        $this->lens = $lens;
+
+        return $this;
+    }
+
+    public function getExposure(): ?string
+    {
+        return $this->exposure;
+    }
+
+    public function setExposure(?string $exposure): self
+    {
+        $this->exposure = $exposure;
+
+        return $this;
+    }
+
+    public function getAperture(): ?string
+    {
+        return $this->aperture;
+    }
+
+    public function setAperture(?string $aperture): self
+    {
+        $this->aperture = $aperture;
+
+        return $this;
+    }
+
+    public function getIso(): ?int
+    {
+        return $this->iso;
+    }
+
+    public function setIso(?int $iso): self
+    {
+        $this->iso = $iso;
+
+        return $this;
+    }
+
+    public function getFocal(): ?int
+    {
+        return $this->focal;
+    }
+
+    public function setFocal(?int $focal): self
+    {
+        $this->focal = $focal;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
