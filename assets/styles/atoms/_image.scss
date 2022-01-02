@@ -1,0 +1,11 @@
+.portfolio-show {
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.portfolio-show img {
+  display: block;
+}

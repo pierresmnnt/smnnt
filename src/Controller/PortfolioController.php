@@ -70,7 +70,7 @@ class PortfolioController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $doctrine->getManager()->flush();
 
-            return $this->redirectToRoute('portfolio_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('portfolio/new.html.twig', [
