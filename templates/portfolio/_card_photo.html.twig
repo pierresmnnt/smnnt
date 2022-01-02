@@ -1,0 +1,15 @@
+<div class="card card-photo">
+    <div class="card__img">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="card image">
+    </div>
+    <div class="card__footer">
+        <div class="stack">
+            <div class="pill pill-small pill-primary">Pill small primary</div>
+        </div>
+        <div><span>&#128270;</span></div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('portfolio_edit', {'id': image.id}) }}">Edit</a>
+        {{ include('portfolio/_delete.html.twig') }}
+    {% endif %}
+    </div>
+</div>
