@@ -1,6 +1,6 @@
 <div class="card card-photo">
     <div class="card__img">
-        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="card image">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
     </div>
     <div class="card__footer">
         <div class="stack">
@@ -9,9 +9,12 @@
             {% endfor %}
         </div>
         <div><span>&#128270;</span></div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('portfolio_edit', {'id': image.id}) }}">Edit</a>
-        {{ include('portfolio/_delete.html.twig') }}
-    {% endif %}
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="card__footer card__admin">
+        <a href="{{ path('portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
+        {{ include('portfolio/_delete.html.twig') }}
+    </div>
+    {% endif %}
+    <a class="card__link" href="{{ path('portfolio_show', {'id': image.id}) }}"></a>
 </div>

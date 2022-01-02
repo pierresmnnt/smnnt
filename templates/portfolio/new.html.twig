@@ -5,25 +5,6 @@
 {% block body %}
 <div class="min-container">
     <h1>Add a new photo</h1>
-    {{ form_start(form, {'attr': {'class': 'stack-column'}}) }}
-        <div class="input-group">
-            {{ form_label(form.imageFile) }}
-            {{ form_widget(form.imageFile) }}
-            <div class="input-error">
-                {{ form_errors(form.imageFile) }}
-            </div>
-        </div>
-        <div class="input-group">
-            {{ form_label(form.categories) }}
-            {{ form_help(form.categories) }}
-            {{ form_widget(form.categories) }}
-            <div class="input-error">
-                {{ form_errors(form.categories) }}
-            </div>
-        </div>
-        <div class="form-submit">
-            <button class="button-primary">{{ button_label|default('Save') }}</button>
-        </div>
-    {{ form_end(form) }}
+    {% include "portfolio/_form.html.twig" %}
 </div>
 {% endblock %}

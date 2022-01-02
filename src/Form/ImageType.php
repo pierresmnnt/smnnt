@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Image;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -31,6 +32,9 @@ class ImageType extends AbstractType
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
                 'expanded' => true
+            ])
+            ->add('alt', TextType::class, [
+                'required' => true
             ])
         ;
     }

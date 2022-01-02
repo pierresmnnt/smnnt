@@ -1,0 +1,28 @@
+{{ form_start(form, {'attr': {'class': 'stack-column'}}) }}
+    <div class="input-group">
+        {{ form_label(form.imageFile) }}
+        {{ form_widget(form.imageFile) }}
+        <div class="input-error">
+            {{ form_errors(form.imageFile) }}
+        </div>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.categories) }}
+        {{ form_help(form.categories) }}
+        {{ form_widget(form.categories) }}
+        <div class="input-error">
+            {{ form_errors(form.categories) }}
+        </div>
+    </div>
+     <div class="input-group">
+        {{ form_label(form.alt) }}
+        {{ form_help(form.alt) }}
+        {{ form_widget(form.alt) }}
+        <div class="input-error">
+            {{ form_errors(form.alt) }}
+        </div>
+    </div>
+    <div class="form-submit">
+        <button class="button-primary">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}

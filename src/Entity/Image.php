@@ -34,6 +34,9 @@ class Image
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'images')]
     private $categories;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $alt;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -101,6 +104,18 @@ class Image
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    public function setAlt(?string $alt): self
+    {
+        $this->alt = $alt;
 
         return $this;
     }

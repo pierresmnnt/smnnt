@@ -45,6 +45,10 @@
   justify-content: space-between;
 }
 
+.card__admin {
+  z-index: 4;
+}
+
 .card__link {
   display: block;
   position: absolute !important;

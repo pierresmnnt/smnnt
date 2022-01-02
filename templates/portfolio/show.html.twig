@@ -4,6 +4,6 @@
 
 {% block body %}
 <div class="container">
-    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="image">
+    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
 </div>
 {% endblock %}
