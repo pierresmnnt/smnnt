@@ -4,7 +4,9 @@
     </div>
     <div class="card__footer">
         <div class="stack">
-            <div class="pill pill-small pill-primary">Pill small primary</div>
+            {% for category in image.categories %}
+                <div class="pill pill-small pill-primary">{{ category.name }}</div>
+            {% endfor %}
         </div>
         <div><span>&#128270;</span></div>
     {% if is_granted('ROLE_ADMIN') %}

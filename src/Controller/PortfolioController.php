@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PortfolioController extends AbstractController
 {
-    #[Route('/portfolio', name: 'portfolio')]
+    #[Route('/portfolio', name: 'portfolio_index', methods: ['GET'])]
     public function index(ImageRepository $imageRepository): Response
     {
         return $this->render('portfolio/index.html.twig', [
@@ -21,7 +21,15 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/portfolio/new', name: 'portfolio_new')]
+    #[Route('/portfolio/{id}', name: 'portfolio_show', methods: ['GET'])]
+    public function show(Image $image): Response
+    {
+        return $this->render('portfolio/show.html.twig', [
+            'image' => $image,
+        ]);
+    }
+
+    #[Route('/admin/portfolio/new', name: 'portfolio_new', methods: ['GET', 'POST'])]
     public function image(Request $request, ManagerRegistry $doctrine): Response
     {
         $image = new Image;
@@ -33,7 +41,7 @@ class PortfolioController extends AbstractController
             $entityManager->persist($image);
             $entityManager->flush();
 
-            return $this->redirectToRoute('portfolio');
+            return $this->redirectToRoute('portfolio_index');
         }
 
         return $this->renderForm('portfolio/new.html.twig', [
@@ -50,7 +58,7 @@ class PortfolioController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $doctrine->getManager()->flush();
 
-            return $this->redirectToRoute('portfolio', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('portfolio_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('portfolio/new.html.twig', [
@@ -58,7 +66,7 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/portfolio/{id}/delete', name: 'portfolio_delete', methods: ['POST'])]
+    #[Route('/admin/portfolio/{id}', name: 'portfolio_delete', methods: ['POST'])]
     public function delete(Request $request, Image $image, ManagerRegistry $doctrine): Response
     {
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
@@ -67,6 +75,6 @@ class PortfolioController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('portfolio', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('portfolio_index', [], Response::HTTP_SEE_OTHER);
     }
 }

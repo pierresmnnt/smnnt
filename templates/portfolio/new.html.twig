@@ -13,6 +13,14 @@
                 {{ form_errors(form.imageFile) }}
             </div>
         </div>
+        <div class="input-group">
+            {{ form_label(form.categories) }}
+            {{ form_help(form.categories) }}
+            {{ form_widget(form.categories) }}
+            <div class="input-error">
+                {{ form_errors(form.categories) }}
+            </div>
+        </div>
         <div class="form-submit">
             <button class="button-primary">{{ button_label|default('Save') }}</button>
         </div>

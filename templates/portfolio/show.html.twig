@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo{% endblock %}
+
+{% block body %}
+<div class="container">
+    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="image">
+</div>
+{% endblock %}
