@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Image;
 use App\Form\ImageType;
+use App\Form\SearchType;
 use App\Repository\ImageRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,10 +16,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class PortfolioController extends AbstractController
 {
     #[Route('/portfolio', name: 'portfolio_index', methods: ['GET'])]
-    public function index(ImageRepository $imageRepository): Response
+    public function index(ImageRepository $imageRepository, Request $request): Response
     {
-        return $this->render('portfolio/index.html.twig', [
-            'images' => $imageRepository->findAll(),
+        $data = new SearchData();
+        $form = $this->createForm(SearchType::class, $data);
+        $form->handleRequest($request);
+        $images = $imageRepository->findSearch($data);
+
+        if ($request->get('ajax')) {
+            return $this->json($this->render('portfolio/_images.html.twig', ['images' => $images]));
+        }
+
+        return $this->renderForm('portfolio/index.html.twig', [
+            'images' => $images,
+            'form' => $form,
         ]);
     }
 

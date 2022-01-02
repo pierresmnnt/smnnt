@@ -1,0 +1,12 @@
+{{ form_start(form, {'attr': {'class': 'filter-form js-filter-form'}}) }}
+    <div class="spinner-border js-loader" role="status" aria-hidden="true" style="display: none">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="input-group">
+        {{ form_label(form.categories) }}
+        {{ form_widget(form.categories) }}
+    </div>
+    <div class="form-submit">
+        <button class="button-primary">Search</button>
+    </div>
+{{ form_end(form) }}

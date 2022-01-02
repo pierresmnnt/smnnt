@@ -6,10 +6,17 @@
 <div class="container">
     <h1>Portfolio</h1>
     {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('portfolio_new') }}">New</a>{% endif %}
-    <div class="grid">
-    {% for image in images %}
-        {% include "portfolio/_card_photo.html.twig" %}
-    {% endfor %}
+    <div class="js-filter">
+        {% include "portfolio/_search.html.twig" %}
+        <div class="grid js-filter-content">
+            {% include "portfolio/_images.html.twig" %}
+        </div>
+        <div class="js-filter-pagination"></div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('portfolio') }}
 {% endblock %}
