@@ -19,12 +19,20 @@ class PortfolioController extends AbstractController
     public function index(ImageRepository $imageRepository, Request $request): Response
     {
         $data = new SearchData();
+        $data->setPage($request->get('page', 1));
+
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
+
         $images = $imageRepository->findSearch($data);
 
         if ($request->get('ajax')) {
-            return $this->json($this->render('portfolio/_images.html.twig', ['images' => $images]));
+            return $this->json(
+                [
+                    'content' => $this->renderView('portfolio/_images.html.twig', ['images' => $images]),
+                    'pagination' => $this->renderView('portfolio/_pagination.html.twig', ['images' => $images]),
+                    'pageCount' => ceil($images->getTotalItemCount() / $images->getItemNumberPerPage())
+                ]);
         }
 
         return $this->renderForm('portfolio/index.html.twig', [

@@ -27,6 +27,7 @@
   height: 100%;
   min-width: var(--topBarHeight);
   margin-left: auto;
+  padding: 0 calc(var(--topBarHeight) / 2);
 }
 
 .hidden-on-mobile {
@@ -82,8 +83,7 @@
     display: none;
   }
 
-  .navbar-brand,
-  .navbar-auth {
+  .navbar-brand {
     padding: 0 calc(var(--topBarHeight) / 2);
   }
 

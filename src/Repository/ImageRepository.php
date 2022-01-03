@@ -5,8 +5,8 @@ namespace App\Repository;
 use App\Data\SearchData;
 use App\Entity\Image;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @method Image|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,19 +16,22 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ImageRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private PaginatorInterface $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Image::class);
+        $this->paginator = $paginator;
     }
 
     /**
-     * @return Image[]
+     * 
      */
-    public function findSearch(SearchData $data)
+    public function findSearch(SearchData $data, int $limit = 8)
     {
         $query = $this->createQueryBuilder('i')
-            ->leftJoin('i.categories', 'c')
             ->addSelect('c')
+            ->leftJoin('i.categories', 'c')
             ->orderBy('i.id', 'DESC');
 
         if (!empty($data->getCategories())) {
@@ -37,9 +40,8 @@ class ImageRepository extends ServiceEntityRepository
                 ->setParameter('categories', $data->getCategories());
         }
 
-        return $query
-            ->getQuery()
-            ->getResult()
-        ;
+        $query = $query->getQuery();
+
+        return $this->paginator->paginate($query, $data->getPage(), $limit);
     }
 }
