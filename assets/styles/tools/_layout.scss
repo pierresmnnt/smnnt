@@ -45,3 +45,15 @@
   grid-auto-rows: minmax(200px, auto);
   grid-auto-flow: dense;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.x-center {
+  justify-content: center;
+}
+
+.y-center {
+  align-items: center;
+}

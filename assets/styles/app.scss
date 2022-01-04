@@ -52,7 +52,11 @@ $font: "Arial", sans-serif;
 @import "organisms/article";
 @import "organisms/nav";
 
+// Pages
+@import "pages/portfolio";
+
 // Templates
+@import "templates/page";
 
 @include dark {
   --background: #28334d;

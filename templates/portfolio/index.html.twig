@@ -4,14 +4,14 @@
 
 {% block body %}
 <div class="container">
-    <h1>Portfolio</h1>
+    <h1 class="page__title">Portfolio</h1>
     {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('portfolio_new') }}">New</a>{% endif %}
-    <div class="js-filter">
+    <div class="stack-column js-filter">
         {% include "portfolio/_search.html.twig" %}
         <div class="grid js-filter-content">
             {% include "portfolio/_images.html.twig" %}
         </div>
-        <div class="js-filter-pagination">
+        <div class="d-flex x-center y-center js-filter-pagination">
             {% include "portfolio/_pagination.html.twig" %}
         </div>
     </div>

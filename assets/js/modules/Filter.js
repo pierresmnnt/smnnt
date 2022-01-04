@@ -8,8 +8,9 @@
 export default class Filter {
   /**
    * @param {HTMLElement|null} element
+   * @param {boolean} hideButton
    */
-  constructor(element) {
+  constructor(element, hideButton = true) {
     if (element === null) {
       return;
     }
@@ -21,7 +22,9 @@ export default class Filter {
     );
     this.moreNav = this.page === 1;
     this.bindEvents();
-    this.hideSubmitButton();
+    if (hideButton) {
+      this.hideSubmitButton();
+    }
   }
 
   bindEvents() {

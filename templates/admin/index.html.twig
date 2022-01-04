@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-        <h1>&#129489;&#8205;&#128187; Hello {{ app.user.email }}</h1>
+        <h1 class="page__title">&#129489;&#8205;&#128187; Hello {{ app.user.email }}</h1>
         <a href="{{ path('logout') }}">Se déconnecter</a>
     </div>
 {% endblock %}

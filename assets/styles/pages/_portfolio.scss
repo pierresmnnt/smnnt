@@ -1,0 +1,23 @@
+.portfolio-image img {
+  --radius: 4px;
+  display: block;
+  margin: 0 auto;
+  max-height: calc(100vh - var(--topBarHeight));
+  border-radius: 0;
+}
+
+.portfolio-image figcaption {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .portfolio-show__grid {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 380px;
+    grid-template-rows: 1fr auto;
+  }
+
+  .portfolio-image img {
+    border-radius: var(--radius);
+  }
+}

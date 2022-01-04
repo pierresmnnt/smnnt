@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-        <h1>Homepage</h1>
+        <h1 class="page__title">Homepage</h1>
         {% if app.user %}<a href="{{ path('admin') }}">Administration</a>{% else %}<a href="{{ path('login') }}">Se connecter</a>{% endif %}
     </div>
 {% endblock %}

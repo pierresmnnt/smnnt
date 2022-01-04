@@ -3,27 +3,32 @@
 {% block title %}Photo{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="portfolio-show">
-        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
-    </div>
-    {% if is_granted('ROLE_ADMIN') %}
-    <div class="">
-        <a href="{{ path('portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
-        {{ include('portfolio/_delete.html.twig') }}
-    </div>
-    {% endif %}
-    <div class="portfolio-details">
-        <ul>
-            <li>{{ image.description }}</li>
-            <li>{{ image.camera }}</li>
-            <li>{{ image.lens }}</li>
-            <li>{{ image.exposure }}</li>
-            <li>{{ image.aperture }}</li>
-            <li>{{ image.iso }}</li>
-            <li>{{ image.focal }}mm</li>
-            <li>{{ image.date|date("d/m/Y") }}</li>
-        </ul>
+<div class="portfolio-show">
+    <div class="portfolio-show__grid">
+        <div class="portfolio-image">
+            <p>{{ image.description }}</p>
+            <figure class="article__heroimg">
+                <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
+                <figcaption>{{ image.description }}</figcaption>
+            </figure>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="">
+            <a href="{{ path('portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
+            {{ include('portfolio/_delete.html.twig') }}
+        </div>
+        {% endif %}
+        <div class="portfolio-details">
+            <ul>
+                <li>{{ image.camera }}</li>
+                <li>{{ image.lens }}</li>
+                <li>{{ image.exposure }}</li>
+                <li>{{ image.aperture }}</li>
+                <li>{{ image.iso }}</li>
+                <li>{{ image.focal }}mm</li>
+                <li>{{ image.date|date("d/m/Y") }}</li>
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
