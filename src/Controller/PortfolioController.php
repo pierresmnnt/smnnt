@@ -7,15 +7,14 @@ use App\Entity\Image;
 use App\Form\ImageType;
 use App\Form\SearchType;
 use App\Repository\ImageRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PortfolioController extends AbstractController
+#[Route('/portfolio')]
+class PortfolioController extends BaseController
 {
-    #[Route('/portfolio', name: 'portfolio_index', methods: ['GET'])]
+    #[Route('/', name: 'portfolio_index', methods: ['GET'])]
     public function index(ImageRepository $imageRepository, Request $request): Response
     {
         $data = new SearchData();
@@ -41,25 +40,18 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/portfolio/{id}', name: 'portfolio_show', methods: ['GET'])]
-    public function show(Image $image): Response
+    #[Route('/new', name: 'portfolio_new', methods: ['GET', 'POST'])]
+    public function image(Request $request): Response
     {
-        return $this->render('portfolio/show.html.twig', [
-            'image' => $image,
-        ]);
-    }
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-    #[Route('/admin/portfolio/new', name: 'portfolio_new', methods: ['GET', 'POST'])]
-    public function image(Request $request, ManagerRegistry $doctrine): Response
-    {
         $image = new Image;
         $form = $this->createForm(ImageType::class, $image);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($image);
-            $entityManager->flush();
+            $this->getEntityManager()->persist($image);
+            $this->getEntityManager()->flush();
 
             return $this->redirectToRoute('portfolio_index');
         }
@@ -69,14 +61,24 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/portfolio/{id}/edit', name: 'portfolio_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Image $image, ManagerRegistry $doctrine): Response
+    #[Route('/{id}', name: 'portfolio_show', methods: ['GET'])]
+    public function show(Image $image): Response
     {
+        return $this->render('portfolio/show.html.twig', [
+            'image' => $image,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'portfolio_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Image $image): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $doctrine->getManager()->flush();
+            $this->getEntityManager()->flush();
 
             return $this->redirectToRoute('portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
         }
@@ -86,13 +88,14 @@ class PortfolioController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/portfolio/{id}', name: 'portfolio_delete', methods: ['POST'])]
-    public function delete(Request $request, Image $image, ManagerRegistry $doctrine): Response
+    #[Route('/{id}', name: 'portfolio_delete', methods: ['POST'])]
+    public function delete(Request $request, Image $image): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
-            $entityManager = $doctrine->getManager();
-            $entityManager->remove($image);
-            $entityManager->flush();
+            $this->getEntityManager()->remove($image);
+            $this->getEntityManager()->flush();
         }
 
         return $this->redirectToRoute('portfolio_index', [], Response::HTTP_SEE_OTHER);
