@@ -3,36 +3,22 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Kicker</th>
-                <td>{{ article.kicker }}</td>
-            </tr>
-            <tr>
-                <th>HeroImageUrl</th>
-                <td>{{ article.heroImageUrl }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+<article class="container article stack-column">
+    <div class="article__header stack-column">
+        <div class="article__category stack">
+            <div class="pill pill-primary">Article category</div><div class="pill pill-secondary">Article category</div>
+        </div>
+        <h1 class="article__title">{{ article.title }}</h1>
+        <div class="article__subtitle">{{ article.kicker }}</div>
+        <div class="article__info">{{ article.createdAt ? article.createdAt|date('Y-m-d') : '' }}</div>
+        <figure class="article__heroimg">
+            <img src="{{ article.heroImageUrl }}" alt="article hero image">
+            <figcaption>Legend of the image</figcaption>
+        </figure>
+    </div>
+    <div class="article__body stack-column">{{ article.content|markdown_to_html }}</div>
+    <div class="article__footer">Article footer</div>
+</article>
 
     <a href="{{ path('article_index') }}">back to list</a>
 

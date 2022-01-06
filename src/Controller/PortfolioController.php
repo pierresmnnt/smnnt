@@ -47,8 +47,8 @@ class PortfolioController extends BaseController
 
         $image = new Image;
         $form = $this->createForm(ImageType::class, $image);
-
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->persist($image);
             $this->getEntityManager()->flush();

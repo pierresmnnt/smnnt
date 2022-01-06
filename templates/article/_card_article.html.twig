@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card__header">
+        <div class="card__title">{{ article.title }}</div>
+    </div>
+    <div class="card__img">
+        <img src="{{ article.heroImageUrl }}" alt="card image">
+    </div>
+    <div class="card__body">
+        <div class="card__description">{{ article.kicker }}</div>
+    </div>
+    <div class="card__footer stack"><div class="pill pill-small pill-primary">Pill small primary</div><div class="pill pill-small pill-primary">Pill small primary</div></div>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="card__footer card__admin">
+        <a href="{{ path('article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
+        {{ include('article/_delete_form.html.twig') }}
+    </div>
+    {% endif %}
+    <a class="card__link" href="{{ path('article_show', {'id': article.id}) }}"></a>
+</div>
