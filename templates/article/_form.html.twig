@@ -22,7 +22,7 @@
     </div>
     <div class="input-group">
         {{ form_label(form.content) }}
-        {{ form_widget(form.content) }}
+        {{ form_widget(form.content, {attr: {is: "textarea-autogrow"}}) }}
         <div class="input-error">
             {{ form_errors(form.content) }}
         </div>
