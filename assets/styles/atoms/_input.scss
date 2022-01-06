@@ -94,8 +94,13 @@ form .help-text {
   transition: all 0.3s;
 }
 
-.input-checkbox input[type="checkbox"]:checked + label::after {
+.multiple-checkbox input[type="checkbox"]:checked + label {
   background-color: var(--primary);
+}
+
+.input-checkbox input[type="checkbox"]:checked + label::after,
+.checkbox-toggle input:checked + label::after {
+  background-color: var(--success);
 }
 
 // Multiple Checkbox
@@ -108,8 +113,7 @@ form .help-text {
 }
 
 .multiple-checkbox input[type="checkbox"]:checked + label {
-  background-color: var(--primary);
-  color: #fff;
+  color: var(--contrast);
 }
 
 // Toggle
@@ -129,7 +133,6 @@ form .help-text {
 
 .checkbox-toggle input:checked + label::after {
   transform: translate3d(20px, 0, 0);
-  background-color: var(--primary);
 }
 
 .input-disabled {

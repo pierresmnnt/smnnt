@@ -29,6 +29,9 @@ class Article
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $published = false;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -95,6 +98,18 @@ class Article
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getPublished(): ?bool
+    {
+        return $this->published;
+    }
+
+    public function setPublished(?bool $published): self
+    {
+        $this->published = $published;
 
         return $this;
     }

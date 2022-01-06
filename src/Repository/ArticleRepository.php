@@ -29,6 +29,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findPublished()
     {
         $query = $this->createQueryBuilder('a')
+            ->andWhere('a.published = TRUE')
             ->orderBy('a.createdAt', 'DESC')
             ->getQuery();
 
