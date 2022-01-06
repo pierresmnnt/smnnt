@@ -8,7 +8,9 @@
     <div class="card__body">
         <div class="card__description">{{ article.kicker }}</div>
     </div>
-    <div class="card__footer stack"><div class="pill pill-small pill-primary">Pill small primary</div><div class="pill pill-small pill-primary">Pill small primary</div></div>
+    <div class="card__footer">
+        <div class="stack"><div class="pill pill-small pill-primary">Pill small primary</div><div class="pill pill-small pill-primary">Pill small primary</div></div>
+    </div>
     {% if is_granted('ROLE_ADMIN') %}
     <div class="card__footer card__admin">
         <a href="{{ path('article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>

@@ -3,10 +3,6 @@ a {
   color: var(--primary);
 }
 
-a:hover {
-  color: var(--secondary);
-}
-
 a[rel*="external"]::after {
   background: no-repeat 100%
     url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlPSJyZ2IoMTYzLCAxNjMsIDE2MykiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTAgNkg2YTIgMiAwIDAwLTIgMnYxMGEyIDIgMCAwMDIgMmgxMGEyIDIgMCAwMDItMnYtNE0xNCA0aDZtMCAwdjZtMC02TDEwIDE0IiAvPjwvc3ZnPg==);
