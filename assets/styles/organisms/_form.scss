@@ -4,3 +4,7 @@ form:not(.delete-form, .filter-form) {
   box-shadow: 0 2px 4px var(--shadow);
   padding: 14px;
 }
+
+.delete-form {
+  display: inline-block;
+}

@@ -17,10 +17,8 @@ class ArticleAdminController extends BaseController
     #[Route('/', name: 'admin_article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findPublished();
-
         return $this->render('admin/article/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $articleRepository->findBy([], ['createdAt' => 'DESC']),
         ]);
     }
 

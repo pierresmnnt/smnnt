@@ -18,7 +18,7 @@ class PortfolioAdminController extends BaseController
     public function index(ImageRepository $imageRepository): Response
     {
         return $this->renderForm('admin/portfolio/index.html.twig', [
-            'images' => $imageRepository->findAll(),
+            'images' => $imageRepository->findBy([], ['id' => 'DESC']),
         ]);
     }
 

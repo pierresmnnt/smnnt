@@ -30,6 +30,7 @@
 
 .card__body {
   padding: 8px 14px;
+  flex: 1;
 }
 
 .card__title {
@@ -43,10 +44,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.card__admin {
-  z-index: 4;
 }
 
 .card__link {
@@ -63,4 +60,60 @@
   transition: 0.3s;
   border-radius: 3px;
   cursor: pointer;
+}
+
+// Admin card
+.admin-card {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.admin-card .card__header {
+  background-color: var(--primary);
+  color: var(--contrast);
+}
+
+.admin-card .card__img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.admin-card .card__img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: unset !important;
+}
+
+.admin-card .card__footer {
+  border: none;
+}
+
+.article-status {
+  position: relative;
+  padding-left: calc(14px + var(--space));
+}
+
+.article-status::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.article-status-online::after {
+  background-color: var(--success);
+}
+
+.article-status-draft::after {
+  background-color: var(--warning);
+}
+
+.article-status + * {
+  margin-left: 1em;
 }

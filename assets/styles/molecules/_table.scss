@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+  background-color: var(--molecule-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px var(--shadow);
+  overflow: hidden;
+}
+
+table td,
+table th {
+  padding: 8px;
+}
+
+table th {
+  background-color: var(--primary);
+  color: var(--contrast);
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr {
+  border-top: 1px solid var(--border);
+}
+
+table tr:nth-child(even) {
+  background-color: unset;
+}
+
+table tr:hover {
+  background-color: unset;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
