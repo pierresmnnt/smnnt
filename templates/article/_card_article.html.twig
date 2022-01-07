@@ -2,9 +2,11 @@
     <div class="card__header">
         <div class="card__title">{{ article.title }}</div>
     </div>
+    {% if article.heroImageUrl %}
     <div class="card__img">
         <img src="{{ article.heroImageUrl }}" alt="card image">
     </div>
+    {% endif %}
     <div class="card__body">
         <div class="card__description">{{ article.kicker }}</div>
     </div>
@@ -17,5 +19,5 @@
         {{ include('article/_delete_form.html.twig') }}
     </div>
     {% endif %}
-    <a class="card__link" href="{{ path('article_show', {'id': article.id}) }}"></a>
+    <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}"></a>
 </div>

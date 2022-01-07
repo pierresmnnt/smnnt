@@ -44,10 +44,10 @@ class ArticleController extends BaseController
         ]);
     }
 
-    #[Route('/{id}', name: 'article_show', methods: ['GET'])]
+    #[Route('/{slug}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
-        if (false === $article->getPublished()) {
+        if (false === $article->getPublished() && false === $this->isGranted('ROLE_ADMIN')) {
             throw $this->createNotFoundException();
         }
 
@@ -67,7 +67,7 @@ class ArticleController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->flush();
 
-            return $this->redirectToRoute('article_show', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('article/edit.html.twig', [

@@ -21,7 +21,7 @@ class Article
     private $kicker;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $heroImageUrl;
+    private $heroImageUrl = null;
 
     #[ORM\Column(type: 'text')]
     private $content;
@@ -29,8 +29,11 @@ class Article
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: 'boolean')]
     private $published = false;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $slug;
 
     public function __construct()
     {
@@ -110,6 +113,18 @@ class Article
     public function setPublished(?bool $published): self
     {
         $this->published = $published;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
