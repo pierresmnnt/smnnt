@@ -5,7 +5,6 @@
 {% block body %}
 <div class="container">
     <h1 class="page__title">Columns</h1>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('article_new') }}">New</a>{% endif %}
     <div class="min-container stack-column js-filter">
         <div class="js-filter-content">
             {% include "article/_articles.html.twig" %}

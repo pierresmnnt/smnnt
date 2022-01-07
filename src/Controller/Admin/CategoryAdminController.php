@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/category')]
-class CategoryController extends BaseController
+#[Route('/admin/category'), IsGranted('ROLE_ADMIN')]
+class CategoryAdminController extends BaseController
 {
     #[Route('/', name: 'category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('category/index.html.twig', [
+        return $this->render('admin/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -34,7 +36,7 @@ class CategoryController extends BaseController
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('category/new.html.twig', [
+        return $this->renderForm('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
@@ -52,7 +54,7 @@ class CategoryController extends BaseController
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('category/edit.html.twig', [
+        return $this->renderForm('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);

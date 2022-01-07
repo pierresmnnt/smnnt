@@ -5,6 +5,7 @@
 {% block body %}
 <div class="min-container">
     <h1 class="page__title">Add a new photo</h1>
-    {% include "portfolio/_form.html.twig" %}
+    {% include "admin/portfolio/_form.html.twig" %}
+    <a href="{{ path('admin_portfolio_index') }}">back to list</a>
 </div>
 {% endblock %}

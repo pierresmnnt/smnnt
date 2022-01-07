@@ -12,6 +12,12 @@
                 <figcaption>{{ image.description }}</figcaption>
             </figure>
         </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="">
+            <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
+            {{ include('admin/portfolio/_delete.html.twig') }}
+        </div>
+        {% endif %}
         <div class="portfolio-details">
             <ul>
                 <li>{{ image.camera }}</li>

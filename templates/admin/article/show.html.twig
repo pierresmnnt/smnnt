@@ -25,4 +25,10 @@
     <div class="article__body stack-column">{{ article.content|markdown_to_html }}</div>
     <div class="article__footer">Article footer</div>
 </article>
+
+    <a href="{{ path('admin_article_index') }}">back to list</a>
+
+    <a href="{{ path('admin_article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('admin/article/_delete_form.html.twig') }}
 {% endblock %}

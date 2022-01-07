@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Image;
-use App\Form\ImageType;
 use App\Form\SearchType;
 use App\Repository\ImageRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,64 +39,11 @@ class PortfolioController extends BaseController
         ]);
     }
 
-    #[Route('/new', name: 'portfolio_new', methods: ['GET', 'POST'])]
-    public function image(Request $request): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        $image = new Image;
-        $form = $this->createForm(ImageType::class, $image);
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getEntityManager()->persist($image);
-            $this->getEntityManager()->flush();
-
-            return $this->redirectToRoute('portfolio_index');
-        }
-
-        return $this->renderForm('portfolio/new.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'portfolio_show', methods: ['GET'])]
     public function show(Image $image): Response
     {
         return $this->render('portfolio/show.html.twig', [
             'image' => $image,
         ]);
-    }
-
-    #[Route('/{id}/edit', name: 'portfolio_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Image $image): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        $form = $this->createForm(ImageType::class, $image);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getEntityManager()->flush();
-
-            return $this->redirectToRoute('portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('portfolio/new.html.twig', [
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'portfolio_delete', methods: ['POST'])]
-    public function delete(Request $request, Image $image): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        
-        if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
-            $this->getEntityManager()->remove($image);
-            $this->getEntityManager()->flush();
-        }
-
-        return $this->redirectToRoute('portfolio_index', [], Response::HTTP_SEE_OTHER);
     }
 }

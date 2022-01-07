@@ -5,7 +5,6 @@
 {% block body %}
 <div class="container">
     <h1 class="page__title">Portfolio</h1>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('portfolio_new') }}">New</a>{% endif %}
     <div class="stack-column js-filter">
         {% include "portfolio/_search.html.twig" %}
         <div class="grid js-filter-content">

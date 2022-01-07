@@ -19,11 +19,5 @@
         </div>
     </div>
     {% endif %}
-    {% if is_granted('ROLE_ADMIN') %}
-    <div class="card__footer card__admin">
-        <a href="{{ path('article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
-        {{ include('article/_delete_form.html.twig') }}
-    </div>
-    {% endif %}
     <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}"></a>
 </div>
