@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use App\Repository\CategoryRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -25,6 +28,18 @@ class ArticleType extends AbstractType
         $builder
             ->add('published', CheckboxType::class, [
                 'required' => false,
+            ])
+            ->add('topics', EntityType::class, [
+                'class' => Category::class,
+                'query_builder' => function (CategoryRepository $categoryRepository) {
+                    return $categoryRepository->createQueryBuilder('c')
+                        ->andWhere('c.type = 2');
+                },
+                'choice_label' => 'name',
+                'help' => 'Sélectionnez un album',
+                'attr' => ['class' => 'multiple-checkbox'],
+                'multiple' => true,
+                'expanded' => true
             ])
             ->add('title', TextType::class, [
                 'required' => true,

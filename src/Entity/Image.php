@@ -32,7 +32,7 @@ class Image
     private $updatedAt;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'images')]
-    private $categories;
+    private $albums;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $alt;
@@ -63,7 +63,7 @@ class Image
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->albums = new ArrayCollection();
     }
 
     /**
@@ -111,23 +111,23 @@ class Image
     /**
      * @return Collection|Category[]
      */
-    public function getCategories(): Collection
+    public function getAlbums(): Collection
     {
-        return $this->categories;
+        return $this->albums;
     }
 
-    public function addCategory(Category $category): self
+    public function addAlbums(Category $album): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
+        if (!$this->albums->contains($album)) {
+            $this->albums[] = $album;
         }
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
+    public function removeAlbums(Category $album): self
     {
-        $this->categories->removeElement($category);
+        $this->albums->removeElement($album);
 
         return $this;
     }

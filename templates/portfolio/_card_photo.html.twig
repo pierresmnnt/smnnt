@@ -4,8 +4,8 @@
     </div>
     <div class="card__footer">
         <div class="stack">
-            {% for category in image.categories %}
-                <div class="pill pill-small pill-primary">{{ category.name }}</div>
+            {% for album in image.albums %}
+                <div class="pill pill-small pill-primary">{{ album.name }}</div>
             {% endfor %}
         </div>
         <div><span>&#128270;</span></div>

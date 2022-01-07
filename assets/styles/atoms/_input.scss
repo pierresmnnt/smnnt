@@ -94,6 +94,7 @@ form .help-text {
   transition: all 0.3s;
 }
 
+.multiple-checkbox input[type="radio"]:checked + label,
 .multiple-checkbox input[type="checkbox"]:checked + label {
   background-color: var(--primary);
 }
@@ -112,6 +113,7 @@ form .help-text {
   display: inline-block;
 }
 
+.multiple-checkbox input[type="radio"]:checked + label,
 .multiple-checkbox input[type="checkbox"]:checked + label {
   color: var(--contrast);
 }

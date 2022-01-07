@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+    public const TYPE = [
+        'Album' => 1,
+        'Topic' => 2
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -21,9 +26,16 @@ class Category
     #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'categories')]
     private $images;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $type = null;
+
+    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'topics')]
+    private $articles;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,6 +77,45 @@ class Category
     {
         if ($this->images->removeElement($image)) {
             $image->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return array_search($this->type, self::TYPE) ?: null;
+    }
+
+    public function setType(?int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->addTopic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            $article->removeTopic($this);
         }
 
         return $this;

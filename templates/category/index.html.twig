@@ -21,6 +21,7 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
+                <td>{{ category.type }}</td>
                 <td>
                     <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
                     {{ include('category/_delete_form.html.twig') }}

@@ -19,6 +19,7 @@ class SearchType extends AbstractType
                 'class' => Category::class,
                 'query_builder' => function (CategoryRepository $categoryRepository) {
                     return $categoryRepository->createQueryBuilder('c')
+                        ->andWhere('c.type = 1')
                         ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
                         ->setParameter(':name','Best')
                         ->orderBy('ord')

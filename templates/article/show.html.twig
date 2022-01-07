@@ -5,9 +5,13 @@
 {% block body %}
 <article class="container article stack-column">
     <div class="article__header stack-column">
+        {% if article.topics|length > 0 %}
         <div class="article__category stack">
-            <div class="pill pill-primary">Article category</div><div class="pill pill-secondary">Article category</div>
+            {% for topic in article.topics %}
+                <div class="pill pill-primary">{{ topic.name }}</div>
+            {% endfor %}
         </div>
+        {% endif %}
         <h1 class="article__title">{{ article.title }}</h1>
         <div class="article__subtitle">{{ article.kicker }}</div>
         <div class="article__info">{{ article.createdAt ? article.createdAt|date('Y-m-d') : '' }}</div>

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -35,9 +37,13 @@ class Article
     #[ORM\Column(type: 'string', length: 255)]
     private $slug;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articles')]
+    private $topics;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
+        $this->topics = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +131,30 @@ class Article
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getTopics(): Collection
+    {
+        return $this->topics;
+    }
+
+    public function addTopic(Category $topic): self
+    {
+        if (!$this->topics->contains($topic)) {
+            $this->topics[] = $topic;
+        }
+
+        return $this;
+    }
+
+    public function removeTopic(Category $topic): self
+    {
+        $this->topics->removeElement($topic);
 
         return $this;
     }

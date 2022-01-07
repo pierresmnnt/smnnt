@@ -30,14 +30,14 @@ class ImageRepository extends ServiceEntityRepository
     public function findSearch(SearchData $data, int $limit = 8)
     {
         $query = $this->createQueryBuilder('i')
-            ->addSelect('c')
-            ->leftJoin('i.categories', 'c')
+            ->addSelect('a')
+            ->leftJoin('i.albums', 'a')
             ->orderBy('i.id', 'DESC');
 
         if (!empty($data->getCategories())) {
             $query
-                ->andWhere('c.id IN (:categories)')
-                ->setParameter('categories', $data->getCategories());
+                ->andWhere('a.id IN (:albums)')
+                ->setParameter('albums', $data->getCategories());
         }
 
         $query = $query->getQuery();

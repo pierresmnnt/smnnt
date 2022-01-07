@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Image;
+use App\Repository\CategoryRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -26,11 +27,14 @@ class ImageType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
-            ->add('categories', EntityType::class, [
+            ->add('albums', EntityType::class, [
                 'class' => Category::class,
+                'query_builder' => function (CategoryRepository $categoryRepository) {
+                    return $categoryRepository->createQueryBuilder('c')
+                        ->andWhere('c.type = 1');
+                },
                 'choice_label' => 'name',
-                'label' => 'Category',
-                'help' => 'Sélectionnez une(s) categorie(s)',
+                'help' => 'Sélectionnez un album',
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
                 'expanded' => true
