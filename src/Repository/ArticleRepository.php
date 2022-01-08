@@ -29,6 +29,8 @@ class ArticleRepository extends ServiceEntityRepository
     public function findPublished()
     {
         $query = $this->createQueryBuilder('a')
+            ->addSelect('t')
+            ->leftJoin('a.topics', 't')
             ->andWhere('a.published = TRUE')
             ->orderBy('a.createdAt', 'DESC')
             ->getQuery();
@@ -36,16 +38,16 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->paginator->paginate($query);
     }
     
-
-    /*
-    public function findOneBySomeField($value): ?Article
+    public function findLastPublished(): ?Article
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->addSelect('t')
+            ->leftJoin('a.topics', 't')
+            ->andWhere('a.published = TRUE')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }

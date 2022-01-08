@@ -1,9 +1,31 @@
-.page__title {
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.page__header {
   margin-bottom: 2rem;
 }
 
-.page__desc {
+.page__title {
   margin-bottom: 1.4rem;
+}
+
+section {
+  margin-bottom: 2rem;
 }
 
 .section__title {

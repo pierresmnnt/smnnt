@@ -16,11 +16,14 @@
 }
 
 .navbar-brand {
+  line-height: var(--topBarHeight);
+  text-align: center;
+}
+
+.navbar-site__brand {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.4rem;
-  line-height: var(--topBarHeight);
-  text-align: center;
 }
 
 .navbar-auth {

@@ -4,12 +4,12 @@
 {% block page__title %}Columns{% endblock %}
 
 {% block page__content %}
-    <div class="stack-column js-filter">
-        <div class="js-filter-content">
+    <div class="js-filter">
+        <section class="js-filter-content">
             {% include "article/_articles.html.twig" %}
-        </div>
-        <div class="d-flex x-center y-center js-filter-pagination">
+        </section>
+        <section class="d-flex x-center y-center js-filter-pagination">
             {% include "article/_pagination.html.twig" %}
-        </div>
+        </section>
     </div>
 {% endblock %}

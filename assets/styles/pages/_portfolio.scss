@@ -10,10 +10,24 @@
   display: none;
 }
 
+.portfolio-details {
+  padding: 2em;
+}
+
+.portfolio-details ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+.portfolio-details ul > * + * {
+  border-top: 1px solid var(--border);
+}
+
 @media only screen and (min-width: 768px) {
   .portfolio-show__grid {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) 380px;
+    grid-template-columns: minmax(100px, 1fr) 280px;
     grid-template-rows: 1fr auto;
   }
 

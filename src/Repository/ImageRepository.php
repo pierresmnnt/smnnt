@@ -24,6 +24,18 @@ class ImageRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
+    public function findLast(): ?Image
+    {
+        return $this->createQueryBuilder('i')
+            ->addSelect('a')
+            ->leftJoin('i.albums', 'a')
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     /**
      * 
      */

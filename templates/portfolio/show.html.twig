@@ -9,7 +9,7 @@
 {% block page__content %}
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
-            <p>{{ image.description }}</p>
+            <p class="section__title">{{ image.description }}</p>
             <figure class="article__heroimg">
                 <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
                 <figcaption>{{ image.description }}</figcaption>
@@ -17,13 +17,14 @@
         </div>
         <div class="portfolio-details">
             <ul>
-                <li>{{ image.camera }}</li>
-                <li>{{ image.lens }}</li>
-                <li>{{ image.exposure }}</li>
-                <li>{{ image.aperture }}</li>
-                <li>{{ image.iso }}</li>
-                <li>{{ image.focal }}mm</li>
-                <li>{{ image.date|date("d/m/Y") }}</li>
+                {% if image.camera %}<li><strong>Camera</strong>{{ image.camera }}</li>{% endif %}
+                {% if image.lens %}<li><strong>Lens</strong>{{ image.lens }}</li>{% endif %}
+                {% if image.exposure %}<li><strong>Exposure</strong>{{ image.exposure }}</li>{% endif %}
+                {% if image.aperture %}<li><strong>Aperture</strong>{{ image.aperture }}</li>{% endif %}
+                {% if image.iso %}<li><strong>ISO</strong>{{ image.iso }}</li>{% endif %}
+                {% if image.focal %}<li><strong>Focal</strong>{{ image.focal }}mm</li>{% endif %}
+                {% if image.date %}<li><strong>Date</strong>{{ image.date|date("d/m/Y") }}</li>{% endif %}
+                <li><div class="stack">{% for album in image.albums %}<div class="pill pill-primary">{{ album.name }}</div>{% endfor %}</div></li>
             </ul>
         </div>
     </div>

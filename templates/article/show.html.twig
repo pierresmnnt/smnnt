@@ -14,7 +14,7 @@
         {% endif %}
         <h1 class="article__title">{{ article.title }}</h1>
         <div class="article__subtitle">{{ article.kicker }}</div>
-        <div class="article__info">{{ article.createdAt ? article.createdAt|date('Y-m-d') : '' }}</div>
+        <div class="article__info">{{ article.createdAt ? article.createdAt|date('d/m/Y') : '' }}</div>
         {% if article.heroImageUrl %}
         <figure class="article__heroimg">
             <img src="{{ article.heroImageUrl }}" alt="article hero image">

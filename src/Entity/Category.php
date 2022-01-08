@@ -23,7 +23,7 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'albums')]
     private $images;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -67,7 +67,7 @@ class Category
     {
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
-            $image->addCategory($this);
+            $image->addAlbums($this);
         }
 
         return $this;
@@ -76,7 +76,7 @@ class Category
     public function removeImage(Image $image): self
     {
         if ($this->images->removeElement($image)) {
-            $image->removeCategory($this);
+            $image->removeAlbums($this);
         }
 
         return $this;

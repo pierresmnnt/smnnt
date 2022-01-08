@@ -8,6 +8,10 @@
   box-shadow: 0 2px 4px var(--shadow);
 }
 
+.card-small {
+  max-width: 460px;
+}
+
 .card__header {
   padding: 8px 14px;
   display: flex;
