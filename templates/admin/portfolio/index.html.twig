@@ -2,10 +2,13 @@
 
 {% block title %}Portfolio{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1 class="page__title">Manage Portfolio</h1>
+{% block page__title %}Manage Portfolio{% endblock %}
+
+{% block page__desc %}
     {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">New</a>{% endif %}
+{% endblock %}
+
+{% block page__content %}
     <div class="stack-column js-filter">
         <div class="grid js-filter-content">
             {% for image in images %}
@@ -32,5 +35,4 @@
             {% endfor %}
         </div>
     </div>
-</div>
 {% endblock %}

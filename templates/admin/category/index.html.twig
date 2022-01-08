@@ -2,10 +2,13 @@
 
 {% block title %}Category index{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1>Manage Category</h1>
+{% block page__title %}Manage Category{% endblock %}
+
+{% block page__desc %}
     <a href="{{ path('category_new') }}" class="button button-primary">Create new</a>
+{% endblock %}
+
+{% block page__content %}
     <table>
         <thead>
             <tr>
@@ -33,5 +36,4 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
 {% endblock %}

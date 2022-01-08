@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Welcome !{% endblock %}
+{% block page__title %}Homepage{% endblock %}
 
-{% block body %}
-    <div class="container">
-        <h1 class="page__title">Homepage</h1>
-        {% if app.user %}<a href="{{ path('admin') }}">Administration</a>{% else %}<a href="{{ path('login') }}">Se connecter</a>{% endif %}
-    </div>
+{% block page__desc %}
+    {% if app.user %}<a href="{{ path('admin') }}">Administration</a>{% else %}<a href="{{ path('login') }}">Se connecter</a>{% endif %}
+{% endblock %}
+
+{% block page__content %}
 {% endblock %}

@@ -2,18 +2,19 @@
 
 {% block title %}Administration{% endblock %}
 
-{% block body %}
-    <div class="container">
-        <h1 class="page__title">&#129489;&#8205;&#128187; Hello {{ app.user.email }}</h1>
-        <a href="{{ path('logout') }}">Se déconnecter</a>
-        <section>
-            <a href="{{ path('admin_portfolio_index') }}">Manage Portfolio</a>
-        </section>
-        <section>
-            <a href="{{ path('admin_article_index') }}">Manage Article</a>
-        </section>
-        <section>
-            <a href="{{ path('category_index') }}">Manage Category</a>
-        </section>
-    </div>
+{% block page__title %}&#129489;&#8205;&#128187; Hello {{ app.user.email }}{% endblock %}
+
+{% block page__desc %}<a href="{{ path('logout') }}">Se déconnecter</a>{% endblock %}
+
+{% block page__content %}
+    <section>
+        <a href="{{ path('admin_portfolio_index') }}">Manage Portfolio</a>
+    </section>
+    <section>
+        <a href="{{ path('admin_article_index') }}">Manage Article</a>
+    </section>
+    <section>
+        <a href="{{ path('category_index') }}">Manage Category</a>
+    </section>
 {% endblock %}
+

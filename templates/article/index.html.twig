@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Article index{% endblock %}
+{% block page__title %}Columns{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1 class="page__title">Columns</h1>
-    <div class="min-container stack-column js-filter">
+{% block page__content %}
+    <div class="stack-column js-filter">
         <div class="js-filter-content">
             {% include "article/_articles.html.twig" %}
         </div>
@@ -13,5 +12,4 @@
             {% include "article/_pagination.html.twig" %}
         </div>
     </div>
-</div>
 {% endblock %}

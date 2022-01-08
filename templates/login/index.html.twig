@@ -1,37 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Login{% endblock %}
+{% block page__title %}Login{% endblock %}
 
-{% block body %}
-    <div class="min-container">
-        <h1 class="page__title">Login</h1>
-        {% if app.user %}
-            <div class="mb-3">
-                Vous êtes déjà connecté en tant que {{ app.user.email }}, <a href="{{ path('logout') }}">Se déconnecter</a>
-            </div>
-        {% endif %}
+{% block page__desc %}
+    {% if app.user %}Vous êtes déjà connecté en tant que {{ app.user.email }}, <a href="{{ path('logout') }}">Se déconnecter</a>{% endif %}
+{% endblock %}
 
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+{% block page__content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-        <form action="{{ path('login') }}" method="post" class="stack-column">
-            <div class="input-group">
-                <label for="username">Email</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}"/>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="_password"/>
-            </div>
+    <form action="{{ path('login') }}" method="post" class="stack-column">
+        <div class="input-group">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="_password"/>
+        </div>
 
-            {# If you want to control the URL the user is redirected to on success
-            <input type="hidden" name="_target_path" value="/account"/> #}
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"/> #}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <div class="form-submit">
-                <button class="button-primary" type="submit">Login</button>
-            </div>
-        </form>
-    </div>
+        <div class="form-submit">
+            <button class="button-primary" type="submit">Login</button>
+        </div>
+    </form>
 {% endblock %}

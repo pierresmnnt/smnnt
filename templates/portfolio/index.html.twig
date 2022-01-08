@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Portfolio{% endblock %}
+{% block page__title %}Portfolio{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1 class="page__title">Portfolio</h1>
+{% block page__content %}
     <div class="stack-column js-filter">
         {% include "portfolio/_search.html.twig" %}
         <div class="grid js-filter-content">
@@ -14,7 +13,6 @@
             {% include "portfolio/_pagination.html.twig" %}
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block javascripts %}

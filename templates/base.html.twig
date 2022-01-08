@@ -16,6 +16,12 @@
     </head>
     <body>
         {% include "partials/nav.html.twig" %}
-        {% block body %}{% endblock %}
+        {% block body %}
+            <div class="container">
+            {% if block("page__title") is defined  %}<h1 class="page__title">{{block("page__title")}}</h1>{% endif %}
+            {% if block("page__desc") is defined  %}<div class="page__desc">{{block("page__desc")}}</div>{% endif %}
+            {% if block("page__content") is defined  %}<div class="page__content">{{block("page__content")}}</div>{% endif %}
+            </div>
+        {% endblock %}
     </body>
 </html>

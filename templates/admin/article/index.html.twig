@@ -1,41 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}Manage Columns{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1 class="page__title">Manage Columns</h1>
-    {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">New</a>{% endif %}
-    <div class="stack-column">
-        {% for article in articles %}
-        <div class="card admin-card">
-            <div class="card__header">
-                <div class="card__title">{{ article.id }}</div>
-            </div>
-            {% if article.heroImageUrl %}
-            <div class="card__img">
-                <img src="{{ article.heroImageUrl }}" alt="card image">
-            </div>
-            {% endif %}
-            <div class="card__body">
-                <a href="{{ path('admin_article_show', {'id': article.id}) }}">{{ article.title }}</a>
-            </div>
-            {% if article.topics|length > 0 %}
-            <div class="card__footer">
-                <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
-                <div class="stack">
-                    {% for topic in article.topics %}
-                        <div class="pill pill-primary">{{ topic.name }}</div>
-                    {% endfor %}
-                </div>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
-                {{ include('admin/article/_delete_form.html.twig') }}
-            {% endif %}
-            </div>
-            {% endif %}
+{% block page__title %}Manage Columns{% endblock %}
+
+{% block page__desc %}
+{% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">New</a>{% endif %}
+{% endblock %}
+
+{% block page__content %}
+<div class="stack-column">
+    {% for article in articles %}
+    <div class="card admin-card">
+        <div class="card__header">
+            <div class="card__title">{{ article.id }}</div>
         </div>
-        {% endfor %}
+        {% if article.heroImageUrl %}
+        <div class="card__img">
+            <img src="{{ article.heroImageUrl }}" alt="card image">
+        </div>
+        {% endif %}
+        <div class="card__body">
+            <a href="{{ path('admin_article_show', {'id': article.id}) }}">{{ article.title }}</a>
+        </div>
+        {% if article.topics|length > 0 %}
+        <div class="card__footer">
+            <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+            <div class="stack">
+                {% for topic in article.topics %}
+                    <div class="pill pill-primary">{{ topic.name }}</div>
+                {% endfor %}
+            </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
+            {{ include('admin/article/_delete_form.html.twig') }}
+        {% endif %}
+        </div>
+        {% endif %}
     </div>
+    {% endfor %}
 </div>
 {% endblock %}

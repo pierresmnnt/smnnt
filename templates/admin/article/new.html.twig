@@ -2,10 +2,12 @@
 
 {% block title %}New Article{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1>Create new Article</h1>
+{% block page__title %}Create new Article{% endblock %}
+
+{% block page__desc %}
     <a href="{{ path('admin_article_index') }}" class="button button-cancel">back to list</a>
+{% endblock %}
+
+{% block page__content %}
     {{ include('admin/article/_form.html.twig') }}
-</div>
 {% endblock %}

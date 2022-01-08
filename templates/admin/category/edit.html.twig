@@ -2,11 +2,13 @@
 
 {% block title %}Edit Category{% endblock %}
 
-{% block body %}
-<div class="min-container">
-    <h1>Edit Category</h1>
-    {{ include('admin/category/_form.html.twig', {'button_label': 'Update'}) }}
+{% block page__title %}Edit Category{% endblock %}
+
+{% block page__desc %}
     <a href="{{ path('category_index') }}" class="button button-cancel">back to list</a>
     {{ include('admin/category/_delete_form.html.twig') }}
-</div>
+{% endblock %}
+
+{% block page__content %}
+    {{ include('admin/category/_form.html.twig', {'button_label': 'Update'}) }}
 {% endblock %}

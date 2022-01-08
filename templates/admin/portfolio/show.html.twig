@@ -1,8 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Photo{% endblock %}
+{% block page__title %}Edit Portfolio{% endblock %}
 
-{% block body %}
+{% block page__desc %}
+    <a href="{{ path('admin_portfolio_index') }}" class="button button-cancel">back to list</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
+    {{ include('admin/portfolio/_delete.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block page__content %}
 <div class="portfolio-show">
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
@@ -12,12 +21,6 @@
                 <figcaption>{{ image.description }}</figcaption>
             </figure>
         </div>
-        {% if is_granted('ROLE_ADMIN') %}
-        <div class="">
-            <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
-            {{ include('admin/portfolio/_delete.html.twig') }}
-        </div>
-        {% endif %}
         <div class="portfolio-details">
             <ul>
                 <li>{{ image.camera }}</li>

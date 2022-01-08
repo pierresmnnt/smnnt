@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New photo{% endblock %}
+{% block page__title %}Add a new photo{% endblock %}
 
-{% block body %}
-<div class="min-container">
-    <h1 class="page__title">Add a new photo</h1>
+{% block page__desc %}
     <a href="{{ path('admin_portfolio_index') }}" class="button button-cancel">back to list</a>
+{% endblock %}
+
+{% block page__content %}
     {% include "admin/portfolio/_form.html.twig" %}
-</div>
 {% endblock %}
