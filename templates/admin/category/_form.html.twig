@@ -1,5 +1,12 @@
 {{ form_start(form, {'attr': {'class': 'stack-column min-container'}}) }}
     <div class="input-group">
+        {{ form_label(form.icon) }}
+        {{ form_widget(form.icon) }}
+        <div class="input-error">
+            {{ form_errors(form.icon) }}
+        </div>
+    </div>
+    <div class="input-group">
         {{ form_label(form.name) }}
         {{ form_widget(form.name) }}
         <div class="input-error">

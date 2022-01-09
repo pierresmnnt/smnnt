@@ -14,15 +14,17 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Icon</th>
                 <th>Name</th>
                 <th>Type</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
             <tr>
                 <td>{{ category.id }}</td>
+                <td>{{ category.icon }}</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.type }}</td>
                 <td>

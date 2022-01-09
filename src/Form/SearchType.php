@@ -25,7 +25,9 @@ class SearchType extends AbstractType
                         ->orderBy('ord')
                         ;
                 },
-                'choice_label' => 'name',
+                'choice_label' => function ($category) {
+                    return $category->getIcon() . " " . $category->getName();
+                },
                 'label' => false,
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
