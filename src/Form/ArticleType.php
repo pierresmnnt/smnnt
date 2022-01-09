@@ -28,6 +28,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('published', CheckboxType::class, [
                 'required' => false,
+                'help' => "Only you can see an unpublished article",
             ])
             ->add('topics', EntityType::class, [
                 'class' => Category::class,
@@ -36,22 +37,45 @@ class ArticleType extends AbstractType
                         ->andWhere('c.type = 2');
                 },
                 'choice_label' => 'name',
-                'help' => 'Sélectionnez un album',
+                'help' => "Choose one or more topics",
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
                 'expanded' => true
             ])
-            ->add('title', TextType::class, [
+            ->add('title', TextareaType::class, [
                 'required' => true,
+                'attr' => [
+                    'placeholder' => "Write the title of the article here",
+                    'is' => "textarea-autogrow",
+                    'class' => "article__title",
+                ]
             ])
-            ->add('kicker', TextType::class, [
+            ->add('kicker', TextareaType::class, [
                 'required' => true,
+                'attr' => [
+                    'placeholder' => "Write a short summary of the article here",
+                    'is' => "textarea-autogrow",
+                    'class' => "article__subtitle",
+                ]
             ])
             ->add('heroImageUrl', UrlType::class, [
                 'required' => false,
+                'attr' => [
+                    'placeholder' => "URL of the hero image"
+                ]
+            ])
+            ->add('heroImageCredit', TextType::class, [
+                'required' => false,
+                'attr' => [
+                    'placeholder' => "Alt and credit of the hero image"
+                ]
             ])
             ->add('content', TextareaType::class, [
                 'required' => true,
+                'attr' => [
+                    'placeholder' => "Write the article here",
+                    'is' => "textarea-autogrow"
+                ]
             ])
             ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
                 /** @var Article */

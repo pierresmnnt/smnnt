@@ -25,6 +25,9 @@ class Article
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $heroImageUrl = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $heroImageCredit = null;
+
     #[ORM\Column(type: 'text')]
     private $content;
 
@@ -155,6 +158,18 @@ class Article
     public function removeTopic(Category $topic): self
     {
         $this->topics->removeElement($topic);
+
+        return $this;
+    }
+
+    public function getHeroImageCredit(): ?string
+    {
+        return $this->heroImageCredit;
+    }
+
+    public function setHeroImageCredit(?string $heroImageCredit): self
+    {
+        $this->heroImageCredit = $heroImageCredit;
 
         return $this;
     }

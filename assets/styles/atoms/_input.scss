@@ -3,6 +3,7 @@
   padding: 6px 12px;
   font-size: inherit;
   font-family: inherit;
+  line-height: inherit;
   border: none;
   border-radius: var(--radius);
   background-color: var(--muted);
@@ -47,6 +48,10 @@ textarea {
 form .help-text {
   color: var(--info);
   margin: 0 6px;
+}
+
+form .help-text + * {
+  margin-top: var(--space);
 }
 
 // Checkbox
@@ -154,4 +159,11 @@ form .help-text {
 // Select
 .custom-select {
   width: 100%;
+}
+
+// Article form input
+.article-form .article-form__content input,
+.article-form .article-form__content textarea {
+  padding: 0;
+  background-color: unset;
 }

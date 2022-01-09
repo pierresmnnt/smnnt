@@ -1,49 +1,60 @@
-{{ form_start(form, {'attr': {'class': 'stack-column'}}) }}
-    <div class="input-group">
-        <div class="input-checkbox checkbox-toggle">
-            {{ form_widget(form.published) }}
-            {{ form_label(form.published) }}
-        </div>  
-        <div class="input-error">
-            {{ form_errors(form.published) }}
+{{ form_start(form, {'attr': {'class': 'article-form'}}) }}
+    <section>
+        <div class="min-container card">
+            <div class="input-group card__body">
+                <div class="input-checkbox checkbox-toggle">
+                    {{ form_widget(form.published) }}
+                    {{ form_label(form.published) }}
+                    {{ form_help(form.published) }}
+                </div>  
+                <div class="input-error">
+                    {{ form_errors(form.published) }}
+                </div>
+            </div>
+            <div class="input-group card__body">
+                {{ form_label(form.topics) }}
+                {{ form_help(form.topics) }}
+                {{ form_widget(form.topics) }}
+                <div class="input-error">
+                    {{ form_errors(form.topics) }}
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        {{ form_label(form.topics) }}
-        {{ form_help(form.topics) }}
-        {{ form_widget(form.topics) }}
-        <div class="input-error">
-            {{ form_errors(form.topics) }}
+    </section>
+
+    <section class="stack-column article-form__content">
+        <div class="input-group">
+            {{ form_widget(form.title) }}
+            <div class="input-error">
+                {{ form_errors(form.title) }}
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        {{ form_label(form.title) }}
-        {{ form_widget(form.title) }}
-        <div class="input-error">
-            {{ form_errors(form.title) }}
+        <div class="input-group">
+            {{ form_widget(form.kicker) }}
+            <div class="input-error">
+                {{ form_errors(form.kicker) }}
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        {{ form_label(form.kicker) }}
-        {{ form_widget(form.kicker) }}
-        <div class="input-error">
-            {{ form_errors(form.kicker) }}
+
+        <div class="input-group">
+            {{ form_widget(form.heroImageUrl) }}
+            <div class="input-error">
+                {{ form_errors(form.heroImageUrl) }}
+            </div>
+            {{ form_widget(form.heroImageCredit) }}
+            <div class="input-error">
+                {{ form_errors(form.heroImageCredit) }}
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        {{ form_label(form.heroImageUrl) }}
-        {{ form_widget(form.heroImageUrl) }}
-        <div class="input-error">
-            {{ form_errors(form.heroImageUrl) }}
+
+        <div class="input-group">
+            {{ form_widget(form.content) }}
+            <div class="input-error">
+                {{ form_errors(form.content) }}
+            </div>
         </div>
-    </div>
-    <div class="input-group">
-        {{ form_label(form.content) }}
-        {{ form_widget(form.content, {attr: {is: "textarea-autogrow"}}) }}
-        <div class="input-error">
-            {{ form_errors(form.content) }}
-        </div>
-    </div>
+    </section>
+
     <div class="form-submit">
         <button class="button-primary">{{ button_label|default('Save') }}</button>
     </div>

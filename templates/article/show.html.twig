@@ -14,15 +14,13 @@
         {% endif %}
         <h1 class="article__title">{{ article.title }}</h1>
         <div class="article__subtitle">{{ article.kicker }}</div>
-        <div class="article__info">{{ article.createdAt ? article.createdAt|date('d/m/Y') : '' }}</div>
         {% if article.heroImageUrl %}
         <figure class="article__heroimg">
-            <img src="{{ article.heroImageUrl }}" alt="article hero image">
-            <figcaption>Legend of the image</figcaption>
+            <img src="{{ article.heroImageUrl }}" alt="{{ article.heroImageCredit }}">
+            <figcaption>{{ article.heroImageCredit }}</figcaption>
         </figure>
         {% endif %}
     </div>
     <div class="article__body stack-column">{{ article.content|markdown_to_html }}</div>
-    <div class="article__footer">Article footer</div>
 </article>
 {% endblock %}
