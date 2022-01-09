@@ -26,7 +26,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
     * @return Article[] Returns an array of Article objects
     */
-    public function findPublished()
+    public function findPublished(int $page, $limit = 8)
     {
         $query = $this->createQueryBuilder('a')
             ->addSelect('t')
@@ -35,7 +35,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->orderBy('a.createdAt', 'DESC')
             ->getQuery();
 
-        return $this->paginator->paginate($query);
+        return $this->paginator->paginate($query, $page, $limit);
     }
     
     public function findLastPublished(): ?Article

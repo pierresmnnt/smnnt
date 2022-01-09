@@ -1,22 +1,19 @@
 import fetchUrl from "./fetchUrl";
 
 /**
- * @property {HTMLFormElement} form
  * @property {HTMLElement} content
  * @property {HTMLElement} pagination
  * @property {number} page
  * @property {boolean} moreNav
  */
-export default class Filter {
+export default class More {
   /**
    * @param {HTMLElement|null} element
-   * @param {boolean} hideButton
    */
-  constructor(element, hideButton = true) {
+  constructor(element) {
     if (element === null) {
       return;
     }
-    this.form = document.querySelector(".js-filter-form");
     this.content = document.querySelector(".js-filter-content");
     this.pagination = document.querySelector(".js-filter-pagination");
     this.page = parseInt(
@@ -24,9 +21,6 @@ export default class Filter {
     );
     this.moreNav = this.page === 1;
     this.bindEvents();
-    if (hideButton) {
-      this.hideSubmitButton();
-    }
   }
 
   bindEvents() {
@@ -36,9 +30,6 @@ export default class Filter {
         this.loadUrl(e.target.getAttribute("href"));
       }
     };
-    this.form.querySelectorAll("input").forEach((input) => {
-      input.addEventListener("change", this.loadForm.bind(this));
-    });
     if (this.moreNav) {
       this.pagination.innerHTML =
         "<button class='button-primary'>More</button>";
@@ -63,21 +54,7 @@ export default class Filter {
     button.innerHTML = "More";
   }
 
-  async loadForm() {
-    this.page = 1;
-    const data = new FormData(this.form);
-    const url = new URL(
-      this.form.getAttribute("action") || window.location.href
-    );
-    const params = new URLSearchParams();
-    data.forEach((value, key) => {
-      params.append(key, value);
-    });
-    return this.loadUrl(url.pathname + "?" + params.toString());
-  }
-
   async loadUrl(url, append = false) {
-    this.showLoader();
     const params = new URLSearchParams(url.split("?")[1] || "");
     params.set("ajax", 1);
     const data = await fetchUrl(url.split("?")[0] + "?" + params.toString());
@@ -95,34 +72,5 @@ export default class Filter {
     }
     params.delete("ajax");
     history.replaceState({}, "", url.split("?")[0] + "?" + params.toString());
-    this.hideLoader();
-  }
-
-  showLoader() {
-    this.form.classList.add("is-loading");
-    const loader = this.form.querySelector(".js-loader");
-    if (loader === null) {
-      return;
-    }
-
-    loader.setAttribute("aria-hidden", false);
-    loader.style.display = null;
-  }
-
-  hideLoader() {
-    this.form.classList.remove("is-loading");
-    const loader = this.form.querySelector(".js-loader");
-    if (loader === null) {
-      return;
-    }
-
-    loader.setAttribute("aria-hidden", true);
-    loader.style.display = "none";
-  }
-
-  hideSubmitButton() {
-    const button = this.form.querySelector(".form-submit");
-    button.style.display = "none";
-    button.firstElementChild.setAttribute("disabled", "disabled");
   }
 }

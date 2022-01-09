@@ -23,20 +23,20 @@
         <div class="card__body">
             <a href="{{ path('admin_article_show', {'id': article.id}) }}">{{ article.title }}</a>
         </div>
-        {% if article.topics|length > 0 %}
         <div class="card__footer">
-            <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+            {% if article.topics|length > 0 %}
             <div class="stack">
                 {% for topic in article.topics %}
                     <div class="pill pill-primary">{{ topic.name }}</div>
                 {% endfor %}
             </div>
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
-            {{ include('admin/article/_delete_form.html.twig') }}
-        {% endif %}
+            {% endif %}
+            <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
+                {{ include('admin/article/_delete_form.html.twig') }}
+            {% endif %}
         </div>
-        {% endif %}
     </div>
     {% endfor %}
 </div>

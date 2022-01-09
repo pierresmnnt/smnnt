@@ -96,6 +96,7 @@
 .article-status {
   position: relative;
   padding-left: calc(14px + var(--space));
+  margin: 0 var(--space) 0 calc(var(--space) * 2);
 }
 
 .article-status::after {
@@ -116,8 +117,4 @@
 
 .article-status-draft::after {
   background-color: var(--warning);
-}
-
-.article-status + * {
-  margin-left: 1em;
 }
