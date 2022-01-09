@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manage Columns{% endblock %}
+{% block title %}Manage Articles{% endblock %}
 
-{% block page__title %}Manage Columns{% endblock %}
+{% block page__title %}Manage Articles{% endblock %}
 
 {% block page__desc %}
-{% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">New</a>{% endif %}
+    <p>Currently {{ articles|length }} articles</p>
+    {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">New</a>{% endif %}
 {% endblock %}
 
 {% block page__content %}

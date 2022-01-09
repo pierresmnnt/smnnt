@@ -7,7 +7,10 @@
 
 {% block page__content %}
 <section>
-    <h2 class="section__title">Last photo</h2>
+    <div class="section__header">
+        <h2 class="section__title">Last photo</h2>
+        <p class="section__desc">I take photo of people, nature, event, sport,...</p>
+    </div>
     <div class="grid">
         {% if image %}
             {% include "portfolio/_card_photo.html.twig" %}
@@ -21,14 +24,17 @@
     </div>
 </section>
 <section>
-    <h2 class="section__title">Last column</h2>
+    <div class="section__header">
+        <h2 class="section__title">Last article</h2>
+        <p class="section__desc">I write about anything I am interested in.</p>
+    </div>
     <div class="grid">
         {% if article %}
             {% include "article/_card_article.html.twig" %}
         {% endif %}
         <div class="card y-center x-center">
             <div class="card__header">
-                <div class="card__title">Go to Columns</div>
+                <div class="card__title">Go to Articles</div>
             </div>
             <a class="card__link" href="{{ path('article_index') }}"></a>
         </div>

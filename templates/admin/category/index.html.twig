@@ -2,9 +2,10 @@
 
 {% block title %}Category index{% endblock %}
 
-{% block page__title %}Manage Category{% endblock %}
+{% block page__title %}Manage Categories{% endblock %}
 
 {% block page__desc %}
+    <p>Currently {{ categories|length }} categories</p>
     <a href="{{ path('category_new') }}" class="button button-primary">Create new</a>
 {% endblock %}
 
