@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleAdminController extends BaseController
 {
     #[Route('/', name: 'admin_article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, Request $request): Response
     {
         return $this->render('admin/article/index.html.twig', [
-            'articles' => $articleRepository->findBy([], ['createdAt' => 'DESC']),
+            'articles' => $articleRepository->findAllWithJoin($request->get('page', 1)),
         ]);
     }
 

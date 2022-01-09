@@ -24,20 +24,22 @@ class ImageRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
-    public function findLast(): ?Image
+    /**
+     * @return Image[]
+     */
+    public function findAllWithJoin(int $page, int $limit = 8)
     {
-        return $this->createQueryBuilder('i')
+        $query = $this->createQueryBuilder('i')
             ->addSelect('a')
             ->leftJoin('i.albums', 'a')
             ->orderBy('i.id', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getQuery();
+
+        return $this->paginator->paginate($query, $page, $limit);
     }
 
     /**
-     * 
+     * @return Image[]
      */
     public function findSearch(SearchData $data, int $limit = 8)
     {
@@ -55,5 +57,20 @@ class ImageRepository extends ServiceEntityRepository
         $query = $query->getQuery();
 
         return $this->paginator->paginate($query, $data->getPage(), $limit);
+    }
+
+    /**
+     * @return Image[]
+     */
+    public function findLast(int $limit = 3)
+    {
+        return $this->createQueryBuilder('i')
+            ->addSelect('a')
+            ->leftJoin('i.albums', 'a')
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

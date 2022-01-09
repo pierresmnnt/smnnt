@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class PortfolioAdminController extends BaseController
 {
     #[Route('/', name: 'admin_portfolio_index', methods: ['GET'])]
-    public function index(ImageRepository $imageRepository): Response
+    public function index(ImageRepository $imageRepository, Request $request): Response
     {
-        return $this->renderForm('admin/portfolio/index.html.twig', [
-            'images' => $imageRepository->findBy([], ['id' => 'DESC']),
+        return $this->render('admin/portfolio/index.html.twig', [
+            'images' => $imageRepository->findAllWithJoin($request->get('page', 1)),
         ]);
     }
 

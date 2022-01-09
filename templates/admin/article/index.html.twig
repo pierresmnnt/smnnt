@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block page__content %}
-<div class="stack-column">
+<section class="stack-column">
     {% for article in articles %}
     <div class="card admin-card">
         <div class="card__header">
@@ -40,5 +40,8 @@
         </div>
     </div>
     {% endfor %}
-</div>
+</section>
+<section class="d-flex x-center y-center">
+{{ knp_pagination_render(articles) }}
+</section>
 {% endblock %}

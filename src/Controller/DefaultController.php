@@ -13,13 +13,13 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'default')]
     public function index(ImageRepository $imageRepository, ArticleRepository $articleRepository): Response
     {
-        $lastImage = $imageRepository->findLast();
-        $lastArticle = $articleRepository->findLastPublished();
+        $lastImages = $imageRepository->findLast();
+        $lastArticles = $articleRepository->findLastPublished();
 
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
-            'image' => $lastImage,
-            'article' =>$lastArticle
+            'images' => $lastImages,
+            'articles' =>$lastArticles
         ]);
     }
 

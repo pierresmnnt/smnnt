@@ -14,7 +14,7 @@ class ArticleController extends BaseController
     #[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, Request $request): Response
     {
-        $articles = $articleRepository->findPublished($request->get('page', 1));
+        $articles = $articleRepository->findAllPublished($request->get('page', 1));
 
         return $this->render('article/index.html.twig', [
             'articles' => $articles,

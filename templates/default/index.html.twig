@@ -12,9 +12,9 @@
         <p class="section__desc">I take photo of people, nature, event, sport,...</p>
     </div>
     <div class="grid">
-        {% if image %}
+        {% for image in images %}
             {% include "portfolio/_card_photo.html.twig" %}
-        {% endif %}
+        {% endfor %}
         <div class="card y-center x-center">
             <div class="card__header">
                 <div class="card__title">Go to Portfolio</div>
@@ -29,9 +29,9 @@
         <p class="section__desc">I write about anything I am interested in.</p>
     </div>
     <div class="grid">
-        {% if article %}
+        {% for article in articles %}
             {% include "article/_card_article.html.twig" %}
-        {% endif %}
+        {% endfor %}
         <div class="card y-center x-center">
             <div class="card__header">
                 <div class="card__title">Go to Articles</div>

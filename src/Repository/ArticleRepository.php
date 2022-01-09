@@ -26,7 +26,21 @@ class ArticleRepository extends ServiceEntityRepository
     /**
     * @return Article[] Returns an array of Article objects
     */
-    public function findPublished(int $page, $limit = 8)
+    public function findAllWithJoin(int $page, $limit = 8)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->addSelect('t')
+            ->leftJoin('a.topics', 't')
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
+
+        return $this->paginator->paginate($query, $page, $limit);
+    }
+
+    /**
+    * @return Article[] Returns an array of Article objects
+    */
+    public function findAllPublished(int $page, $limit = 8)
     {
         $query = $this->createQueryBuilder('a')
             ->addSelect('t')
@@ -38,16 +52,19 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->paginator->paginate($query, $page, $limit);
     }
     
-    public function findLastPublished(): ?Article
+    /**
+     * @return Article[]
+     */
+    public function findLastPublished(int $limit = 3)
     {
         return $this->createQueryBuilder('a')
             ->addSelect('t')
             ->leftJoin('a.topics', 't')
             ->andWhere('a.published = TRUE')
             ->orderBy('a.createdAt', 'DESC')
-            ->setMaxResults(1)
+            ->setMaxResults($limit)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
 }
