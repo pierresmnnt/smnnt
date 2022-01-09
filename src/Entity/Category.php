@@ -85,7 +85,12 @@ class Category
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function getTypeName(): ?string
     {
         return array_search($this->type, self::TYPE) ?: null;
     }

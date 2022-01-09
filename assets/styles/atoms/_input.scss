@@ -1,3 +1,13 @@
+fieldset {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1em;
+}
+
+fieldset legend {
+  padding: 0 calc(var(--space) / 2);
+}
+
 %input {
   display: inline-block;
   padding: 6px 12px;
@@ -13,11 +23,12 @@
 .horizontal-input-group {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--space);
 }
 
 .horizontal-input-group > .input-group {
-  min-width: fit-content;
-  flex: 1;
+  flex: 1 1 auto;
+  width: min-content;
 }
 
 .input-group {
@@ -166,4 +177,5 @@ form .help-text + * {
 .article-form .article-form__content textarea {
   padding: 0;
   background-color: unset;
+  color: var(--color);
 }

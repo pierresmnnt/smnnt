@@ -55,13 +55,15 @@ class ImageType extends AbstractType
                 'required' => false
             ])
             ->add('aperture', TextType::class, [
-                'required' => false
+                'required' => false,
             ])
             ->add('iso', IntegerType::class, [
-                'required' => false
+                'required' => false,
+                'label' => 'ISO'
             ])
             ->add('focal', IntegerType::class, [
-                'required' => false
+                'required' => false,
+                'label' => 'Focal (mm)'
             ])
             ->add('date', DateType::class, [
                 'required' => false,

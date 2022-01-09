@@ -9,7 +9,8 @@
 }
 
 .card-small {
-  max-width: 480px;
+  max-width: 520px;
+  width: 100%;
 }
 
 .card__header {
@@ -67,6 +68,10 @@
 }
 
 // Admin card
+.card__admin {
+  z-index: 9;
+}
+
 .admin-card {
   flex-direction: row;
   flex-wrap: wrap;

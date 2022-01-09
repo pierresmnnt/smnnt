@@ -15,7 +15,7 @@
 <div class="portfolio-show">
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
-            <p>{{ image.description }}</p>
+            <p class="section__title">{{ image.description }}</p>
             <figure class="article__heroimg">
                 <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}" loading="lazy">
                 <figcaption>{{ image.description }}</figcaption>
