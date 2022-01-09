@@ -46,6 +46,10 @@
   grid-auto-flow: dense;
 }
 
+.grid-items-center > * {
+  justify-self: center;
+}
+
 .d-flex {
   display: flex;
 }

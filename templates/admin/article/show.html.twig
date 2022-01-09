@@ -24,7 +24,7 @@
         <div class="article__subtitle">{{ article.kicker }}</div>
         {% if article.heroImageUrl %}
         <figure class="article__heroimg">
-            <img src="{{ article.heroImageUrl }}" alt="{{ article.heroImageCredit }}">
+            <img src="{{ article.heroImageUrl }}" alt="{{ article.heroImageCredit }}" loading="lazy">
             <figcaption>{{ article.heroImageCredit }}</figcaption>
         </figure>
         {% endif %}

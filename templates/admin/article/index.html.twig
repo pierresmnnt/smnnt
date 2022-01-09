@@ -18,7 +18,7 @@
         </div>
         {% if article.heroImageUrl %}
         <div class="card__img">
-            <img src="{{ article.heroImageUrl }}" alt="card image">
+            <img src="{{ article.heroImageUrl }}" alt="{{ article.heroImageCredit }}" loading="lazy">
         </div>
         {% endif %}
         <div class="card__body">
