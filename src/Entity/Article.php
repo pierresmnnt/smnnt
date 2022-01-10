@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -17,18 +18,22 @@ class Article
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $kicker;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Url]
     private $heroImageUrl = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $heroImageCredit = null;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank]
     private $content;
 
     #[ORM\Column(type: 'datetime_immutable')]
