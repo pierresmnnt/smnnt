@@ -7,16 +7,15 @@
   background-color: var(--background);
   z-index: 999;
   margin-bottom: 2rem;
+  line-height: var(--topBarHeight);
 }
 
-.navbar-toggler {
-  height: 100%;
-  width: var(--topBarHeight);
-  color: var(--color);
+.navbar svg {
+  width: 24px;
+  height: 24px;
 }
 
 .navbar-brand {
-  line-height: var(--topBarHeight);
   text-align: center;
 }
 
@@ -27,7 +26,6 @@
 }
 
 .navbar-auth {
-  height: 100%;
   min-width: var(--topBarHeight);
   margin-left: auto;
   padding: 0 calc(var(--topBarHeight) / 2);
@@ -50,10 +48,6 @@
 
 .navbar-nav {
   overflow: hidden;
-}
-
-.nav-item {
-  line-height: var(--topBarHeight);
 }
 
 .nav-link,
