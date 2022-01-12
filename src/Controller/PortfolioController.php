@@ -36,6 +36,7 @@ class PortfolioController extends BaseController
         return $this->renderForm('portfolio/index.html.twig', [
             'images' => $images,
             'form' => $form,
+            'menu' => 'portfolio'
         ]);
     }
 
@@ -44,6 +45,7 @@ class PortfolioController extends BaseController
     {
         return $this->render('portfolio/show.html.twig', [
             'image' => $image,
+            'menu' => 'portfolio'
         ]);
     }
 }

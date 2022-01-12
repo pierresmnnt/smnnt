@@ -50,8 +50,7 @@
   overflow: hidden;
 }
 
-.nav-link,
-.nav-item span {
+.nav-item {
   display: block;
   height: var(--topBarHeight);
   white-space: nowrap;
@@ -60,7 +59,8 @@
 }
 
 .nav-link[aria-current] {
-  color: var(--contrast);
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .js-nav-visible {

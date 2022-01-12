@@ -18,6 +18,7 @@ class ArticleController extends BaseController
 
         return $this->render('article/index.html.twig', [
             'articles' => $articles,
+            'menu' => 'articles'
         ]);
     }
 
@@ -30,6 +31,7 @@ class ArticleController extends BaseController
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'menu' => 'articles'
         ]);
     }
 }

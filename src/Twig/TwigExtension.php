@@ -22,6 +22,7 @@ class TwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('icon', [$this, 'svgIcon'], ['is_safe' => ['html']]),
+            new TwigFunction('menu', [$this, 'menuActive'], ['is_safe' => ['html'], 'needs_context' => true])
         ];
     }
 
@@ -35,5 +36,14 @@ class TwigExtension extends AbstractExtension
         return <<<HTML
         <svg class="icon icon-{$id}" {$attributes} aria-hidden="true"><use xlink:href="/sprite.svg#{$id}"></use></svg>
         HTML;
+    }
+
+    public function menuActive(array $context, string $name): string
+    {
+        if (($context['menu'] ?? null) === $name) {
+            return ' aria-current="page"';
+        }
+
+        return '';
     }
 }
