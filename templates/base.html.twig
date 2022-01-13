@@ -19,10 +19,12 @@
         {% include "partials/nav.html.twig" %}
         {% block body %}
             <div class="container">
-                <div class="page__header">
-                {% if block("page__title") is defined  %}<h1 class="page__title">{{block("page__title")}}</h1>{% endif %}
-                {% if block("page__desc") is defined  %}<div class="page__desc">{{block("page__desc")}}</div>{% endif %}
-                </div>
+                {% if block("page__title") is defined  or block("page__desc") is defined %}
+                    <div class="page__header">
+                    {% if block("page__title") is defined  %}<h1 class="page__title">{{block("page__title")}}</h1>{% endif %}
+                    {% if block("page__desc") is defined  %}<div class="page__desc">{{block("page__desc")}}</div>{% endif %}
+                    </div>
+                {% endif %}
                 {% if block("page__content") is defined  %}<div class="page__content">{{block("page__content")}}</div>{% endif %}
             </div>
         {% endblock %}
