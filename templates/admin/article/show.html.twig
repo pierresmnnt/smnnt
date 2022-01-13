@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block page__content %}
-<article class="article stack-column">
+<article class="article">
     <div class="article__header stack-column">
         {% if article.topics|length > 0 %}
         <div class="article__category stack">
@@ -29,6 +29,6 @@
         </figure>
         {% endif %}
     </div>
-    <div class="article__body stack-column">{{ article.content|markdown_to_html }}</div>
+    <div class="article__body">{{ article.content|markdown_to_html }}</div>
 </article>
 {% endblock %}

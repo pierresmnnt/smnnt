@@ -4,6 +4,10 @@ article,
   margin: 0 auto;
 }
 
+.article__header {
+  margin-bottom: 2em;
+}
+
 .article__title {
   font-size: 38px;
   font-weight: bold;
@@ -16,6 +20,15 @@ article,
 
 .article__info {
   color: var(--info);
+}
+
+.article__body img {
+  border-radius: var(--radius);
+  display: block;
+}
+
+.article__body > p + p {
+  margin-top: calc(var(--space) * 2);
 }
 
 .article__chapter_title {
