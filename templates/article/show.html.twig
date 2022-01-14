@@ -22,5 +22,11 @@
         {% endif %}
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
+    <div class="article__footer">
+        Partager cet article :
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">FB</a>
+        <a href="https://twitter.com/intent/tweet?text={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">TWTTR</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&#38;summary={{ article.kicker }}&#38;title={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">LKN</a>
+    </div>
 </article>
 {% endblock %}
