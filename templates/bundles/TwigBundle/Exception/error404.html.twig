@@ -2,5 +2,11 @@
 
 {% block title %}Oups!{% endblock %}
 
-{% block page__title %}Oh No ! {{ status_code }} error{% endblock %}
 {% block page__desc %}{{ status_text }}{% endblock %}
+{% block page__content %}
+<div class="d-flex x-center">
+    <div class="glitch">
+        <span aria-hidden="true">{{ status_code }} error</span>{{ status_code }} error<span aria-hidden="true">{{ status_code }} error</span>
+    </div>
+</div>
+{% endblock %}
