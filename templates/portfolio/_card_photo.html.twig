@@ -8,7 +8,7 @@
                 <div class="pill pill-small pill-primary">{{ album.name }}</div>
             {% endfor %}
         </div>
-        <div><span>&#128270;</span></div>
+        <div class="button">{{ icon('view') }}</div>
     </div>
     <a class="card__link" href="{{ path('portfolio_show', {'id': image.id}) }}"></a>
 </div>

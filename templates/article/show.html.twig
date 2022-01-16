@@ -23,10 +23,12 @@
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
     <div class="article__footer">
-        Partager cet article :
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">FB</a>
-        <a href="https://twitter.com/intent/tweet?text={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">TWTTR</a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&#38;summary={{ article.kicker }}&#38;title={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">LKN</a>
+        <h5>Partager cet article</h5>
+        <div class="stack social">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('facebook') }}</a>
+            <a href="https://twitter.com/intent/tweet?text={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('twitter') }}</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&#38;summary={{ article.kicker }}&#38;title={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('linkedin') }}</a>
+        </div>
     </div>
 </article>
 {% endblock %}

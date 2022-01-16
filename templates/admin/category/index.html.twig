@@ -6,7 +6,7 @@
 
 {% block page__desc %}
     <p>Currently {{ categories|length }} categories</p>
-    <a href="{{ path('category_new') }}" class="button button-primary">Create new</a>
+    <a href="{{ path('category_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Category</span></a>
 {% endblock %}
 
 {% block page__content %}
@@ -28,7 +28,7 @@
                 <td>{{ category.name }}</td>
                 <td>{{ category.typeName }}</td>
                 <td>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="button">&#128394;&#65039;</a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="button">{{ icon('edit') }}</a>
                     {{ include('admin/category/_delete_form.html.twig') }}
                 </td>
             </tr>

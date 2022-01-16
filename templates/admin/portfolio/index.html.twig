@@ -6,7 +6,7 @@
 
 {% block page__desc %}
     <p>Currently {{ images|length }} photos</p>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">New</a>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Photo</span></a>{% endif %}
 {% endblock %}
 
 {% block page__content %}
@@ -23,11 +23,11 @@
                                 <div class="pill pill-small pill-primary">{{ album.name }}</div>
                             {% endfor %}
                         </div>
-                        <div><span>&#128270;</span></div>
+                        <div class="button">{{ icon('view') }}</div>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                     <div class="card__footer card__admin">
-                        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">&#128394;&#65039;</a>
+                        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
                         {{ include('admin/portfolio/_delete.html.twig') }}
                     </div>
                     {% endif %}

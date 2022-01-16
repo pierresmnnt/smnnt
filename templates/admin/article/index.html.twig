@@ -6,7 +6,7 @@
 
 {% block page__desc %}
     <p>Currently {{ articles|length }} articles</p>
-    {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">New</a>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">{{ icon('add') }}<span class="icon-label ">New Article</span></a>{% endif %}
 {% endblock %}
 
 {% block page__content %}
@@ -34,7 +34,7 @@
             {% endif %}
             <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">&#128394;&#65039;</a>
+                <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">{{ icon('edit') }}</a>
                 {{ include('admin/article/_delete_form.html.twig') }}
             {% endif %}
         </div>

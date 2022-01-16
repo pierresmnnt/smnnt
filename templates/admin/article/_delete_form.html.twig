@@ -1,6 +1,6 @@
 <form method="post" action="{{ path('admin_article_delete', {'id': article.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" class="delete-form">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
     <div class="form-submit">
-        <button type="submit">&#128465;</button>
+        <button type="submit">{{ icon('trash') }}</button>
     </div>
 </form>
