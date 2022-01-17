@@ -2,6 +2,10 @@
 
 {% block title %}Article{% endblock %}
 
+{% block page__desc %}
+    <a href="{{ path('article_index') }}" class="button button-cancel">back to list</a>
+{% endblock %}
+
 {% block page__content %}
 <article class="article">
     <div class="article__header stack-column">

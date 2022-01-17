@@ -59,8 +59,19 @@
 }
 
 .nav-link[aria-current] {
-  color: var(--primary);
-  text-decoration: underline;
+  position: relative;
+}
+
+.nav-link[aria-current]::before {
+  content: "";
+  background-color: var(--primary);
+  position: absolute;
+  bottom: -8px;
+  width: 4px;
+  height: 4px;
+  transform: translateX(-50%);
+  left: 50%;
+  border-radius: 50%;
 }
 
 .js-nav-visible {

@@ -45,7 +45,6 @@ class PortfolioController extends BaseController
     {
         return $this->render('portfolio/show.html.twig', [
             'image' => $image,
-            'menu' => 'portfolio'
         ]);
     }
 }

@@ -19,7 +19,6 @@ class PortfolioAdminController extends BaseController
     {
         return $this->render('admin/portfolio/index.html.twig', [
             'images' => $imageRepository->findAllWithJoin($request->get('page', 1)),
-            'menu' => 'admin'
         ]);
     }
 
@@ -39,7 +38,6 @@ class PortfolioAdminController extends BaseController
 
         return $this->renderForm('admin/portfolio/new.html.twig', [
             'form' => $form,
-            'menu' => 'admin'
         ]);
     }
 
@@ -48,7 +46,6 @@ class PortfolioAdminController extends BaseController
     {
         return $this->render('admin/portfolio/show.html.twig', [
             'image' => $image,
-            'menu' => 'admin'
         ]);
     }
 
@@ -66,7 +63,6 @@ class PortfolioAdminController extends BaseController
 
         return $this->renderForm('admin/portfolio/new.html.twig', [
             'form' => $form,
-            'menu' => 'admin'
         ]);
     }
 
