@@ -115,6 +115,18 @@ form .help-text + * {
   background-color: var(--primary);
 }
 
+.multiple-checkbox input[type="radio"]:checked + label,
+.multiple-checkbox input[type="checkbox"]:checked + label {
+  color: var(--contrast);
+}
+
+.multiple-checkbox
+  input[type="checkbox"]:not(input[type="checkbox"]:checked)
+  + label:hover {
+  background-color: var(--primary);
+  color: var(--contrast);
+}
+
 .input-checkbox input[type="checkbox"]:checked + label::after,
 .checkbox-toggle input:checked + label::after {
   background-color: var(--success);
@@ -127,11 +139,6 @@ form .help-text + * {
   padding: 2px 8px;
   border-radius: 23px;
   display: inline-block;
-}
-
-.multiple-checkbox input[type="radio"]:checked + label,
-.multiple-checkbox input[type="checkbox"]:checked + label {
-  color: var(--contrast);
 }
 
 // Toggle
