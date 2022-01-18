@@ -21,7 +21,11 @@ footer {
 }
 
 .page__title {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.page__desc > * + * {
+  margin-top: 1rem;
 }
 
 section {
@@ -34,4 +38,10 @@ section {
 
 .section__title {
   margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .page__header {
+    margin-bottom: 4rem;
+  }
 }

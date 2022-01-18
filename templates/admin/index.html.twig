@@ -4,7 +4,7 @@
 
 {% block page__title %}&#129489;&#8205;&#128187; Hello {{ app.user.email }}{% endblock %}
 
-{% block page__desc %}<a href="{{ path('logout') }}">Se déconnecter</a>{% endblock %}
+{% block page__desc %}<a href="{{ path('logout') }}" class="button button-cancel">{{ icon('signout') }}<span class="icon-label">Se déconnecter</span></a>{% endblock %}
 
 {% block page__content %}
     <section>

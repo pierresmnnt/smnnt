@@ -23,11 +23,11 @@
                                 <div class="pill pill-small pill-primary">{{ album.name }}</div>
                             {% endfor %}
                         </div>
-                        <div class="button">{{ icon('view') }}</div>
+                        <div>{{ icon('magnifier') }}</div>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                     <div class="card__footer card__admin">
-                        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
+                        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}">{{ icon('edit') }}</a>
                         {{ include('admin/portfolio/_delete.html.twig') }}
                     </div>
                     {% endif %}

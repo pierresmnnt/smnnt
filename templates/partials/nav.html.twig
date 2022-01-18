@@ -15,11 +15,9 @@
             </li>
         </ul>
     </div>
+    {% if app.user %}
     <div class="navbar-auth">
-        {% if app.user %}
-            <a class="nav-link" href="{{ path("admin") }}" {{ menu('admin') }}>Admin</a>
-        {% else %}
-            <a class="nav-link" href="{{ path("login") }}">Login</a>
-        {% endif %}
+        <a class="nav-link button button-primary" href="{{ path("admin") }}" {{ menu('admin') }}>Admin</a>
     </div>
+    {% endif %}
 </nav>
