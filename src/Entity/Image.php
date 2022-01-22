@@ -186,6 +186,11 @@ class Image
         return $this->exposure;
     }
 
+    public function getExposureString(): ?string
+    {
+        return $this->exposure . "s";
+    }
+
     public function setExposure(?string $exposure): self
     {
         $this->exposure = $exposure;
@@ -196,6 +201,11 @@ class Image
     public function getAperture(): ?string
     {
         return $this->aperture;
+    }
+
+    public function getApertureString(): ?string
+    {
+        return "f/" . $this->aperture;
     }
 
     public function setAperture(?string $aperture): self
@@ -220,6 +230,11 @@ class Image
     public function getFocal(): ?int
     {
         return $this->focal;
+    }
+
+    public function getFocalString(): ?string
+    {
+        return $this->focal . "mm";
     }
 
     public function setFocal(?int $focal): self

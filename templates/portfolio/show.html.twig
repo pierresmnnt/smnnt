@@ -19,11 +19,11 @@
             <ul>
                 {% if image.camera %}<li><strong>Camera</strong>{{ image.camera }}</li>{% endif %}
                 {% if image.lens %}<li><strong>Lens</strong>{{ image.lens }}</li>{% endif %}
-                {% if image.exposure %}<li><strong>Exposure</strong>{{ image.exposure }}</li>{% endif %}
-                {% if image.aperture %}<li><strong>Aperture</strong>{{ image.aperture }}</li>{% endif %}
+                {% if image.exposure %}<li><strong>Exposure</strong>{{ image.exposureString }}</li>{% endif %}
+                {% if image.aperture %}<li><strong>Aperture</strong>{{ image.apertureString }}</li>{% endif %}
                 {% if image.iso %}<li><strong>ISO</strong>{{ image.iso }}</li>{% endif %}
-                {% if image.focal %}<li><strong>Focal</strong>{{ image.focal }}mm</li>{% endif %}
-                {% if image.date %}<li><strong>Date</strong>{{ image.date|date("d/m/Y") }}</li>{% endif %}
+                {% if image.focal %}<li><strong>Focal</strong>{{ image.focalString }}</li>{% endif %}
+                {% if image.date %}<li><strong>Date</strong>{{ image.date|date("m/Y") }}</li>{% endif %}
                 <li><div class="stack">{% for album in image.albums %}<div class="pill pill-primary">{{ album.name }}</div>{% endfor %}</div></li>
             </ul>
         </div>

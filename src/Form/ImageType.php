@@ -52,18 +52,24 @@ class ImageType extends AbstractType
                 'required' => false
             ])
             ->add('exposure', TextType::class, [
-                'required' => false
+                'required' => false,
+                'label' => 'Exposure (second)',
+                'attr' => ['placeholder' => '1/100']
             ])
             ->add('aperture', TextType::class, [
                 'required' => false,
+                'label' => 'Aperture (f/x)',
+                'attr' => ['placeholder' => '1.8']
             ])
             ->add('iso', IntegerType::class, [
                 'required' => false,
-                'label' => 'ISO'
+                'label' => 'ISO',
+                'attr' => ['placeholder' => '100']
             ])
             ->add('focal', IntegerType::class, [
                 'required' => false,
-                'label' => 'Focal (mm)'
+                'label' => 'Focal (mm)',
+                'attr' => ['placeholder' => '50']
             ])
             ->add('date', DateType::class, [
                 'required' => false,

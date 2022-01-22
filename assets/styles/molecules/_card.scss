@@ -51,7 +51,7 @@
 
 %card__footer,
 .card__footer {
-  padding: 6px 14px;
+  padding: 6px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -64,10 +64,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-.card__footer .button {
-  padding: 0 4px;
 }
 
 .card__link {

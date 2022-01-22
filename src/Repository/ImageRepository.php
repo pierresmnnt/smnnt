@@ -32,7 +32,8 @@ class ImageRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('i')
             ->addSelect('a')
             ->leftJoin('i.albums', 'a')
-            ->orderBy('i.id', 'DESC')
+            ->orderBy('i.date', 'DESC')
+            ->addOrderBy('i.id', 'DESC')
             ->getQuery();
 
         return $this->paginator->paginate($query, $page, $limit);
@@ -46,7 +47,8 @@ class ImageRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('i')
             ->addSelect('a')
             ->leftJoin('i.albums', 'a')
-            ->orderBy('i.id', 'DESC');
+            ->orderBy('i.date', 'DESC')
+            ->addOrderBy('i.id', 'DESC');
 
         if (!empty($data->getCategories())) {
             $query
@@ -67,7 +69,7 @@ class ImageRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('i')
             ->addSelect('a')
             ->leftJoin('i.albums', 'a')
-            ->orderBy('i.id', 'DESC')
+            ->orderBy('i.date', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
