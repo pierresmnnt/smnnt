@@ -13,17 +13,16 @@
     <div class="js-filter">
         <div class="grid js-filter-content">
             {% for image in images %}
-                <div class="card card-photo">
+                <div class="card card-photo admin-card admin-card__photo">
                     <div class="card__img">
                         <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
-                    </div>
-                    <div class="card__footer">
-                        <div class="stack">
-                            {% for album in image.albums %}
-                                <div class="pill pill-small pill-primary">{{ album.name }}</div>
-                            {% endfor %}
+                        <div class="card__cta">
+                            <div class="stack">
+                                {% for album in image.albums %}
+                                    <div class="pill pill-small pill-primary">{{ album.name }}</div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div>{{ icon('magnifier') }}</div>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                     <div class="card__footer card__admin">

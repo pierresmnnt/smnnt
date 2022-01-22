@@ -29,7 +29,7 @@ article,
 }
 
 .article__body > p + p {
-  margin-top: calc(var(--space) * 2);
+  margin-top: 1em;
 }
 
 .article__chapter_title {
