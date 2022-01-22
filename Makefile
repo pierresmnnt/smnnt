@@ -21,3 +21,6 @@ clear:
 	APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 
 prod: install clear migrate
+
+liip-cache:
+	bin/console liip:imagine:cache:remove

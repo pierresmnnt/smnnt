@@ -25,6 +25,7 @@ liip_imagine:
       filters:
         thumbnail: { size: [620, 465], mode: outbound }
     widen_filter:
+      quality: 100
       filters:
         relative_resize:
-          widen: 620
+          widen: 800
