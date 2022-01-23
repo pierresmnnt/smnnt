@@ -27,7 +27,7 @@ class ImageRepository extends ServiceEntityRepository
     /**
      * @return Image[]
      */
-    public function findAllWithJoin(int $page, int $limit = 8)
+    public function findAllWithJoin(int $page, int $limit = 10)
     {
         $query = $this->createQueryBuilder('i')
             ->addSelect('a')
@@ -42,7 +42,7 @@ class ImageRepository extends ServiceEntityRepository
     /**
      * @return Image[]
      */
-    public function findSearch(SearchData $data, int $limit = 8)
+    public function findSearch(SearchData $data, int $limit = 10)
     {
         $query = $this->createQueryBuilder('i')
             ->addSelect('a')

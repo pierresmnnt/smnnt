@@ -26,7 +26,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
     * @return Article[] Returns an array of Article objects
     */
-    public function findAllWithJoin(int $page, $limit = 8)
+    public function findAllWithJoin(int $page, $limit = 10)
     {
         $query = $this->createQueryBuilder('a')
             ->addSelect('t')
@@ -40,7 +40,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
     * @return Article[] Returns an array of Article objects
     */
-    public function findAllPublished(int $page, $limit = 8)
+    public function findAllPublished(int $page, $limit = 10)
     {
         $query = $this->createQueryBuilder('a')
             ->addSelect('t')

@@ -10,29 +10,30 @@
 {% endblock %}
 
 {% block page__content %}
-    <div class="js-filter">
-        <div class="grid js-filter-content">
-            {% for image in images %}
-                <div class="card card-photo admin-card admin-card__photo">
-                    <div class="card__img">
-                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
-                        <div class="card__cta">
-                            <div class="stack">
-                                {% for album in image.albums %}
-                                    <div class="pill pill-small pill-primary">{{ album.name }}</div>
-                                {% endfor %}
-                            </div>
-                        </div>
+<section class="grid">
+    {% for image in images %}
+        <div class="card card-photo admin-card admin-card__photo">
+            <div class="card__img">
+                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
+                <div class="card__cta">
+                    <div class="stack">
+                        {% for album in image.albums %}
+                            <div class="pill pill-small pill-primary">{{ album.name }}</div>
+                        {% endfor %}
                     </div>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <div class="card__footer card__admin">
-                        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
-                        {{ include('admin/portfolio/_delete.html.twig') }}
-                    </div>
-                    {% endif %}
-                    <a class="card__link" href="{{ path('admin_portfolio_show', {'id': image.id}) }}"></a>
                 </div>
-            {% endfor %}
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="card__footer card__admin">
+                <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
+                {{ include('admin/portfolio/_delete.html.twig') }}
+            </div>
+            {% endif %}
+            <a class="card__link" href="{{ path('admin_portfolio_show', {'id': image.id}) }}"></a>
         </div>
-    </div>
+    {% endfor %}
+</section>
+<section class="d-flex x-center y-center">
+{{ knp_pagination_render(images) }}
+</section>
 {% endblock %}

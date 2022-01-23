@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block description %}{{ article.kicker }}{% endblock %}
 
 {% block page__desc %}
     <a href="{{ path('article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
