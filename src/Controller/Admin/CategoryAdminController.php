@@ -33,6 +33,7 @@ class CategoryAdminController extends BaseController
             $this->getEntityManager()->persist($category);
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "New category created");
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -51,6 +52,7 @@ class CategoryAdminController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "Category edited");
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -68,6 +70,7 @@ class CategoryAdminController extends BaseController
             $this->getEntityManager()->flush();
         }
 
+        $this->addFlash('success', "Category removed");
         return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

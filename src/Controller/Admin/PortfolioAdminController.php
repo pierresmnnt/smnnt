@@ -33,6 +33,7 @@ class PortfolioAdminController extends BaseController
             $this->getEntityManager()->persist($image);
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "New photo added");
             return $this->redirectToRoute('admin_portfolio_index');
         }
 
@@ -58,6 +59,7 @@ class PortfolioAdminController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "Photo edited");
             return $this->redirectToRoute('admin_portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
         }
 
@@ -74,6 +76,7 @@ class PortfolioAdminController extends BaseController
             $this->getEntityManager()->flush();
         }
 
+        $this->addFlash('success', "Photo removed");
         return $this->redirectToRoute('admin_portfolio_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -1,39 +1,25 @@
 .alert {
-  display: flex;
   border-radius: var(--radius);
   background-color: var(--molecule-bg);
-  line-height: 1.2;
   box-shadow: 0 2px 4px var(--shadow);
-  margin: 12px auto;
-  min-height: 54px;
-  overflow: hidden;
-}
-
-.alert__icon {
-  min-width: 54px;
-  background-color: var(--muted);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.alert__desc {
   padding: 8px 14px;
-  align-self: center;
+  position: fixed;
+  right: 0;
+  margin-right: var(--space);
 }
 
-.alert-success strong {
+.alert-success {
   color: var(--success);
 }
 
-.alert-warning strong {
+.alert-warning {
   color: var(--warning);
 }
 
-.alert-error strong {
+.alert-error {
   color: var(--error);
 }
 
-.alert-info strong {
+.alert-info {
   color: var(--info);
 }

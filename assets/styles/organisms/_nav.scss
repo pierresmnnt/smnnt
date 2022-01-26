@@ -54,7 +54,6 @@
   display: block;
   height: var(--topBarHeight);
   white-space: nowrap;
-  cursor: pointer;
   padding: 0 calc(var(--topBarHeight) / 2);
 }
 
@@ -88,6 +87,18 @@
 
 .js-nav-is-open {
   overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-nav {
+    display: grid;
+    grid-gap: calc(2 * var(--gap));
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    font-size: 1.4em;
+    margin-top: calc(4 * var(--gap));
+  }
 }
 
 @media screen and (min-width: 768px) {

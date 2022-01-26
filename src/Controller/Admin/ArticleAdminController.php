@@ -33,6 +33,7 @@ class ArticleAdminController extends BaseController
             $this->getEntityManager()->persist($article);
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "New article created");
             return $this->redirectToRoute('admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -59,6 +60,7 @@ class ArticleAdminController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->flush();
 
+            $this->addFlash('success', "Article edited");
             return $this->redirectToRoute('admin_article_show', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
         }
 
@@ -76,6 +78,7 @@ class ArticleAdminController extends BaseController
             $this->getEntityManager()->flush();
         }
 
+        $this->addFlash('success', "Article removed");
         return $this->redirectToRoute('admin_article_index', [], Response::HTTP_SEE_OTHER);
     }
 }

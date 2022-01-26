@@ -22,6 +22,7 @@
         {% include "partials/nav.html.twig" %}
         {% block body %}
             <div class="container">
+                {% include "partials/flash.html.twig" %}
                 {% if block("page__title") is defined  or block("page__desc") is defined %}
                     <div class="page__header">
                     {% if block("page__title") is defined  %}<h1 class="page__title">{{block("page__title")}}</h1>{% endif %}
