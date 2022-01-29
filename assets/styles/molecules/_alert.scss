@@ -1,25 +1,30 @@
-.alert {
-  border-radius: var(--radius);
-  background-color: var(--molecule-bg);
-  box-shadow: 0 2px 4px var(--shadow);
-  padding: 8px 14px;
+.messages {
   position: fixed;
   right: 0;
-  margin-right: var(--space);
+}
+
+.alert {
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px var(--shadow);
+  padding: 8px 14px;
+  margin: var(--space);
 }
 
 .alert-success {
-  color: var(--success);
+  background-color: var(--success);
 }
 
 .alert-warning {
-  color: var(--warning);
+  background-color: var(--warning);
+  color: #fff;
 }
 
 .alert-error {
-  color: var(--error);
+  background-color: var(--error);
+  color: #fff;
 }
 
 .alert-info {
-  color: var(--info);
+  background-color: var(--info);
+  color: #fff;
 }

@@ -13,3 +13,4 @@ import "./bootstrap";
 
 import "./js/modules/nav";
 import "./js/components/Autogrow";
+import "./js/components/FlashMessage";

@@ -1,3 +1,5 @@
 {% for article in articles %}
     {% include "article/_card_article.html.twig" %}
+{% else %}
+    <div class="text-center">I have not published anything...yet. Come back later.</div>        
 {% endfor %}

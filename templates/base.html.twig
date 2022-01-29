@@ -19,10 +19,10 @@
     </head>
     <body>
         <div class="content">
-        {% include "partials/nav.html.twig" %}
+        {% include "partials/_nav.html.twig" %}
         {% block body %}
             <div class="container">
-                {% include "partials/flash.html.twig" %}
+                {% include "partials/_flash.html.twig" %}
                 {% if block("page__title") is defined  or block("page__desc") is defined %}
                     <div class="page__header">
                     {% if block("page__title") is defined  %}<h1 class="page__title">{{block("page__title")}}</h1>{% endif %}
@@ -33,6 +33,6 @@
             </div>
         {% endblock %}
         </div>
-        {% include "partials/footer.html.twig" %}
+        {% include "partials/_footer.html.twig" %}
     </body>
 </html>
