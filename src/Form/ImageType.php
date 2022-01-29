@@ -31,19 +31,24 @@ class ImageType extends AbstractType
                 'class' => Category::class,
                 'query_builder' => function (CategoryRepository $categoryRepository) {
                     return $categoryRepository->createQueryBuilder('c')
-                        ->andWhere('c.type = 1');
+                        ->andWhere('c.type = 1')
+                        ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
+                        ->setParameter(':name','Best')
+                        ->orderBy('ord')
+                        ;
                 },
                 'choice_label' => 'name',
                 'help' => 'Sélectionnez un album',
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'required' => false
             ])
             ->add('description', TextType::class, [
                 'required' => false
             ])
             ->add('alt', TextType::class, [
-                'required' => true
+                'required' => false
             ])
             ->add('camera', TextType::class, [
                 'required' => false

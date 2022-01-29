@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ImageRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -62,8 +63,12 @@ class Image
     #[ORM\Column(type: 'date', nullable: true)]
     private $date;
 
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private $createdAt;
+
     public function __construct()
     {
+        $this->createdAt = new DateTimeImmutable();
         $this->albums = new ArrayCollection();
     }
 
@@ -252,6 +257,18 @@ class Image
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
