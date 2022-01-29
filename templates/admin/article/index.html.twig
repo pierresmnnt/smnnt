@@ -5,7 +5,7 @@
 {% block page__title %}Manage Articles{% endblock %}
 
 {% block page__desc %}
-    <p>Currently {{ articles|length }} articles</p>
+    <p>Currently {{ count }} articles</p>
     {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">{{ icon('add') }}<span class="icon-label ">New Article</span></a>{% endif %}
 {% endblock %}
 

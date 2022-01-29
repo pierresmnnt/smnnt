@@ -17,7 +17,10 @@ class PortfolioAdminController extends BaseController
     #[Route('/', name: 'admin_portfolio_index', methods: ['GET'])]
     public function index(ImageRepository $imageRepository, Request $request): Response
     {
+        $imagesCount = $imageRepository->count([]);
+
         return $this->render('admin/portfolio/index.html.twig', [
+            'count' => $imagesCount,
             'images' => $imageRepository->findAllWithJoin($request->get('page', 1)),
         ]);
     }

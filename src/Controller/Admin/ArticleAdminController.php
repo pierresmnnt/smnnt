@@ -17,7 +17,10 @@ class ArticleAdminController extends BaseController
     #[Route('/', name: 'admin_article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, Request $request): Response
     {
+        $articleCount = $articleRepository->count([]);
+        
         return $this->render('admin/article/index.html.twig', [
+            'count' => $articleCount,
             'articles' => $articleRepository->findAllWithJoin($request->get('page', 1)),
         ]);
     }

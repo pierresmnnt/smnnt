@@ -5,7 +5,7 @@
 {% block page__title %}Manage Portfolio{% endblock %}
 
 {% block page__desc %}
-    <p>Currently {{ images|length }} photos</p>
+    <p>Currently {{ count }} photos</p>
     {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Photo</span></a>{% endif %}
 {% endblock %}
 
