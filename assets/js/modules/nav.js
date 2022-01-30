@@ -6,9 +6,9 @@ const showNav = (toggleId, navId) => {
     toggle.addEventListener("click", () => {
       document.body.classList.toggle(`${navId}-is-open`);
       nav.classList.toggle(`${navId}-visible`);
-      toggle.classList.toggle(`${navId}-closed`);
+      toggle.classList.toggle(`${navId}-close`);
     });
   }
 };
 
-showNav("js-toggleBtn", "js-nav");
+showNav("js-toggleBtn-nav", "js-nav");

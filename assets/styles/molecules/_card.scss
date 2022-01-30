@@ -109,6 +109,10 @@
   aspect-ratio: unset !important;
 }
 
+.admin-card__article .card__body {
+  align-self: center;
+}
+
 .admin-card__article .card__footer {
   border: none;
 }

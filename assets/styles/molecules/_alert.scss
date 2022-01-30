@@ -12,19 +12,20 @@
 
 .alert-success {
   background-color: var(--success);
+  color: #222;
 }
 
 .alert-warning {
   background-color: var(--warning);
-  color: #fff;
+  color: #f0f0f0;
 }
 
 .alert-error {
   background-color: var(--error);
-  color: #fff;
+  color: #f0f0f0;
 }
 
 .alert-info {
   background-color: var(--info);
-  color: #fff;
+  color: #f0f0f0;
 }
