@@ -4,7 +4,7 @@
 {% block description %}{{ article.kicker }}{% endblock %}
 
 {% block page__desc %}
-    <a href="{{ path('article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
+    <a href="{{ path('article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Retour</a>
 {% endblock %}
 
 {% block page__content %}
@@ -34,6 +34,7 @@
             <a href="https://twitter.com/intent/tweet?text={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('twitter') }}</a>
             <a href="https://www.linkedin.com/shareArticle?mini=true&#38;summary={{ article.kicker }}&#38;title={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('linkedin') }}</a>
         </div>
+        <div class="help">(Ces boutons ne déposent pas de trackers)</div>
     </div>
 </article>
 {% endblock %}

@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Portfolio{% endblock %}
+{% block title %}{{ parent() }} / Portfolio{% endblock %}
 {% block description %}I take photos of nature, people, events, sports and so on.{% endblock %}
 
 {% block page__title %}Portfolio{% endblock %}
+
 {% block page__desc %}
-<div class="max-w-620">
-    <p>I take photos of nature, people, events, sports and so on. Click on a photo to see it in full size and get informations (camera and lens used, aperture, exposure, ISO, focal and date of shoot).</p>
-</div>
+Cliquez sur une photo pour la voir en format réel et obtenir les informations techniques.
 {% endblock %}
 
 {% block page__content %}

@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block page__title %}Welcome !{% endblock %}
+{% block page__title %}Bienvenue !{% endblock %}
 
 {% block page__desc %}
-<div class="max-w-620">
-    <p>My name is Pierre and this is my personal website.</p>
-    <p>You will find some of my favorite photos in my <a href="{{ path('portfolio_index') }}" class="underline">portfolio</a>. I also try to write <a href="{{ path('article_index') }}" class="underline">articles</a> about anything I am interesting in.</p>
+<div>
+    <p>Merci de visiter mon site.</p>
+    <p>Vous y trouverez quelques unes de <a href="{{ path('portfolio_index') }}" class="underline">mes photos</a> et des <a href="{{ path('article_index') }}" class="underline">articles</a> sur des sujets divers et variés.</p>
+    <p>J'ai développé ce site avec <a href="https://symfony.com/" rel="nofollow noreferrer noopener" target="_blank" class="underline">Symfony</a>. Il est hebergé chez <a href="https://www.infomaniak.com" rel="nofollow noreferrer noopener" target="_blank" class="underline">Infomaniak</a> et ne contient aucun trackers.</p>
 </div>
 {% endblock %}

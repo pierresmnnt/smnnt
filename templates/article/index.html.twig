@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}{{ parent() }} / Articles{% endblock %}
 {% block description %}I try to write about anything I am interesting of in order to improve my writing skill and articulate my thoughts.{% endblock %}
 
 {% block page__title %}Articles{% endblock %}
+
 {% block page__desc %}
-<div class="max-w-620">
-    <p>I try to write about anything I am interesting of in order to improve my writing skill and articulate my thoughts. Most of the article are in French but I may write some in english and/or japanese.</p>
-</div>
+J'essaie d'écrire des articles sur les sujets qui m'intéressent pour progresser en écriture et mieux mémoriser ce que j'apprends.
 {% endblock %}
 
 {% block page__content %}

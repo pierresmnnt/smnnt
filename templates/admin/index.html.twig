@@ -1,20 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration{% endblock %}
+{% block title %}{{ parent() }} / Administration{% endblock %}
 
 {% block page__title %}&#128104;&#127995;&#8205;&#128187; Hello {{ app.user.email }}{% endblock %}
 
 {% block page__desc %}<a href="{{ path('logout') }}" class="button button-cancel">{{ icon('signout') }}<span class="icon-label">Se déconnecter</span></a>{% endblock %}
 
 {% block page__content %}
-    <section>
-        <a href="{{ path('admin_portfolio_index') }}">Manage Portfolio</a>
-    </section>
-    <section>
-        <a href="{{ path('admin_article_index') }}">Manage Articles</a>
-    </section>
-    <section>
-        <a href="{{ path('category_index') }}">Manage Categories</a>
-    </section>
+<ul>
+    <li><a href="{{ path('admin_portfolio_index') }}">Manage Portfolio</a></li>
+    <li><a href="{{ path('admin_article_index') }}">Manage Articles</a></li>
+    <li><a href="{{ path('category_index') }}">Manage Categories</a></li>
+</ul>
 {% endblock %}
 
