@@ -5,14 +5,24 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome to my website !{% endblock %}</title>
+        <meta name="title" content="{{ block('title') }}">
         <meta name="description" content="{% block description %}Hello ! My name is Pierre, welcome to my personal website. Take a look at my photos or read my articles.{% endblock %}">
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:title" content="{{ block('title') }}">
+        <meta property="og:description" content="{{ block('description') }}">
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary">
+        <meta property="twitter:url" content="{{ app.request.uri }}">
+        <meta property="twitter:title" content="{{ block('title') }}">
+        <meta property="twitter:description" content="{{ block('description') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
