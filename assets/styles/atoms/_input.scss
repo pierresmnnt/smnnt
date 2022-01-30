@@ -122,6 +122,9 @@ form .help-text + * {
 
 .multiple-checkbox
   input[type="checkbox"]:not(input[type="checkbox"]:checked)
+  + label:hover,
+.multiple-checkbox
+  input[type="radio"]:not(input[type="radio"]:checked)
   + label:hover {
   background-color: var(--primary);
   color: var(--contrast);

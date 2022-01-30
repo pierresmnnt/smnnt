@@ -4,7 +4,7 @@ button,
   border-radius: var(--radius);
   font-size: inherit;
   color: inherit;
-  padding: 6px 12px;
+  padding: 6px 8px;
   cursor: pointer;
   background-color: unset;
   display: inline-flex;
@@ -18,7 +18,7 @@ button,
 .button-cancel {
   background-color: unset;
   border: 1px solid var(--primary);
-  color: var(--color);
+  color: var(--primary);
 }
 
 .form-submit {

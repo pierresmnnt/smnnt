@@ -61,10 +61,6 @@
   position: relative;
 }
 
-.nav-link:not(.nav-link[aria-current]):hover {
-  opacity: 0.5;
-}
-
 .nav-link[aria-current]:not(.button)::before {
   content: "";
   background-color: var(--primary);
