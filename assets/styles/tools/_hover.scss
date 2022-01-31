@@ -1,0 +1,15 @@
+@media (hover: hover) and (pointer: fine) {
+  .multiple-checkbox
+    input[type="checkbox"]:not(input[type="checkbox"]:checked)
+    + label:hover,
+  .multiple-checkbox
+    input[type="radio"]:not(input[type="radio"]:checked)
+    + label:hover {
+    background-color: var(--primary);
+    color: var(--contrast);
+  }
+
+  .card-hover:hover {
+    border: 1px solid var(--primary);
+  }
+}

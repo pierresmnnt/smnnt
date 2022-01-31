@@ -120,16 +120,6 @@ form .help-text + * {
   color: var(--contrast);
 }
 
-.multiple-checkbox
-  input[type="checkbox"]:not(input[type="checkbox"]:checked)
-  + label:hover,
-.multiple-checkbox
-  input[type="radio"]:not(input[type="radio"]:checked)
-  + label:hover {
-  background-color: var(--primary);
-  color: var(--contrast);
-}
-
 .input-checkbox input[type="checkbox"]:checked + label::after,
 .checkbox-toggle input:checked + label::after {
   background-color: var(--success);
