@@ -3,16 +3,8 @@ blockquote + figcaption {
   margin: 0 calc(var(--space) * 2);
 }
 
-blockquote p {
+blockquote {
   padding: 14px;
   background: var(--shadow);
   border-radius: 4px;
-}
-
-blockquote p::before {
-  content: "\201C";
-}
-
-blockquote p::after {
-  content: "\201D";
 }

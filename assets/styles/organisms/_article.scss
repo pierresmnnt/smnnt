@@ -4,9 +4,12 @@ article,
   margin: 0 auto;
 }
 
-.article__header,
-.article__body {
+.article__header {
   margin-bottom: 2em;
+}
+
+.article__footer {
+  margin-top: 4em;
 }
 
 .article__title {
@@ -28,8 +31,33 @@ article,
   display: block;
 }
 
-.article__body > p + p {
+.article__body img + p,
+.article__body img + em {
+  font-size: 0.9rem;
+  color: var(--info);
+}
+
+.article__body > * + * {
   margin-top: 1em;
+}
+
+.article__body a {
+  text-decoration: underline;
+}
+
+.article__body ul {
+  list-style: initial;
+  padding-left: 1em;
+}
+
+.article__body ul > li + li {
+  margin-top: 0.5em;
+}
+
+.article__body blockquote + p {
+  margin: 0 calc(var(--space) * 2);
+  font-size: 0.9rem;
+  color: var(--info);
 }
 
 .article__chapter_title {
