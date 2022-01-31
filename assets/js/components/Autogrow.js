@@ -10,19 +10,21 @@ class Autogrow extends HTMLTextAreaElement {
   connectedCallback() {
     this.style.overflow = "hidden";
     this.autogrow();
-    this.addEventListener("input", this.autogrow);
     this.addEventListener("focus", this.onFocus);
   }
 
   onFocus() {
     this.autogrow();
+    this.style.overflow = "hidden";
+    this.addEventListener("input", this.autogrow);
     this.removeEventListener("focus", this.onFocus);
   }
 
   autogrow() {
+    const scrollTop = window.scrollY;
     this.style.height = "auto";
-    this.style.overflow = "hidden";
     this.style.height = this.scrollHeight + "px";
+    window.scrollTo(0, scrollTop);
   }
 }
 
