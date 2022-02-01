@@ -24,7 +24,7 @@
                 {% if image.iso %}<li><strong>ISO</strong>{{ image.iso }}</li>{% endif %}
                 {% if image.focal %}<li><strong>Focal</strong>{{ image.focalString }}</li>{% endif %}
                 {% if image.date %}<li><strong>Date</strong>{{ image.date|date("m/Y") }}</li>{% endif %}
-                <li><div class="stack">{% for album in image.albums %}<div class="pill pill-primary">{{ album.name }}</div>{% endfor %}</div></li>
+                <li><div class="stack">{% for album in image.albums %}<a href="{{ path('portfolio_index', {'categories[]': album.name}) }}" class="pill pill-primary">{{ album.name }}</a>{% endfor %}</div></li>
             </ul>
         </div>
     </div>

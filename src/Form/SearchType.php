@@ -28,6 +28,9 @@ class SearchType extends AbstractType
                 'choice_label' => function ($category) {
                     return $category->getIcon() . " " . $category->getName();
                 },
+                'choice_value' => function ($category) {
+                    return $category->getName();
+                },
                 'label' => false,
                 'attr' => ['class' => 'multiple-checkbox'],
                 'multiple' => true,
