@@ -22,7 +22,7 @@ export default class Filter {
     this.page = parseInt(
       new URLSearchParams(window.location.search).get("page") || 1
     );
-    this.moreNav = this.page === 1;
+    this.moreNav = false;
     this.bindEvents();
     if (hideButton) {
       this.hideSubmitButton();

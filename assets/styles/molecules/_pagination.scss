@@ -1,0 +1,12 @@
+.pagination a,
+.pagination .current {
+  padding: var(--space) calc(var(--space) * 2);
+}
+
+.pagination span:not(.current) {
+  opacity: 0.6;
+}
+
+.pagination .current {
+  font-weight: bold;
+}
