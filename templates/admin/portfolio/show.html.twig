@@ -16,7 +16,7 @@
 <div class="portfolio-show">
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
-            <p class="section__title">{{ image.description }}</p>
+            <p class="section__title">{{ image.description }} ({{ image.date|date("m/Y") }})</p>
             <figure class="article__heroimg">
                 <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('widen_filter') }}" alt="{{ image.alt }}" loading="lazy">
                 <figcaption>{{ image.description }}</figcaption>
@@ -30,7 +30,6 @@
                 {% if image.aperture %}<li><strong>Aperture</strong>{{ image.apertureString }}</li>{% endif %}
                 {% if image.iso %}<li><strong>ISO</strong>{{ image.iso }}</li>{% endif %}
                 {% if image.focal %}<li><strong>Focal</strong>{{ image.focalString }}</li>{% endif %}
-                {% if image.date %}<li><strong>Date</strong>{{ image.date|date("m/Y") }}</li>{% endif %}
                 <li><div class="stack">{% for album in image.albums %}<div class="pill pill-primary">{{ album.name }}</div>{% endfor %}</div></li>
             </ul>
         </div>
