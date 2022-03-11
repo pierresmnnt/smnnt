@@ -66,6 +66,9 @@ class Image
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $isInPortfolio = true;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -269,6 +272,18 @@ class Image
     public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getIsInPortfolio(): ?bool
+    {
+        return $this->isInPortfolio;
+    }
+
+    public function setIsInPortfolio(?bool $isInPortfolio): self
+    {
+        $this->isInPortfolio = $isInPortfolio;
 
         return $this;
     }

@@ -1,5 +1,15 @@
 {{ form_start(form, {'attr': {'class': 'stack-column min-container'}}) }}
     <div class="input-group">
+        <div class="input-checkbox checkbox-toggle">
+            {{ form_widget(form.isInPortfolio) }}
+            {{ form_label(form.isInPortfolio) }}
+            {{ form_help(form.isInPortfolio) }}
+        </div>  
+        <div class="input-error">
+            {{ form_errors(form.isInPortfolio) }}
+        </div>
+    </div>
+    <div class="input-group">
         {{ form_label(form.imageFile) }}
         {{ form_widget(form.imageFile) }}
         <div class="input-error">
@@ -49,7 +59,7 @@
         </div>
     </div>
     <fieldset>
-        <legend>Paramaters</legend>
+        <legend>Parameters</legend>
         <div class="horizontal-input-group">
             <div class="input-group">
                 {{ form_label(form.exposure) }}

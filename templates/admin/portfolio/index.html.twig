@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manage Portfolio{% endblock %}
+{% block title %}Manage Images{% endblock %}
 
-{% block page__title %}Manage Portfolio{% endblock %}
+{% block page__title %}Manage Images{% endblock %}
 
 {% block page__desc %}
-    <p>Currently {{ count }} photos</p>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Photo</span></a>{% endif %}
+    <p>Currently {{ count }} images</p>
+    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Image</span></a>{% endif %}
 {% endblock %}
 
 {% block page__content %}
@@ -21,6 +21,9 @@
                             <div class="pill pill-small pill-primary">{{ album.name }}</div>
                         {% endfor %}
                     </div>
+                    {% if image.isInPortfolio %}
+                        <div class="stack">{{ icon('suitcase') }}</div>
+                    {% endif %}
                 </div>
             </div>
             {% if is_granted('ROLE_ADMIN') %}

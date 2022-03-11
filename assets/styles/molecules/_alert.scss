@@ -1,13 +1,13 @@
 .messages {
   position: fixed;
-  right: 0;
+  right: calc(var(--topBarHeight) / 2);
 }
 
 .alert {
   border-radius: var(--radius);
   box-shadow: 0 2px 4px var(--shadow);
   padding: 8px 14px;
-  margin: var(--space);
+  margin: var(--space) 0;
 }
 
 .alert-success {

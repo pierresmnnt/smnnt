@@ -15,7 +15,7 @@ $font: "Arial", sans-serif;
   --success: #76ff5b;
   --warning: #ffb555;
   --error: #ff5874;
-  --info: #656d79;
+  --info: #a7acb3;
   --muted: #ededf0;
 
   --gap: 20px;
@@ -65,7 +65,7 @@ $font: "Arial", sans-serif;
 @import "templates/page";
 
 @include dark {
-  --background: #28334d;
+  --background: #222c44;
   --molecule-bg: #3c4863;
   --color: #f0f0f0;
   --primary: #e3e4fd;
@@ -73,7 +73,6 @@ $font: "Arial", sans-serif;
   --contrast: #0f0f0f;
   --border: #343f59;
   --shadow: #1d273e;
-  --info: #e4e8ee;
   --muted: #8e98ae;
 }
 

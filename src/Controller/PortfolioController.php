@@ -22,7 +22,7 @@ class PortfolioController extends BaseController
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
 
-        $images = $imageRepository->findSearch($data);
+        $images = $imageRepository->findPortfolioSearch($data);
 
         if ($request->get('ajax')) {
             return $this->json(

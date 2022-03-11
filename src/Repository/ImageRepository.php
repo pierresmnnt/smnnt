@@ -42,11 +42,12 @@ class ImageRepository extends ServiceEntityRepository
     /**
      * @return Image[]
      */
-    public function findSearch(SearchData $data, int $limit = 20)
+    public function findPortfolioSearch(SearchData $data, int $limit = 20)
     {
         $query = $this->createQueryBuilder('i')
             ->addSelect('a')
             ->leftJoin('i.albums', 'a')
+            ->andWhere('i.isInPortfolio = TRUE')
             ->orderBy('i.date', 'DESC')
             ->addOrderBy('i.id', 'DESC');
 
