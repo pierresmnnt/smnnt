@@ -4,9 +4,14 @@
 
 {% block page__desc %}
 <div>
-    <p>Merci de visiter mon site.</p>
-    <p>Vous y trouverez quelques unes de <a href="{{ path('portfolio_index') }}" class="underline">mes photos</a> et des <a href="{{ path('article_index') }}" class="underline">articles</a> sur des sujets divers et variés.</p>
-    <p>J'ai développé ce site avec <a href="https://symfony.com/" rel="nofollow noreferrer noopener" target="_blank" class="underline">Symfony</a>. Il est hebergé chez <a href="https://www.infomaniak.com" rel="nofollow noreferrer noopener" target="_blank" class="underline">Infomaniak</a> et ne contient aucun trackers.</p>
-    <p>Le code est disponible sur <a href="https://github.com/pierresmnnt/smnnt" rel="nofollow noreferrer noopener" target="_blank" class="underline">Github</a>.</p>
+    <p>Je suis Pierre, photographe et développeur web.</p>
+    <p>Vous trouverez ici quelques unes de <a href="{{ path('portfolio_index') }}" class="underline">mes photos</a> et des <a href="{{ path('article_index') }}" class="underline">articles</a> sur des sujets divers et variés.</p>    
 </div>
+{% endblock %}
+
+{% block page__content %}
+    <ul>
+        <li><a href="mailto:pierre@smnnt.fr" class="button">{{ icon('mail') }}<span class="icon-label">pierre@smnnt.fr</span></a></li>
+        <li><a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">@pierre_smnnt</span></a></li>
+    </ul>
 {% endblock %}

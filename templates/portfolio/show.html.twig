@@ -10,7 +10,7 @@
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
             <p class="section__title">{{ image.description }} ({{ image.date|date("m/Y") }})</p>
-            <figure class="article__heroimg">
+            <figure>
                 <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('widen_filter') }}" alt="{{ image.alt }}" loading="lazy">
                 <figcaption>{{ image.description }}</figcaption>
             </figure>
