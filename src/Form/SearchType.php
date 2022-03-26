@@ -26,7 +26,7 @@ class SearchType extends AbstractType
                         ;
                 },
                 'choice_label' => function ($category) {
-                    return $category->getIcon() . " " . $category->getName();
+                    return $category->getName();
                 },
                 'choice_value' => function ($category) {
                     return $category->getName();

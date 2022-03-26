@@ -20,9 +20,6 @@ class Category
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $icon;
     
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -127,18 +124,6 @@ class Category
         if ($this->articles->removeElement($article)) {
             $article->removeTopic($this);
         }
-
-        return $this;
-    }
-
-    public function getIcon(): ?string
-    {
-        return $this->icon;
-    }
-
-    public function setIcon(?string $icon): self
-    {
-        $this->icon = $icon;
 
         return $this;
     }

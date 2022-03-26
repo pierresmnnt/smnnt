@@ -3,7 +3,7 @@
   display: block;
   margin: 0 auto;
   max-height: calc(100vh - var(--topBarHeight));
-  border-radius: 0;
+  border-radius: var(--radius);
 }
 
 .portfolio-image figcaption {
@@ -29,9 +29,5 @@
     display: grid;
     grid-template-columns: minmax(100px, 1fr) 280px;
     grid-template-rows: 1fr auto;
-  }
-
-  .portfolio-image img {
-    border-radius: var(--radius);
   }
 }
