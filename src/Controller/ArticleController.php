@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/article')]
+//#[Route('/article')]
 class ArticleController extends BaseController
 {
-    #[Route('/', name: 'article_index', methods: ['GET'])]
+    //#[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, Request $request): Response
     {
         $articles = $articleRepository->findAllPublished($request->get('page', 1));
@@ -22,7 +22,7 @@ class ArticleController extends BaseController
         ]);
     }
 
-    #[Route('/{slug}', name: 'article_show', methods: ['GET'])]
+    //#[Route('/{slug}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
         if (false === $article->getPublished() && false === $this->isGranted('ROLE_ADMIN')) {

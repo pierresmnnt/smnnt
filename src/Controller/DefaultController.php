@@ -13,10 +13,4 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/index.html.twig');
     }
-
-    #[Route('/ui', name: 'interface')]
-    public function interface(): Response
-    {
-        return $this->render('default/interface.html.twig');
-    }
 }
