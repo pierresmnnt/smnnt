@@ -5,14 +5,14 @@
 {% block page__desc %}
 <div>
     <p>Je suis Pierre, photographe et développeur web.</p>
-    <a href="{{ path('portfolio_index') }}" class="underline">Mes photos</a>  
 </div>
 {% endblock %}
 
 {% block page__content %}
     <ul>
+        <li><a href="{{ path('portfolio_index') }}" class="button">{{ icon('images') }}<span class="icon-label">Mes photos</span></a></li>
+        <li><a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">pierre_smnnt</span></a></li>
+        <li><a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">pierresmnnt</span></a></li>
         <li><a href="mailto:pierre@smnnt.fr" class="button">{{ icon('mail') }}<span class="icon-label">pierre@smnnt.fr</span></a></li>
-        <li><a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">instagram.com/pierre_smnnt</span></a></li>
-        <li><a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">github.com/pierresmnnt</span></a></li>
     </ul>
 {% endblock %}
