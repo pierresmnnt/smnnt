@@ -31,6 +31,6 @@
         {% endif %}
         <div class="article__subtitle">{{ article.kicker }}</div>
     </div>
-    <div class="article__body">{{ article.content|striptags|markdown_to_html }}</div>
+    <div class="article__body">{{ article.content|striptags('<kanji-furigana>')|markdown_to_html }}</div>
 </article>
 {% endblock %}

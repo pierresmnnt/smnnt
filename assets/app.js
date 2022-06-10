@@ -14,6 +14,7 @@ import "./bootstrap";
 import "./js/modules/nav";
 import "./js/components/Autogrow";
 import "./js/components/FlashMessage";
+import "./js/components/KanjiFurigana";
 import cloneValue from "./js/modules/cloneInput";
 
 const imageAltInput = document.querySelector("input#image_alt");

@@ -2,6 +2,7 @@ article,
 .article {
   max-width: 680px;
   margin: 0 auto;
+  letter-spacing: 0.025em;
 }
 
 .article__header {
@@ -13,7 +14,7 @@ article,
 }
 
 .article__title {
-  font-size: 38px;
+  font-size: 2rem;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -61,7 +62,7 @@ article,
 }
 
 .article__chapter_title {
-  font-size: 28px;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.3;
 }
