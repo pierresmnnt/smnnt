@@ -10,6 +10,7 @@
   }
 
   .card-hover:hover {
-    border: 1px solid var(--primary);
+    outline: 2px solid var(--primary);
+    outline-offset: -1px;
   }
 }
