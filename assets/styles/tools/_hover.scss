@@ -9,8 +9,12 @@
     color: var(--contrast);
   }
 
-  .card-hover:hover {
-    outline: 2px solid var(--primary);
+  .card-hover {
+    outline: 2px solid var(--border);
     outline-offset: -1px;
+  }
+
+  .card-hover:hover {
+    outline-color: var(--primary);
   }
 }
