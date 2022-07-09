@@ -22,6 +22,9 @@ class PortfolioController extends BaseController
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
 
+        /**
+         * @var Object $images
+         */
         $images = $imageRepository->findPortfolioSearch($data);
 
         if ($request->get('ajax')) {
@@ -41,10 +44,10 @@ class PortfolioController extends BaseController
     }
 
     #[Route('/{id}', name: 'portfolio_show', methods: ['GET'])]
-    public function show(Image $image): Response
+    public function show(int $id, ImageRepository $imageRepository): Response
     {
         return $this->render('portfolio/show.html.twig', [
-            'image' => $image,
+            'image' => $imageRepository->findImageById($id),
         ]);
     }
 }

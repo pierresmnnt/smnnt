@@ -40,6 +40,21 @@ class ImageRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return Image
+     */
+    public function findImageById($value): ?Image
+    {
+        return $this->createQueryBuilder('i')
+            ->addSelect('a')
+            ->leftJoin('i.albums', 'a')
+            ->andWhere('i.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
      * @return Image[]
      */
     public function findPortfolioSearch(SearchData $data, int $limit = 20)
