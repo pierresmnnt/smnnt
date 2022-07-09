@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gear index{% endblock %}
+
+{% block page__title %}Manage Gears{% endblock %}
+
+{% block page__desc %}
+    <a href="{{ path('app_gear_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Gear</span></a>
+{% endblock %}
+
+{% block page__content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gear in gears %}
+            <tr>
+                <td>{{ gear.id }}</td>
+                <td>{{ gear.model }}</td>
+                <td>
+                    <a href="{{ path('app_gear_edit', {'id': gear.id}) }}" class="button">{{ icon('edit') }}</a>
+                    {{ include('admin/gear/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

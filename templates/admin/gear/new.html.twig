@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Gear{% endblock %}
+
+{% block page__title %}Create new Gear{% endblock %}
+
+{% block page__desc %}
+    <a href="{{ path('app_gear_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
+{% endblock %}
+
+{% block page__content %}
+   {{ include('admin/gear/_form.html.twig') }}
+{% endblock %}
