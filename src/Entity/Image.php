@@ -69,6 +69,12 @@ class Image
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $isInPortfolio = true;
 
+    #[ORM\ManyToOne(targetEntity: Gear::class)]
+    private $gearCamera;
+
+    #[ORM\ManyToOne(targetEntity: Gear::class)]
+    private $gearLens;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -284,6 +290,30 @@ class Image
     public function setIsInPortfolio(?bool $isInPortfolio): self
     {
         $this->isInPortfolio = $isInPortfolio;
+
+        return $this;
+    }
+
+    public function getGearCamera(): ?Gear
+    {
+        return $this->gearCamera;
+    }
+
+    public function setGearCamera(?Gear $gearCamera): self
+    {
+        $this->gearCamera = $gearCamera;
+
+        return $this;
+    }
+
+    public function getGearLens(): ?Gear
+    {
+        return $this->gearLens;
+    }
+
+    public function setGearLens(?Gear $gearLens): self
+    {
+        $this->gearLens = $gearLens;
 
         return $this;
     }

@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Type</th>
                 <th>Model</th>
                 <th>actions</th>
             </tr>
@@ -21,6 +22,7 @@
         {% for gear in gears %}
             <tr>
                 <td>{{ gear.id }}</td>
+                <td>{{ gear.type }}</td>
                 <td>{{ gear.model }}</td>
                 <td>
                     <a href="{{ path('app_gear_edit', {'id': gear.id}) }}" class="button">{{ icon('edit') }}</a>

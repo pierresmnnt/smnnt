@@ -14,14 +14,14 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'required' => true
-            ])
             ->add('type', ChoiceType::class, [
                 'placeholder' => 'Choose an option',
                 'choices' => Category::TYPE,
                 'attr' => ['class' => 'multiple-checkbox'],
                 'expanded' => true,
+                'required' => true
+            ])
+            ->add('name', TextType::class, [
                 'required' => true
             ])
         ;

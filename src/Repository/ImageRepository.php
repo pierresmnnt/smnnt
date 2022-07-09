@@ -24,14 +24,23 @@ class ImageRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
+    private function queryWithJoin()
+    {
+        return $this->createQueryBuilder('i')
+            ->addSelect('a')
+            ->leftJoin('i.albums', 'a')
+            ->addSelect('c')
+            ->leftJoin('i.gearCamera', 'c')
+            ->addSelect('l')
+            ->leftJoin('i.gearLens', 'l');
+    }
+
     /**
      * @return Image[]
      */
     public function findAllWithJoin(int $page, int $limit = 20)
     {
-        $query = $this->createQueryBuilder('i')
-            ->addSelect('a')
-            ->leftJoin('i.albums', 'a')
+        $query = $this->queryWithJoin()
             ->orderBy('i.date', 'DESC')
             ->addOrderBy('i.id', 'DESC')
             ->getQuery();
@@ -44,9 +53,7 @@ class ImageRepository extends ServiceEntityRepository
      */
     public function findImageById($value): ?Image
     {
-        return $this->createQueryBuilder('i')
-            ->addSelect('a')
-            ->leftJoin('i.albums', 'a')
+        return $this->queryWithJoin()
             ->andWhere('i.id = :val')
             ->setParameter('val', $value)
             ->getQuery()
@@ -59,9 +66,7 @@ class ImageRepository extends ServiceEntityRepository
      */
     public function findPortfolioSearch(SearchData $data, int $limit = 20)
     {
-        $query = $this->createQueryBuilder('i')
-            ->addSelect('a')
-            ->leftJoin('i.albums', 'a')
+        $query = $this->queryWithJoin()
             ->andWhere('i.isInPortfolio = TRUE')
             ->orderBy('i.date', 'DESC')
             ->addOrderBy('i.id', 'DESC');
@@ -82,9 +87,7 @@ class ImageRepository extends ServiceEntityRepository
      */
     public function findLast(int $limit = 3)
     {
-        return $this->createQueryBuilder('i')
-            ->addSelect('a')
-            ->leftJoin('i.albums', 'a')
+        return $this->queryWithJoin()
             ->orderBy('i.date', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()

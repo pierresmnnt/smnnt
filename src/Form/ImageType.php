@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Entity\Gear;
 use App\Entity\Image;
 use App\Repository\CategoryRepository;
+use App\Repository\GearRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -55,10 +57,29 @@ class ImageType extends AbstractType
             ->add('alt', TextType::class, [
                 'required' => false
             ])
-            ->add('camera', TextType::class, [
-                'required' => false
+            ->add('gearCamera', EntityType::class, [
+                'label' => "Camera",
+                'class' => Gear::class,
+                'query_builder' => function (GearRepository $gearRepository) {
+                    return $gearRepository->createQueryBuilder('g')
+                        ->andWhere('g.type = :value')
+                        ->setParameter(':value','camera')
+                        ;
+                },
+                'choice_label' => 'model',
+                'help' => 'Sélectionnez un appareil photo'
             ])
-            ->add('lens', TextType::class, [
+            ->add('gearLens', EntityType::class, [
+                'label' => "Lens",
+                'class' => Gear::class,
+                'query_builder' => function (GearRepository $gearRepository) {
+                    return $gearRepository->createQueryBuilder('g')
+                        ->andWhere('g.type = :value')
+                        ->setParameter(':value','lens')
+                        ;
+                },
+                'choice_label' => 'model',
+                'help' => 'Sélectionnez un objectif',
                 'required' => false
             ])
             ->add('exposure', TextType::class, [

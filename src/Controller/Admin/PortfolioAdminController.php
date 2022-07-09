@@ -46,10 +46,10 @@ class PortfolioAdminController extends BaseController
     }
 
     #[Route('/{id}', name: 'admin_portfolio_show', methods: ['GET'])]
-    public function show(Image $image): Response
+    public function show(int $id, ImageRepository $imageRepository): Response
     {
         return $this->render('admin/portfolio/show.html.twig', [
-            'image' => $image,
+            'image' => $imageRepository->findImageById($id),
         ]);
     }
 

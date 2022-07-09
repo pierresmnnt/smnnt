@@ -14,8 +14,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
                 <th>Type</th>
+                <th>Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,8 +23,8 @@
         {% for category in categories %}
             <tr>
                 <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
                 <td>{{ category.typeName }}</td>
+                <td>{{ category.name }}</td>
                 <td>
                     <a href="{{ path('category_edit', {'id': category.id}) }}" class="button">{{ icon('edit') }}</a>
                     {{ include('admin/category/_delete_form.html.twig') }}
