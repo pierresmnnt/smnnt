@@ -2,17 +2,12 @@
 
 {% block page__title %}Bienvenue !{% endblock %}
 
-{% block page__desc %}
-<div>
-    <p>Je suis Pierre, photographe et développeur web.</p>
-</div>
-{% endblock %}
-
 {% block page__content %}
     <ul>
         <li><a href="{{ path('portfolio_index') }}" class="button">{{ icon('images') }}<span class="icon-label">Mes photos</span></a></li>
-        <li><a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">pierre_smnnt</span></a></li>
-        <li><a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">pierresmnnt</span></a></li>
+        <li><a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">Instagram</span></a></li>
+        <li><a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">Github</span></a></li>
+        <li><a href="https://www.linkedin.com/in/pierre-simonnet/" rel="nofollow noreferrer noopener" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a></li>
         <li><a href="mailto:pierre@smnnt.fr" class="button">{{ icon('mail') }}<span class="icon-label">pierre@smnnt.fr</span></a></li>
     </ul>
 {% endblock %}
