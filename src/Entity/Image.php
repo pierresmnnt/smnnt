@@ -43,12 +43,6 @@ class Image
     private $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $camera;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $lens;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $exposure;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -167,30 +161,6 @@ class Image
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getCamera(): ?string
-    {
-        return $this->camera;
-    }
-
-    public function setCamera(?string $camera): self
-    {
-        $this->camera = $camera;
-
-        return $this;
-    }
-
-    public function getLens(): ?string
-    {
-        return $this->lens;
-    }
-
-    public function setLens(?string $lens): self
-    {
-        $this->lens = $lens;
 
         return $this;
     }
