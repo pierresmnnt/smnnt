@@ -10,51 +10,69 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
-/**
- * @Vich\Uploadable
- */
+#[ApiResource(
+    collectionOperations: ["get"],
+    itemOperations: ["get"],
+    normalizationContext: ['groups' => ['image:read']],
+    denormalizationContext: ['groups' => ['image:write']],
+    attributes: ["order" => ["date" => "DESC"]],
+)]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'albums' => 'exact'])]
+#[Vich\Uploadable]
 class Image
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups("image:read")]
     private $id;
 
-    /**
-     * @Vich\UploadableField(mapping="images", fileNameProperty="imageName")
-     */
+    #[Vich\UploadableField(mapping: "images", fileNameProperty: "imageName")]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("image:read")]
     private $imageName;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updatedAt;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'images')]
+    #[Groups("image:read")]
     private $albums;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("image:read")]
     private $alt;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("image:read")]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("image:read")]
     private $exposure;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups("image:read")]
     private $aperture;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups("image:read")]
     private $iso;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups("image:read")]
     private $focal;
 
     #[ORM\Column(type: 'date', nullable: true)]
+    #[Groups("image:read")]
     private $date;
 
     #[ORM\Column(type: 'datetime_immutable')]
@@ -64,9 +82,11 @@ class Image
     private $isInPortfolio = true;
 
     #[ORM\ManyToOne(targetEntity: Gear::class)]
+    #[Groups("image:read")]
     private $gearCamera;
 
     #[ORM\ManyToOne(targetEntity: Gear::class)]
+    #[Groups("image:read")]
     private $gearLens;
 
     public function __construct()
