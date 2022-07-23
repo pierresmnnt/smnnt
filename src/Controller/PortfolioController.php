@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Data\SearchData;
-use App\Entity\Image;
 use App\Form\SearchType;
 use App\Repository\ImageRepository;
 use Symfony\Component\HttpFoundation\Request;

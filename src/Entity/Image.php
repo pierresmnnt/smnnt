@@ -17,8 +17,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[ApiResource(
-    collectionOperations: ["get"],
-    itemOperations: ["get"],
+    collectionOperations: [
+        "get" => [
+            'normalization_context' => ['groups' => ['collection:read']],
+            ]
+    ],
+    itemOperations: [
+        "get"
+    ],
     normalizationContext: ['groups' => ['image:read']],
     denormalizationContext: ['groups' => ['image:write']],
     attributes: ["order" => ["date" => "DESC"]],
@@ -30,25 +36,25 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups("image:read")]
+    #[Groups(["image:read", "collection:read"])]
     private $id;
 
     #[Vich\UploadableField(mapping: "images", fileNameProperty: "imageName")]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups("image:read")]
+    #[Groups(["image:read", "collection:read"])]
     private $imageName;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updatedAt;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'images')]
-    #[Groups("image:read")]
+    #[Groups(["image:read", "collection:read"])]
     private $albums;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups("image:read")]
+    #[Groups(["image:read", "collection:read"])]
     private $alt;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -88,6 +94,9 @@ class Image
     #[ORM\ManyToOne(targetEntity: Gear::class)]
     #[Groups("image:read")]
     private $gearLens;
+
+    #[Groups(["image:read", "collection:read"])]
+    private $contentUrl;
 
     public function __construct()
     {
@@ -306,5 +315,19 @@ class Image
         $this->gearLens = $gearLens;
 
         return $this;
+    }
+
+    public function getContentUrl(): string
+    {
+        if($this->contentUrl === null) {
+            throw new \LogicException('this field has not been initialized');
+        }
+
+        return $this->contentUrl;
+    }
+
+    public function setContentUrl(string $contentUrl)
+    {
+        $this->contentUrl = $contentUrl;
     }
 }

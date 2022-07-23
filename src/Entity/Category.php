@@ -34,7 +34,7 @@ class Category
     
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
-    #[Groups(["image:read", "category:read"])]
+    #[Groups(["image:read", "category:read", "collection:read"])]
     private $name;
 
     #[ORM\Column(type: 'integer', nullable: true)]

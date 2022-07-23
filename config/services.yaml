@@ -26,3 +26,8 @@ services:
   App\EventSubscriber\ImageCacheSubscriber:
     tags:
       - name: "doctrine.event_subscriber"
+
+  App\DataProvider\ImageDataProvider:
+    bind:
+      $collectionDataProvider: "@api_platform.doctrine.orm.default.collection_data_provider"
+      $itemDataProvider: "@api_platform.doctrine.orm.default.item_data_provider"
