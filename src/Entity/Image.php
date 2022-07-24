@@ -29,7 +29,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
     denormalizationContext: ['groups' => ['image:write']],
     attributes: ["order" => ["date" => "DESC"]],
 )]
-#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'albums' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'albums.name' => 'exact'])]
 #[Vich\Uploadable]
 class Image
 {
@@ -58,7 +58,7 @@ class Image
     private $alt;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups("image:read")]
+    #[Groups(["image:read", "collection:read"])]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
