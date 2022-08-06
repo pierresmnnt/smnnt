@@ -1,0 +1,13 @@
+<header class="header">
+    <div class="header-toggler">
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#js-nav" aria-controls="js-nav" aria-expanded="false" aria-label="Toggle navigation" id="js-toggleBtn-nav">{{ icon('menu') }}</button>
+    </div>
+    <div class="header-brand">
+        <a href={{ path("default") }} class="header-site__brand">SMNNT</a>
+    </div>
+    {% if app.user %}
+    <div class="header-auth">
+        <a class="button button-primary" href="{{ path("admin") }}" {{ menu('admin') }}>Admin</a>
+    </div>
+    {% endif %}
+</header>

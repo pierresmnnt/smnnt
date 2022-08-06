@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/gear'), IsGranted('ROLE_ADMIN')]
+#[Route('/admin/gear'), IsGranted('ROLE_ADMIN')]
 class GearController extends BaseController
 {
     #[Route('/', name: 'app_gear_index', methods: ['GET'])]

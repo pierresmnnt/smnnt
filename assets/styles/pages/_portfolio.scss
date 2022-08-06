@@ -1,3 +1,7 @@
+.portfolio-image {
+  flex: 1 1 auto;
+}
+
 .portfolio-image img {
   --radius: 4px;
   display: block;
@@ -12,6 +16,8 @@
 
 .portfolio-details {
   padding: 2em;
+  min-width: 280px;
+  flex: 1;
 }
 
 .portfolio-details ul li {
@@ -25,9 +31,12 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .portfolio-image {
+    padding-bottom: 2rem;
+  }
+
   .portfolio-show__grid {
-    display: grid;
-    grid-template-columns: minmax(100px, 1fr) 280px;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
   }
 }

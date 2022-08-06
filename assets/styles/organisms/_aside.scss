@@ -1,0 +1,33 @@
+aside {
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.navbar-nav-wrapper {
+  position: fixed;
+  top: var(--topBarHeight);
+  bottom: 0;
+  width: 100%;
+  left: -100%;
+  overflow-y: auto;
+  background-color: var(--background);
+  transition: left 0.5s ease-in-out;
+  z-index: 99;
+}
+
+.js-nav-visible {
+  left: 0;
+}
+
+.js-nav-is-open {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-nav-wrapper {
+    position: sticky;
+    width: fit-content;
+    align-self: flex-start;
+    top: calc(4rem + var(--topBarHeight));
+  }
+}

@@ -1,55 +1,3 @@
-.navbar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  position: sticky;
-  height: var(--topBarHeight);
-  top: 0;
-  background-color: var(--background);
-  z-index: 999;
-  margin-bottom: 2rem;
-  line-height: var(--topBarHeight);
-}
-
-.navbar svg {
-  width: 24px;
-  height: 24px;
-}
-
-.navbar-brand {
-  text-align: center;
-}
-
-.navbar-site__brand {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-.navbar-auth {
-  min-width: var(--topBarHeight);
-  margin-left: auto;
-  padding: 0 calc(var(--topBarHeight) / 2);
-}
-
-.hidden-on-mobile {
-  display: none;
-}
-
-.navbar-nav-wrapper {
-  position: fixed;
-  top: var(--topBarHeight);
-  bottom: 0;
-  width: 100%;
-  left: -100%;
-  overflow-y: auto;
-  background-color: var(--background);
-  transition: left 0.5s ease-in-out;
-}
-
-.navbar-nav {
-  overflow: hidden;
-}
-
 .nav-item {
   display: block;
   height: var(--topBarHeight);
@@ -59,30 +7,7 @@
 
 .nav-link[aria-current] {
   position: relative;
-}
-
-.nav-link[aria-current]:not(.button)::before {
-  content: "";
-  background-color: var(--primary);
-  position: absolute;
-  bottom: -8px;
-  width: 4px;
-  height: 4px;
-  transform: translateX(-50%);
-  left: 50%;
-  border-radius: 50%;
-}
-
-.navbar .button {
-  display: inline;
-}
-
-.js-nav-visible {
-  left: 0;
-}
-
-.js-nav-is-open {
-  overflow: hidden;
+  color: var(--primary);
 }
 
 @media screen and (max-width: 767px) {
@@ -90,40 +15,8 @@
     display: grid;
     grid-gap: calc(2 * var(--gap));
     grid-template-columns: 1fr;
-    justify-items: center;
     align-content: center;
     font-size: 1.4em;
     margin-top: calc(4 * var(--gap));
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .navbar {
-    display: flex;
-    margin-bottom: 4rem;
-  }
-
-  .navbar-toggler {
-    display: none;
-  }
-
-  .navbar-brand {
-    padding: 0 calc(var(--topBarHeight) / 2);
-  }
-
-  .hidden-on-mobile {
-    display: inline;
-  }
-
-  .navbar-nav-wrapper {
-    position: sticky;
-    flex: 1;
-    background-color: inherit;
-    color: inherit;
-  }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: flex-start;
   }
 }

@@ -27,11 +27,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        <div class="content">
-        {% include "partials/_nav.html.twig" %}
-        {% block body %}
-            <div class="container">
+    <body>        
+        {% include "partials/_header.html.twig" %}
+        <div class="page-body">
+            <aside id="js-nav" class="aside navbar-nav-wrapper">
+                {% include "partials/_nav.html.twig" %}
+                {% include "partials/_footer.html.twig" %}
+            </aside>
+            {% block body %}
+            <main class="main">
                 {% include "partials/_flash.html.twig" %}
                 {% if block("page__title") is defined  or block("page__desc") is defined %}
                     <div class="page__header">
@@ -40,9 +44,8 @@
                     </div>
                 {% endif %}
                 {% if block("page__content") is defined  %}<div class="page__content">{{block("page__content")}}</div>{% endif %}
-            </div>
-        {% endblock %}
+            </main>
+            {% endblock %}
         </div>
-        {% include "partials/_footer.html.twig" %}
     </body>
 </html>

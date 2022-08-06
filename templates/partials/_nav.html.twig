@@ -1,20 +1,19 @@
-<nav class="navbar">
-    <div class="navbar-toggler">
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#js-nav" aria-controls="js-nav" aria-expanded="false" aria-label="Toggle navigation" id="js-toggleBtn-nav">{{ icon('menu') }}</button>
-    </div>
-    <div class="navbar-brand">
-        <a href={{ path("default") }} class="navbar-site__brand">SMNNT</a>
-    </div>
-    <div class="navbar-nav-wrapper" id="js-nav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('portfolio_index') }}" {{ menu('portfolio') }}>Photos</a>
-            </li>
-        </ul>
-    </div>
-    {% if app.user %}
-    <div class="navbar-auth">
-        <a class="nav-link button button-primary" href="{{ path("admin") }}" {{ menu('admin') }}>Admin</a>
-    </div>
-    {% endif %}
+<nav>
+    <ul class="navbar-nav">
+        <li>
+            <a href="{{ path('portfolio_index') }}" class="button nav-link" {{ menu('portfolio') }}>{{ icon('images') }}<span class="icon-label">Mes photos</span></a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">Instagram</span></a>
+        </li>
+        <li>
+            <a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">Github</span></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/pierre-simonnet/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
+        </li>
+        <li>
+            <a href="mailto:pierre@smnnt.fr" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">pierre@smnnt.fr</span></a>
+        </li>
+    </ul>
 </nav>

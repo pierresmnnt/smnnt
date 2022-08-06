@@ -19,7 +19,6 @@ class SitemapController extends AbstractController
         $urls[] = ['loc' => $this->generateUrl("default", [], UrlGeneratorInterface::ABSOLUTE_URL)];
         $urls[] = ['loc' => $this->generateUrl("portfolio_index", [], UrlGeneratorInterface::ABSOLUTE_URL)];
         /* $urls[] = ['loc' => $this->generateUrl("article_index", [], UrlGeneratorInterface::ABSOLUTE_URL)]; */
-        $urls[] = ['loc' => $this->generateUrl("login", [], UrlGeneratorInterface::ABSOLUTE_URL)];
 
         $images = $imageRepository->findAll();
         foreach ($images as $image) {
