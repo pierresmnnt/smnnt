@@ -27,6 +27,7 @@ aside {
   .navbar-nav-wrapper {
     position: sticky;
     width: fit-content;
+    max-width: 260px;
     align-self: flex-start;
     top: calc(4rem + var(--topBarHeight));
   }
