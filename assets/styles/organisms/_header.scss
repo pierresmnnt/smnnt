@@ -39,6 +39,18 @@
   display: inline;
 }
 
+.nav-close {
+  display: none;
+}
+
+.js-nav-close > .nav-menu {
+  display: none;
+}
+
+.js-nav-close > .nav-close {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   .header {
     display: flex;
