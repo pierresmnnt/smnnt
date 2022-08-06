@@ -34,6 +34,7 @@ export default class Filter {
       if (e.target.tagName === "A") {
         e.preventDefault();
         this.loadUrl(e.target.getAttribute("href"));
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
     this.form.querySelectorAll("input").forEach((input) => {
