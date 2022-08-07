@@ -16,14 +16,13 @@
 
 .portfolio-details {
   padding: 2em;
-  min-width: 280px;
-  flex: 1;
 }
 
 .portfolio-details ul li {
   display: flex;
   justify-content: space-between;
   padding: 1em 0;
+  flex-wrap: wrap;
 }
 
 .portfolio-details ul > * + * {
@@ -38,5 +37,11 @@
   .portfolio-show__grid {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .portfolio-details {
+    padding: 2em;
+    min-width: 320px;
+    flex: 1;
   }
 }

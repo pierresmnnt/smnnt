@@ -6,14 +6,11 @@
 {% block page__title %}Portfolio{% endblock %}
 
 {% block page__desc %}
-<p>Cliquez sur une photo pour afficher sa description.</p>
+    {% include "portfolio/_search.html.twig" %}
 {% endblock %}
 
 {% block page__content %}
     <div class="js-filter">
-        <section>
-            {% include "portfolio/_search.html.twig" %}
-        </section>
         <section class="grid js-filter-content">
             {% include "portfolio/_images.html.twig" %}
         </section>
