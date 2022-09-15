@@ -15,7 +15,7 @@
 }
 
 .portfolio-details {
-  padding: 2em;
+  padding-top: 2rem;
 }
 
 .portfolio-details ul li {
@@ -31,7 +31,8 @@
 
 @media only screen and (min-width: 768px) {
   .portfolio-image {
-    padding-bottom: 2rem;
+    min-width: 600px;
+    flex: 1;
   }
 
   .portfolio-show__grid {
@@ -40,8 +41,10 @@
   }
 
   .portfolio-details {
-    padding: 2em;
-    min-width: 320px;
-    flex: 1;
+    width: 360px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }

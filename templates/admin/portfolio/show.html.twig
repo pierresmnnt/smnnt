@@ -16,13 +16,13 @@
 <div class="portfolio-show">
     <div class="portfolio-show__grid">
         <div class="portfolio-image">
-            <p class="section__title">{{ image.description }} ({{ image.date|date("m/Y") }})</p>
             <figure>
                 <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('widen_filter') }}" alt="{{ image.alt }}" loading="lazy">
                 <figcaption>{{ image.description }}</figcaption>
             </figure>
         </div>
         <div class="portfolio-details">
+            <p class="section__title">{{ image.description }} ({{ image.date|date("m/Y") }})</p>
             <ul>
                 {% if image.gearCamera %}<li><strong>Camera</strong>{{ image.gearCamera.model }}</li>{% endif %}
                 {% if image.gearLens %}<li><strong>Lens</strong>{{ image.gearLens.model }}</li>{% endif %}
