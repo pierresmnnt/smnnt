@@ -21,6 +21,7 @@ class Autogrow extends HTMLTextAreaElement {
   }
 
   autogrow() {
+    const height = this.scrollHeight;
     const scrollTop = window.scrollY;
     this.style.height = "auto";
     this.style.height = this.scrollHeight + "px";
