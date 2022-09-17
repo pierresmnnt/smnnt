@@ -8,3 +8,13 @@ form:not(.delete-form, .filter-form, .article-form) {
 .delete-form {
   display: inline-block;
 }
+
+.article-form__content {
+  margin-bottom: 8rem;
+}
+
+.article-form__content + .form-submit {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+}
