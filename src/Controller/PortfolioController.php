@@ -45,8 +45,14 @@ class PortfolioController extends BaseController
     #[Route('/{id}', name: 'portfolio_show', methods: ['GET'])]
     public function show(int $id, ImageRepository $imageRepository): Response
     {
+        $image = $imageRepository->findImageById($id);
+
+        if (false === $image->getIsInPortfolio()) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('portfolio/show.html.twig', [
-            'image' => $imageRepository->findImageById($id),
+            'image' => $image,
         ]);
     }
 }

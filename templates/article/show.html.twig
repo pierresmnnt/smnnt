@@ -4,7 +4,14 @@
 {% block description %}{{ article.kicker }}{% endblock %}
 
 {% block page__desc %}
+<div class="d-flex y-center">
     <a href="{{ path('article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Retour</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+        <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">{{ icon('edit') }}</a>
+        {{ include('admin/article/_delete_form.html.twig') }}
+    {% endif %}
+</div>
 {% endblock %}
 
 {% block page__content %}

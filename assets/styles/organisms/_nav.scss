@@ -10,6 +10,11 @@
   color: var(--primary);
 }
 
+.nested-list {
+  list-style: disclosure-closed;
+  margin-left: calc(var(--space) + 32px);
+}
+
 @media screen and (max-width: 767px) {
   .navbar-nav {
     display: grid;

@@ -33,6 +33,7 @@
             </div>
             {% endif %}
             <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+            <a href="{{ path('article_show', {'slug': article.slug}) }}" class="button">{{ icon('view') }}</a>
             {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">{{ icon('edit') }}</a>
                 {{ include('admin/article/_delete_form.html.twig') }}
