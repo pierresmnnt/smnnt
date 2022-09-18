@@ -2,6 +2,7 @@
 
 {% block title %}{{ article.title }}{% endblock %}
 {% block description %}{{ article.kicker }}{% endblock %}
+{% block metaimage %}{% if article.heroImageUrl %}{{ article.heroImageUrl }}{% else %}{{ parent() }}{% endif %}{% endblock %}
 
 {% block page__desc %}
 <div class="d-flex y-center">

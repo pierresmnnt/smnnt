@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ image.description }}{% endblock %}
+{% block title %}{{ parent() }} / Portfolio{% endblock %}
+{% block description %}{{ image.description }}{% endblock %}
+{% block metaimage %}{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('widen_filter') }}{% endblock %}
 
 {% block page__desc %}
     <a href="{{ app.request.headers.get('referer') ?: path('portfolio_index') }}" class="button">{{ icon('back-arrow') }}Retour</a>

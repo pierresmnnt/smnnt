@@ -10,6 +10,13 @@
   color: var(--primary);
 }
 
+.nested-list-item {
+  background-color: var(--molecule-bg);
+  border-radius: 8px;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
 .nested-list {
   list-style: disclosure-closed;
   margin-left: calc(var(--space) + 32px);

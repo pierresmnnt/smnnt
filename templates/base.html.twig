@@ -4,19 +4,21 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}SMNNT.fr{% endblock %}</title>
-        <meta name="title" content="{{ block('title') }}">
-        <meta name="description" content="{% block description %}Prenez quelques minutes pour voir mes photos et lire mes articles sur des sujets variés.{% endblock %}">
+        <title>{% block title %}smnnt.fr{% endblock %}</title>
+        <meta name="title" content="{{ block('title') }} - Photographie, développement web et autres curiosités">
+        <meta name="description" content="{% block description %}Bienvenue sur mon site personnel dédié à la photographie, le développement web et autres sujets qui m'intéressent.{% endblock %}">
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ app.request.uri }}">
         <meta property="og:title" content="{{ block('title') }}">
         <meta property="og:description" content="{{ block('description') }}">
+        <meta property="og:image" content="{% block metaimage %}{{ absolute_url(asset('site_cover.jpg')) }}{% endblock %}">
         <!-- Twitter -->
         <meta property="twitter:card" content="summary">
         <meta property="twitter:url" content="{{ app.request.uri }}">
         <meta property="twitter:title" content="{{ block('title') }}">
         <meta property="twitter:description" content="{{ block('description') }}">
+        <meta property="twitter:image" content="{{ block('metaimage') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

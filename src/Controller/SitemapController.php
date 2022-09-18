@@ -18,7 +18,7 @@ class SitemapController extends AbstractController
 
         $urls[] = ['loc' => $this->generateUrl("default", [], UrlGeneratorInterface::ABSOLUTE_URL)];
         $urls[] = ['loc' => $this->generateUrl("portfolio_index", [], UrlGeneratorInterface::ABSOLUTE_URL)];
-        /* $urls[] = ['loc' => $this->generateUrl("article_index", [], UrlGeneratorInterface::ABSOLUTE_URL)]; */
+        $urls[] = ['loc' => $this->generateUrl("article_index", [], UrlGeneratorInterface::ABSOLUTE_URL)];
 
         $images = $imageRepository->findAll();
         foreach ($images as $image) {
@@ -28,7 +28,6 @@ class SitemapController extends AbstractController
             ];
         } 
 
-        /*
         $articles = $articleRepository->findBy(['published' => true]);
         foreach ($articles as $article) {
             $urls[] = [
@@ -36,7 +35,6 @@ class SitemapController extends AbstractController
                 'lastmod' => $article->getCreatedAt()->format('Y-m-d')
             ];
         }
-        */
 
         $response = new Response(
             $this->renderView('sitemap/index.html.twig', ['urls' => $urls]),
