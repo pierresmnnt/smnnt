@@ -12,7 +12,7 @@
 {% block page__content %}
 <section class="grid">
     {% for image in images %}
-        <div class="card card-photo admin-card admin-card__photo">
+        <div class="card card-photo admin-card admin-card__photo card-hover">
             <div class="card__img">
                 <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
                 <div class="card__cta">

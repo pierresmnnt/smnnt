@@ -22,6 +22,7 @@ class ArticleAdminController extends BaseController
         return $this->render('admin/article/index.html.twig', [
             'count' => $articleCount,
             'articles' => $articleRepository->findAllWithJoin($request->get('page', 1)),
+            'menu' => 'admin-article'
         ]);
     }
 
@@ -43,6 +44,7 @@ class ArticleAdminController extends BaseController
         return $this->renderForm('admin/article/new.html.twig', [
             'article' => $article,
             'form' => $form,
+            'menu' => 'admin-article'
         ]);
     }
 
@@ -51,6 +53,7 @@ class ArticleAdminController extends BaseController
     {
         return $this->render('admin/article/show.html.twig', [
             'article' => $article,
+            'menu' => 'admin-article'
         ]);
     }
 
@@ -70,6 +73,7 @@ class ArticleAdminController extends BaseController
         return $this->renderForm('admin/article/edit.html.twig', [
             'article' => $article,
             'form' => $form,
+            'menu' => 'admin-article'
         ]);
     }
 

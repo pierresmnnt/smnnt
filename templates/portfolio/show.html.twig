@@ -6,6 +6,10 @@
 
 {% block page__desc %}
     <a href="{{ app.request.headers.get('referer') ?: path('portfolio_index') }}" class="button">{{ icon('back-arrow') }}Retour</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
+        {{ include('admin/portfolio/_delete.html.twig') }}
+    {% endif %}
 {% endblock %}
 
 {% block page__content %}

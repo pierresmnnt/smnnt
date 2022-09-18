@@ -19,6 +19,7 @@ class GearController extends BaseController
     {
         return $this->render('admin/gear/index.html.twig', [
             'gears' => $gearRepository->findAll(),
+            'menu' => 'admin-gear'
         ]);
     }
 
@@ -39,6 +40,7 @@ class GearController extends BaseController
         return $this->renderForm('admin/gear/new.html.twig', [
             'gear' => $gear,
             'form' => $form,
+            'menu' => 'admin-gear'
         ]);
     }
 
@@ -58,6 +60,7 @@ class GearController extends BaseController
         return $this->renderForm('admin/gear/edit.html.twig', [
             'gear' => $gear,
             'form' => $form,
+            'menu' => 'admin-gear'
         ]);
     }
 

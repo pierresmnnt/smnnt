@@ -10,11 +10,10 @@
   }
 
   .card-hover {
-    outline: 2px solid var(--border);
-    outline-offset: -1px;
+    border: 2px solid var(--border);
   }
 
   .card-hover:hover {
-    outline-color: var(--primary);
+    border-color: var(--primary);
   }
 }

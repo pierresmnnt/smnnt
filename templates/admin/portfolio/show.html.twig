@@ -7,7 +7,9 @@
 {% block page__desc %}
 <div class="d-flex y-center">
     <a href="{{ path('admin_portfolio_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>{{ include('admin/portfolio/_delete.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
+        {{ include('admin/portfolio/_delete.html.twig') }}
     {% endif %}
 </div>
 {% endblock %}

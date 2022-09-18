@@ -2,12 +2,12 @@
     <ul class="navbar-nav">
         {% if is_granted('ROLE_ADMIN') %}
         <li class="nested-list-item">
-            <a href="{{ path("admin") }}" class="button nav-link">{{ icon('open-box') }}<span class="icon-label">Administration</span></a>
+            <a href="{{ path("admin") }}" class="button nav-link" {{ menu('admin') }}>{{ icon('open-box') }}<span class="icon-label">Administration</span></a>
             <ul class="nested-list">
-                <li><a href="{{ path('admin_portfolio_index') }}">Manage Images</a></li>
-                <li><a href="{{ path('admin_article_index') }}">Manage Articles</a></li>
-                <li><a href="{{ path('category_index') }}">Manage Categories</a></li>
-                <li><a href="{{ path('app_gear_index') }}">Manage Gear</a></li>
+                <li><a href="{{ path('admin_portfolio_index') }}" class="button nav-link" {{ menu('admin-image') }}>Manage Images</a></li>
+                <li><a href="{{ path('admin_article_index') }}" class="button nav-link" {{ menu('admin-article') }}>Manage Articles</a></li>
+                <li><a href="{{ path('category_index') }}" class="button nav-link" {{ menu('admin-category') }}>Manage Categories</a></li>
+                <li><a href="{{ path('app_gear_index') }}" class="button nav-link" {{ menu('admin-gear') }}>Manage Gear</a></li>
             </ul>
         </li>
         {% endif %}

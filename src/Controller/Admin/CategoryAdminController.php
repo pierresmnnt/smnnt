@@ -19,6 +19,7 @@ class CategoryAdminController extends BaseController
     {
         return $this->render('admin/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'menu' => 'admin-category'
         ]);
     }
 
@@ -40,6 +41,7 @@ class CategoryAdminController extends BaseController
         return $this->renderForm('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form,
+            'menu' => 'admin-category'
         ]);
     }
 
@@ -59,6 +61,7 @@ class CategoryAdminController extends BaseController
         return $this->renderForm('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+            'menu' => 'admin-category'
         ]);
     }
 
