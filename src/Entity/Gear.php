@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GearRepository::class)]
 #[ApiResource(
@@ -28,9 +29,11 @@ class Gear
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Groups("image:read")]
+    #[Assert\NotBlank]
     private $model;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $type;
 
     public function __construct()

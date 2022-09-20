@@ -15,24 +15,22 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image as ConstraintsImage;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        /** @var Image|null $image */
+        $image = $options['data'] ?? null;
+        $isEdit = $image && $image->getId();
+
         $builder
             ->add('isInPortfolio', CheckboxType::class, [
                 'required' => false,
                 'help' => "Will this image appear in the portfolio ?",
-            ])
-            ->add('imageFile', VichImageType::class, [
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => 'Remove Image',
-                'download_uri' => false,
-                'image_uri' => true,
-                'asset_helper' => true,
             ])
             ->add('albums', EntityType::class, [
                 'class' => Category::class,
@@ -67,7 +65,8 @@ class ImageType extends AbstractType
                         ;
                 },
                 'choice_label' => 'model',
-                'help' => 'Sélectionnez un appareil photo'
+                'help' => 'Sélectionnez un appareil photo',
+                'required' => false
             ])
             ->add('gearLens', EntityType::class, [
                 'label' => "Lens",
@@ -105,6 +104,28 @@ class ImageType extends AbstractType
             ->add('date', DateType::class, [
                 'required' => false,
                 'widget' => 'single_text'
+            ])
+        ;
+
+        $imageContraints = [
+            new ConstraintsImage()
+        ];
+
+        if (!$isEdit || !$image->getImageName()) {
+            $imageContraints[] = new NotNull([
+                'message' => "Please upload an image"
+            ]);
+        }
+
+        $builder
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Remove Image',
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+                'constraints' => $imageContraints
             ])
         ;
     }
