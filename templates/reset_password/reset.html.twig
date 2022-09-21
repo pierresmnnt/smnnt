@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block page__title %}Reset your password{% endblock %}
+
+{% block page__content %}
+    {{ form_start(resetForm, {'attr': {'class': 'stack-column min-container'}}) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <div class="form-submit">
+            <button class="button-primary">Reset password</button>
+        </div>
+    {{ form_end(resetForm) }}
+{% endblock %}
