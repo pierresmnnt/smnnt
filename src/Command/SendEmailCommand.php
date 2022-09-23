@@ -20,11 +20,13 @@ class SendEmailCommand extends Command
 {
     private SymfonyStyle $io;
     private MailerInterface $mailer;
+    private string $sender;
 
-    public function __construct(MailerInterface $mailer)
+    public function __construct(MailerInterface $mailer, string $sender)
     {
         parent::__construct();
         $this->mailer = $mailer;
+        $this->sender = $sender;
     }
 
     protected function configure(): void
@@ -39,8 +41,8 @@ class SendEmailCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $email = (new Email())
-            ->from('test@domain.com')
-            ->to('receiver@domain.com')
+            ->from($this->sender)
+            ->to($this->sender)
             ->subject('This is a test email')
             ->text('This is a test')
         ;
