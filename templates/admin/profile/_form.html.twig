@@ -1,0 +1,13 @@
+{{ form_start(form, {'attr': {'class': 'stack-column min-container'}}) }}
+    <div class="input-group">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        <div class="input-error">
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+
+    <div class="form-submit">
+        <button class="button-primary">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}

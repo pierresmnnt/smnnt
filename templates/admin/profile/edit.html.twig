@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}smnnt.fr - Edit Profile{% endblock %}
+
+{% block page__title %}Edit your profile{% endblock %}
+
+{% block page__desc %}
+{{ app.user.email }}
+{% endblock %}
+
+{% block page__content %}
+    {{ include('admin/profile/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}
+
