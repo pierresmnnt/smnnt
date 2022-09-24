@@ -18,16 +18,7 @@
             <a href="{{ path('article_index') }}" class="button nav-link" {{ menu('articles') }}>{{ icon('newspaper') }}<span class="icon-label">Mes articles</span></a>
         </li>
         <li>
-            <a href="https://www.instagram.com/pierre_smnnt/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">Instagram</span></a>
-        </li>
-        <li>
-            <a href="https://github.com/pierresmnnt/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">Github</span></a>
-        </li>
-        <li>
-            <a href="https://www.linkedin.com/in/pierre-simonnet/" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
-        </li>
-        <li>
-            <a href="mailto:pierre@smnnt.fr" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">pierre@smnnt.fr</span></a>
+             {% include "partials/_socials.html.twig" %}
         </li>
     </ul>
 </nav>

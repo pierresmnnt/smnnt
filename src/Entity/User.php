@@ -30,6 +30,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private $password;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $contactEmail;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $socialInstagram;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $socialGithub;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $socialLinkedin;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $socialTwitter;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -98,5 +113,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getContactEmail(): ?string
+    {
+        return $this->contactEmail;
+    }
+
+    public function setContactEmail(?string $contactEmail): self
+    {
+        $this->contactEmail = $contactEmail;
+
+        return $this;
+    }
+
+    public function getSocialInstagram(): ?string
+    {
+        return $this->socialInstagram;
+    }
+
+    public function setSocialInstagram(?string $socialInstagram): self
+    {
+        $this->socialInstagram = $socialInstagram;
+
+        return $this;
+    }
+
+    public function getSocialGithub(): ?string
+    {
+        return $this->socialGithub;
+    }
+
+    public function setSocialGithub(?string $socialGithub): self
+    {
+        $this->socialGithub = $socialGithub;
+
+        return $this;
+    }
+
+    public function getSocialLinkedin(): ?string
+    {
+        return $this->socialLinkedin;
+    }
+
+    public function setSocialLinkedin(?string $socialLinkedin): self
+    {
+        $this->socialLinkedin = $socialLinkedin;
+
+        return $this;
+    }
+
+    public function getSocialTwitter(): ?string
+    {
+        return $this->socialTwitter;
+    }
+
+    public function setSocialTwitter(?string $socialTwitter): self
+    {
+        $this->socialTwitter = $socialTwitter;
+
+        return $this;
     }
 }

@@ -21,9 +21,9 @@ class GearType extends AbstractType
             'expanded' => true,
             'required' => true
         ])
-            ->add('model', TextType::class, [
-                'required' => true
-            ])
+        ->add('model', TextType::class, [
+            'required' => true
+        ])
         ;
     }
 

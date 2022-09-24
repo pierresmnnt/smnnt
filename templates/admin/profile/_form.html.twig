@@ -1,11 +1,51 @@
 {{ form_start(form, {'attr': {'class': 'stack-column min-container'}}) }}
     <div class="input-group">
         {{ form_label(form.email) }}
+        {{ form_help(form.email) }}
         {{ form_widget(form.email) }}
         <div class="input-error">
             {{ form_errors(form.email) }}
         </div>
     </div>
+    <fieldset class="stack-column">
+        <legend>Socials</legend>
+        <div class="input-group">
+            {{ form_label(form.contactEmail) }}
+            {{ form_help(form.contactEmail) }}
+            {{ form_widget(form.contactEmail) }}
+            <div class="input-error">
+                {{ form_errors(form.contactEmail) }}
+            </div>
+        </div>
+        <div class="input-group">
+            {{ form_label(form.socialInstagram) }}
+            {{ form_widget(form.socialInstagram) }}
+            <div class="input-error">
+                {{ form_errors(form.socialInstagram) }}
+            </div>
+        </div>
+        <div class="input-group">
+            {{ form_label(form.socialGithub) }}
+            {{ form_widget(form.socialGithub) }}
+            <div class="input-error">
+                {{ form_errors(form.socialGithub) }}
+            </div>
+        </div>
+        <div class="input-group">
+            {{ form_label(form.socialLinkedin) }}
+            {{ form_widget(form.socialLinkedin) }}
+            <div class="input-error">
+                {{ form_errors(form.socialLinkedin) }}
+            </div>
+        </div>
+        <div class="input-group">
+            {{ form_label(form.socialTwitter) }}
+            {{ form_widget(form.socialTwitter) }}
+            <div class="input-error">
+                {{ form_errors(form.socialTwitter) }}
+            </div>
+        </div>
+    </fieldset>
 
     <div class="form-submit">
         <button class="button-primary">{{ button_label|default('Save') }}</button>
