@@ -35,6 +35,7 @@
                 <li><div class="stack">{% for album in image.albums %}<div class="pill pill-primary">{{ album.name }}</div>{% endfor %}</div></li>
                 <li>{% if image.isInPortfolio %}<div class="spot">{{ icon('suitcase') }}</div>{% else %}<div class="pill pill-primary">Not in portfolio</div>{% endif %}</li>
             </ul>
+            <div>{{ absolute_url(vich_uploader_asset(image, 'imageFile')) }}</div>
         </div>
     </div>
 </div>

@@ -55,12 +55,6 @@ article,
   margin-top: 0.5em;
 }
 
-.article__body blockquote + p {
-  margin: 0 calc(var(--space) * 2);
-  font-size: 0.9rem;
-  color: var(--info);
-}
-
 .article__chapter_title {
   font-size: 1.5rem;
   font-weight: bold;
