@@ -78,6 +78,7 @@
   width: 100%;
   padding-left: calc(50% - var(--container-width) / 2);
   padding-right: calc(50% - var(--container-width) / 2);
+  flex: 1;
 }
 
 @media screen and (min-width: 768px) {

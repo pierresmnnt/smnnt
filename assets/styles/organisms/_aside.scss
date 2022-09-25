@@ -26,8 +26,7 @@ aside {
 @media screen and (min-width: 768px) {
   .navbar-nav-wrapper {
     position: sticky;
-    width: fit-content;
-    max-width: 280px;
+    width: 280px;
     align-self: flex-start;
     top: calc(4rem + var(--topBarHeight));
   }
