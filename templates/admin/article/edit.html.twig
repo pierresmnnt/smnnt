@@ -6,7 +6,10 @@
 
 {% block page__desc %}
     <a href="{{ path('admin_article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
-    {{ include('admin/article/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('article_show', {'slug': article.slug}) }}" class="button">{{ icon('view') }}</a>
+        {{ include('admin/article/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
 
 {% block page__content %}

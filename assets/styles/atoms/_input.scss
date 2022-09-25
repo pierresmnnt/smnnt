@@ -179,3 +179,12 @@ form .help-text + * {
   background-color: unset;
   color: var(--color);
 }
+
+.article-form input[name="article[heroImageUrl]"] {
+  background-color: var(--border);
+}
+
+.article-form input[name="article[heroImageCredit]"] {
+  color: var(--info);
+  font-size: 0.9rem;
+}
