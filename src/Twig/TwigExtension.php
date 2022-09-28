@@ -22,7 +22,7 @@ class TwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('icon', [$this, 'svgIcon'], ['is_safe' => ['html']]),
-            new TwigFunction('menu', [$this, 'menuActive'], ['is_safe' => ['html'], 'needs_context' => true])
+            new TwigFunction('menu', [$this, 'menuActive'], ['is_safe' => ['html'], 'needs_context' => true]),
         ];
     }
 

@@ -1,27 +1,27 @@
 <ul>
-{% if app.user.socialInstagram %}
+{% if user.socialInstagram %}
     <li>
-        <a href="https://www.instagram.com/{{ app.user.socialInstagram }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">Instagram</span></a>
+        <a href="https://www.instagram.com/{{ user.socialInstagram }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('instagram') }}<span class="icon-label">Instagram</span></a>
     </li>
 {% endif %}
-{% if app.user.socialGithub %}
+{% if user.socialGithub %}
     <li>
-        <a href="https://github.com/{{ app.user.socialGithub }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">Github</span></a>
+        <a href="https://github.com/{{ user.socialGithub }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('github') }}<span class="icon-label">Github</span></a>
     </li>
 {% endif %}
-{% if app.user.socialLinkedin %}
+{% if user.socialLinkedin %}
     <li>
-        <a href="https://www.linkedin.com/in/{{ app.user.socialLinkedin }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
+        <a href="https://www.linkedin.com/in/{{ user.socialLinkedin }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
     </li>
 {% endif %}
-{% if app.user.socialTwitter %}
+{% if user.socialTwitter %}
     <li>
-        <a href="https://twitter.com/{{ app.user.socialTwitter }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
+        <a href="https://twitter.com/{{ user.socialTwitter }}" rel="nofollow noreferrer noopener external" target="_blank" class="button">{{ icon('linkedin') }}<span class="icon-label">Linkedin</span></a>
     </li>
 {% endif %}
-{% if app.user.contactEmail %} 
+{% if user.contactEmail %} 
     <li>
-        <a href="mailto:{{ app.user.contactEmail }}" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">{{ app.user.contactEmail }}</span></a>
+        <a href="mailto:{{ user.contactEmail }}" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">{{ app.user.contactEmail }}</span></a>
     </li>
 {% endif %}
 </ul>
