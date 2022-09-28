@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manage Images{% endblock %}
+{% block title %}Manage Portfolio{% endblock %}
 
-{% block page__title %}Manage Images{% endblock %}
+{% block page__title %}Manage Portfolio{% endblock %}
 
 {% block page__desc %}
-    <p>Currently {{ count }} images</p>
-    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Image</span></a>{% endif %}
+    <p>Currently {{ count }} photos in portfolio</p>
+    {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Photo</span></a>{% endif %}
 {% endblock %}
 
 {% block page__content %}

@@ -6,7 +6,12 @@
 
 {% block page__desc %}
     <p>Currently {{ count }} articles</p>
-    {% if is_granted('ROLE_ADMIN') %}<a class="button button-primary" href="{{ path('admin_article_new') }}">{{ icon('add') }}<span class="icon-label ">New Article</span></a>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="d-flex">
+            <a class="button button-primary" href="{{ path('admin_article_new') }}">{{ icon('add') }}<span class="icon-label ">New Article</span></a>
+            <a class="button" href="{{ path('admin_portfolio_index') }}">Media</a>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block page__content %}

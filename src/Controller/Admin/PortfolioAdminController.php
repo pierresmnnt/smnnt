@@ -17,12 +17,12 @@ class PortfolioAdminController extends BaseController
     #[Route('/', name: 'admin_portfolio_index', methods: ['GET'])]
     public function index(ImageRepository $imageRepository, Request $request): Response
     {
-        $imagesCount = $imageRepository->count([]);
+        $imagesCount = $imageRepository->count(['isInPortfolio' => true]);
 
         return $this->render('admin/portfolio/index.html.twig', [
             'count' => $imagesCount,
             'images' => $imageRepository->findAllWithJoin($request->get('page', 1)),
-            'menu' => 'admin-image'
+            'menu' => 'admin-portfolio'
         ]);
     }
 
@@ -43,7 +43,7 @@ class PortfolioAdminController extends BaseController
 
         return $this->renderForm('admin/portfolio/new.html.twig', [
             'form' => $form,
-            'menu' => 'admin-image'
+            'menu' => 'admin-portfolio'
         ]);
     }
 
@@ -52,7 +52,7 @@ class PortfolioAdminController extends BaseController
     {
         return $this->render('admin/portfolio/show.html.twig', [
             'image' => $imageRepository->findImageById($id),
-            'menu' => 'admin-image'
+            'menu' => 'admin-portfolio'
         ]);
     }
 
@@ -71,7 +71,7 @@ class PortfolioAdminController extends BaseController
 
         return $this->renderForm('admin/portfolio/new.html.twig', [
             'form' => $form,
-            'menu' => 'admin-image'
+            'menu' => 'admin-portfolio'
         ]);
     }
 
