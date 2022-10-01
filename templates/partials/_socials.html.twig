@@ -21,7 +21,7 @@
 {% endif %}
 {% if user.contactEmail %} 
     <li>
-        <a href="mailto:{{ user.contactEmail }}" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">{{ app.user.contactEmail }}</span></a>
+        <a href="mailto:{{ user.contactEmail }}" class="button" rel="external">{{ icon('mail') }}<span class="icon-label">{{ user.contactEmail }}</span></a>
     </li>
 {% endif %}
 </ul>
