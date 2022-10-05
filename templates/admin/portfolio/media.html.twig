@@ -1,16 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manage Portfolio{% endblock %}
+{% block title %}Manage Media{% endblock %}
 
-{% block page__title %}Manage Portfolio{% endblock %}
+{% block page__title %}Manage Media{% endblock %}
 
 {% block page__desc %}
-    <p>Currently {{ count }} photos in portfolio</p>
+    <p>Currently {{ count }} photos in media</p>
     {% if is_granted('ROLE_ADMIN') %}
-        <div class="stack">
-            <a href="{{ path('admin_portfolio_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Photo</span></a>
-            <a href="{{ path('admin_media_index') }}" class="button">Other Media</a>
-        </div>
+        <a href="{{ path('admin_portfolio_new', {'portfolio': "false"}) }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Media</span></a>
     {% endif %}
 {% endblock %}
 

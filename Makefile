@@ -1,4 +1,7 @@
 ## Datababse
+sql:
+	docker-compose exec database mysql -u root --password=password
+
 migrate:
 	bin/console doctrine:migrations:migrate
 

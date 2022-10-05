@@ -21,7 +21,19 @@ class PortfolioAdminController extends BaseController
 
         return $this->render('admin/portfolio/index.html.twig', [
             'count' => $imagesCount,
-            'images' => $imageRepository->findAllWithJoin($request->get('page', 1)),
+            'images' => $imageRepository->findAllWithJoin($request->get('page', 1), true),
+            'menu' => 'admin-portfolio'
+        ]);
+    }
+
+    #[Route('/media', name: 'admin_media_index', methods: ['GET'])]
+    public function media(ImageRepository $imageRepository, Request $request): Response
+    {
+        $imagesCount = $imageRepository->count(['isInPortfolio' => false]);
+
+        return $this->render('admin/portfolio/media.html.twig', [
+            'count' => $imagesCount,
+            'images' => $imageRepository->findAllWithJoin($request->get('page', 1), false),
             'menu' => 'admin-portfolio'
         ]);
     }
@@ -30,6 +42,9 @@ class PortfolioAdminController extends BaseController
     public function image(Request $request): Response
     {
         $image = new Image;
+        if($request->get('portfolio') === "false"){
+            $image->setIsInPortfolio(false);
+        }
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);
         
@@ -38,7 +53,10 @@ class PortfolioAdminController extends BaseController
             $this->getEntityManager()->flush();
 
             $this->addFlash('success', "New photo added");
-            return $this->redirectToRoute('admin_portfolio_index');
+
+            $redirect = $image->getIsInPortfolio() ? "admin_portfolio_index" : "admin_media_index";
+
+            return $this->redirectToRoute($redirect);
         }
 
         return $this->renderForm('admin/portfolio/new.html.twig', [
@@ -66,6 +84,7 @@ class PortfolioAdminController extends BaseController
             $this->getEntityManager()->flush();
 
             $this->addFlash('success', "Photo edited");
+
             return $this->redirectToRoute('admin_portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
         }
 
@@ -78,12 +97,15 @@ class PortfolioAdminController extends BaseController
     #[Route('/{id}', name: 'admin_portfolio_delete', methods: ['POST'])]
     public function delete(Request $request, Image $image): Response
     {        
+        $redirect = $image->getIsInPortfolio() ? "admin_portfolio_index" : "admin_media_index";
+
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
             $this->getEntityManager()->remove($image);
             $this->getEntityManager()->flush();
         }
 
         $this->addFlash('success', "Photo removed");
-        return $this->redirectToRoute('admin_portfolio_index', [], Response::HTTP_SEE_OTHER);
+
+        return $this->redirectToRoute($redirect, [], Response::HTTP_SEE_OTHER);
     }
 }

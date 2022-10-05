@@ -38,9 +38,11 @@ class ImageRepository extends ServiceEntityRepository
     /**
      * @return Image[]
      */
-    public function findAllWithJoin(int $page, int $limit = 20)
+    public function findAllWithJoin(int $page, bool $portfolio = true, int $limit = 20)
     {
         $query = $this->queryWithJoin()
+            ->andWhere('i.isInPortfolio = :val')
+            ->setParameter('val', $portfolio)
             ->orderBy('i.date', 'DESC')
             ->addOrderBy('i.id', 'DESC')
             ->getQuery();
