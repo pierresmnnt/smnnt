@@ -4,11 +4,10 @@ $font: "Arial", sans-serif;
 // Dynamic variables
 :root {
   --background: #ecf0f4;
-  --molecule-bg: #fff;
-  --color: #222;
-  --primary: #232870;
-  --secondary: #3d1e6e;
-  --contrast: #f0f0f0;
+  --molecule-bg: #fff; // Background color of card elements (cards, forms)
+  --color: #222; // Default font color
+  --primary: #111111; // Primary background color for CTAs, titles, links and important elements
+  --contrast: #f0f0f0; // Color for text in importants elements
   --border: #dce1ea;
   --shadow: #d2d7e1;
 
@@ -70,15 +69,14 @@ $font: "Arial", sans-serif;
 @import "templates/page";
 
 @include dark {
-  --background: #222c44;
-  --molecule-bg: #3c4863;
-  --color: #f0f0f0;
-  --primary: #e3e4fd;
-  --secondary: #9ba0eb;
+  --background: #333333;
+  --molecule-bg: #4a4a4a;
+  --color: #f4f4f4;
+  --primary: #f5f5f5;
   --contrast: #0f0f0f;
-  --border: #343f59;
-  --shadow: #1d273e;
-  --muted: #8e98ae;
+  --border: #8c8c8c;
+  --shadow: #464646;
+  --muted: #aeaeae;
 }
 
 body {
