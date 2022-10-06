@@ -15,7 +15,7 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('categories', EntityType::class, [
+            ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'query_builder' => function (CategoryRepository $categoryRepository) {
                     return $categoryRepository->createQueryBuilder('c')
@@ -25,16 +25,18 @@ class SearchType extends AbstractType
                         ->orderBy('ord')
                         ;
                 },
-                'choice_label' => function ($category) {
+                'choice_label' => function (Category $category) {
                     return $category->getName();
                 },
-                'choice_value' => function ($category) {
-                    return $category->getName();
+                'choice_value' => function (?Category $category) {
+                    return $category ? $category->getName() : '';
                 },
                 'label' => false,
                 'attr' => ['class' => 'multiple-checkbox'],
-                'multiple' => true,
-                'expanded' => true
+                'multiple' => false,
+                'expanded' => true,
+                'required' => false,
+                'placeholder' => 'Toutes les photos',
             ])
         ;
     }

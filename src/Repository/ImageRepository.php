@@ -73,10 +73,10 @@ class ImageRepository extends ServiceEntityRepository
             ->orderBy('i.date', 'DESC')
             ->addOrderBy('i.id', 'DESC');
 
-        if (!empty($data->getCategories())) {
+        if (!empty($data->getCategory())) {
             $query
-                ->andWhere('a.id IN (:albums)')
-                ->setParameter('albums', $data->getCategories());
+                ->andWhere('a.id IN (:album)')
+                ->setParameter('album', $data->getCategory());
         }
 
         $query = $query->getQuery();

@@ -7,14 +7,14 @@ use App\Entity\Category;
 class SearchData 
 {
     /**
-     * @var int;
+     * @var int page;
      */
     private int $page = 1;
 
     /**
-     * @var Category[]
+     * @var Category
      */
-    private array $categories = [];
+    private $category = null;
 
     public function getPage(): int
     {
@@ -29,16 +29,16 @@ class SearchData
     }
 
     /**
-     * @return Category[]
+     * @return Category
      */
-    public function getCategories(): array
+    public function getCategory()
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function setCategories(array $categories): self
+    public function setCategory($category): self
     {
-        $this->categories = $categories;
+        $this->category = $category;
 
         return $this;
     }
