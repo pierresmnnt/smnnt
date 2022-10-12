@@ -3,11 +3,10 @@
 }
 
 .portfolio-image img {
-  --radius: 4px;
   display: block;
   margin: 0 auto;
   max-height: calc(100vh - var(--topBarHeight));
-  border-radius: var(--radius);
+  border-radius: 4px;
 }
 
 .portfolio-image figcaption {

@@ -10,10 +10,10 @@
   }
 
   .card-hover {
-    border: 2px solid var(--border);
+    opacity: 1;
   }
 
   .card-hover:hover {
-    border-color: var(--primary);
+    opacity: 0.6;
   }
 }
