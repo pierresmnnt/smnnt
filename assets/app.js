@@ -16,6 +16,7 @@ import "./js/components/Autogrow";
 import "./js/components/FlashMessage";
 import "./js/components/KanjiFurigana";
 import "./js/components/YoutubePlayer";
+import "./js/modules/editor";
 import cloneValue from "./js/modules/cloneInput";
 
 const imageAltInput = document.querySelector("input#image_alt");

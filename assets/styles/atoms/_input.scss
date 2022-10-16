@@ -175,9 +175,7 @@ form .help-text + * {
 // Article form input
 .article-form .article-form__content input,
 .article-form .article-form__content textarea {
-  padding: 0;
   background-color: unset;
-  color: var(--color);
 }
 
 .article-form input[name="article[heroImageUrl]"] {
