@@ -73,16 +73,7 @@ const onClick = (e) => {
 };
 
 const textarea = document.getElementById("article_content");
-const mkdActions = [
-  "h1",
-  "h2",
-  "bold",
-  "italic",
-  "link",
-  "img",
-  "video",
-  "furigana",
-];
+const mkdActions = ["h2", "bold", "italic", "link", "img", "video", "furigana"];
 const controls = renderControls();
 const buttons = controls.querySelectorAll("button");
 if (textarea) {
