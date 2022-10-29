@@ -25,9 +25,9 @@
         </div>
         {% endif %}
         <h1 class="article__title">{{ article.title }}</h1>
-        <p>{{ article.createdAt is empty ? "" : article.createdAt|date("d/m/Y H:i", "Europe/Paris") }}</p>
-        <p>{{ article.publishedAt is empty ? "" : article.publishedAt|date("d/m/Y H:i", "Europe/Paris") }}</p>
-        <p>{{ article.updatedAt is empty ? "" : article.updatedAt|date("d/m/Y H:i", "Europe/Paris") }}</p>
+        <p>Créé le {{ article.createdAt is empty ? "" : article.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</p>
+        <p>Publié le {{ article.publishedAt is empty ? "" : article.publishedAt|date("d/m/Y à H:i", "Europe/Paris") }}</p>
+        <p>Mis à jour le {{ article.updatedAt is empty ? "" : article.updatedAt|date("d/m/Y à H:i", "Europe/Paris") }}</p>
         <div class="article__subtitle">{{ article.kicker }}</div>
         {% if article.heroImageUrl %}
         <figure class="article__heroimg">

@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -211,8 +212,11 @@ class Article
     }
 
     #[ORM\PreUpdate]
-    public function onPreUpdate(): void
+    public function onPreUpdate(PreUpdateEventArgs $event): void
     {
-        $this->updatedAt = new DateTimeImmutable();
+        if($event->hasChangedField('title') || $event->hasChangedField('kicker')|| $event->hasChangedField('heroImageUrl')|| $event->hasChangedField('content')) {
+            $this->updatedAt = new DateTimeImmutable();
+        }
+
     }
 }

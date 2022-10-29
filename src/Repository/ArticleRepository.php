@@ -46,7 +46,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->addSelect('t')
             ->leftJoin('a.topics', 't')
             ->andWhere('a.published = TRUE')
-            ->orderBy('a.createdAt', 'DESC')
+            ->orderBy('a.publishedAt', 'DESC')
             ->getQuery();
 
         return $this->paginator->paginate($query, $page, $limit);

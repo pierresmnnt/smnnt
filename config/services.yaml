@@ -36,3 +36,11 @@ services:
   App\Command\SendEmailCommand:
     arguments:
       $sender: "%env(EMAIL_SENDER)%"
+
+  App\EventListener\ArticleListener:
+    tags:
+      - {
+          name: kernel.event_listener,
+          event: article.published,
+          method: onPublishedArticleListener,
+        }

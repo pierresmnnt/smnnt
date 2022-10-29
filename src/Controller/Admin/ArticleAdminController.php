@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\BaseController;
 use App\Entity\Article;
+use App\Event\PublishedArticleEvent;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -34,6 +35,11 @@ class ArticleAdminController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($article->getPublished() && !$article->getPublishedAt()){
+                $event = new PublishedArticleEvent($article);
+                $this->getEventDispatcher()->dispatch($event, PublishedArticleEvent::NAME);
+            }
+            
             $this->getEntityManager()->persist($article);
             $this->getEntityManager()->flush();
 
@@ -64,6 +70,11 @@ class ArticleAdminController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($article->getPublished() && !$article->getPublishedAt()){
+                $event = new PublishedArticleEvent($article);
+                $this->getEventDispatcher()->dispatch($event, PublishedArticleEvent::NAME);
+            }
+
             $this->getEntityManager()->flush();
 
             $this->addFlash('success', "Article edited");
