@@ -26,6 +26,7 @@
         </div>
         {% endif %}
         <h1 class="article__title">{{ article.title }}</h1>
+        <p class="help">{{ article.publishedAt is empty ? "" : "Publié le " ~ article.publishedAt|date("d/m/Y à H:i", "Europe/Paris") }}{{ article.updatedAt is empty ? "" : ", mis à jour le " ~ article.updatedAt|date("d/m/Y à H:i", "Europe/Paris") }}</p>
         <div class="article__subtitle">{{ article.kicker }}</div>
         {% if article.heroImageUrl %}
         <figure class="article__heroimg">
