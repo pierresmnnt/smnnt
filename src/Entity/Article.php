@@ -214,9 +214,10 @@ class Article
     #[ORM\PreUpdate]
     public function onPreUpdate(PreUpdateEventArgs $event): void
     {
-        if($event->hasChangedField('title') || $event->hasChangedField('kicker')|| $event->hasChangedField('heroImageUrl')|| $event->hasChangedField('content')) {
-            $this->updatedAt = new DateTimeImmutable();
+        if($this->getPublishedAt() && $this->getPublished()){
+            if($event->hasChangedField('title') || $event->hasChangedField('kicker')|| $event->hasChangedField('heroImageUrl')|| $event->hasChangedField('content')) {
+                $this->updatedAt = new DateTimeImmutable();
+            }
         }
-
     }
 }
