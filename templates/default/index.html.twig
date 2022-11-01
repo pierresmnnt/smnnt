@@ -2,3 +2,14 @@
 
 {% block page__title %}Welcome !{% endblock %}
 {% block page__desc %}{{ block('description') }}{% endblock %}
+
+{% block page__content %}
+<ul class="stack">
+    <li>
+        <a href="{{ path('portfolio_index') }}" class="button button-cancel">{{ icon('images') }}<span class="icon-label">Voir mes photos</span></a>
+    </li>
+    <li>
+        <a href="{{ path('article_index') }}" class="button button-cancel">{{ icon('newspaper') }}<span class="icon-label">Lire mes articles</span></a>
+    </li>
+</ul>
+{% endblock %}
