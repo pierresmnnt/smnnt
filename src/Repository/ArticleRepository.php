@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -66,5 +67,28 @@ class ArticleRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @return Article[]
+     */
+    public function findArticleSearch(SearchData $data, int $limit = 20)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->addSelect('t')
+            ->leftJoin('a.topics', 't')
+            ->andWhere('a.published = TRUE')
+            ->orderBy('a.publishedAt', 'DESC')
+            ;
+
+        if (!empty($data->getCategory())) {
+            $query
+                ->andWhere('t.id IN (:topic)')
+                ->setParameter('topic', $data->getCategory());
+        }
+
+        $query = $query->getQuery();
+
+        return $this->paginator->paginate($query, $data->getPage(), $limit);
     }
 }

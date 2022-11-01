@@ -4,6 +4,9 @@
 {% block description %}Mes articles sur les sujets qui m'intéressent.{% endblock %}
 
 {% block page__title %}Articles{% endblock %}
+{% block page__desc %}
+    {% include "partials/_search.html.twig" %}
+{% endblock %}
 
 {% block page__content %}
     <div class="js-filter">
@@ -14,4 +17,9 @@
             {% include "article/_pagination.html.twig" %}
         </section>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('articles') }}
 {% endblock %}

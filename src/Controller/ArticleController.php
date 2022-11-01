@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Article;
+use App\Form\ArticleSearchType;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +16,29 @@ class ArticleController extends BaseController
     #[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, Request $request): Response
     {
-        $articles = $articleRepository->findAllPublished($request->get('page', 1));
+        $data = new SearchData();
+        $data->setPage($request->get('page', 1));
 
-        return $this->render('article/index.html.twig', [
+        $form = $this->createForm(ArticleSearchType::class, $data);
+        $form->handleRequest($request);
+
+        /**
+         * @var Object $articles
+         */
+        $articles = $articleRepository->findArticleSearch($data);
+
+        if ($request->get('ajax')) {
+            return $this->json(
+                [
+                    'content' => $this->renderView('article/_articles.html.twig', ['articles' => $articles]),
+                    'pagination' => $this->renderView('article/_pagination.html.twig', ['articles' => $articles]),
+                    'pageCount' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage())
+                ]);
+        }
+
+        return $this->renderForm('article/index.html.twig', [
             'articles' => $articles,
+            'form' => $form,
             'menu' => 'articles'
         ]);
     }
