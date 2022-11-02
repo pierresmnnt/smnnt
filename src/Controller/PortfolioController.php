@@ -18,7 +18,7 @@ class PortfolioController extends BaseController
         $data = new SearchData();
         $data->setPage($request->get('page', 1));
 
-        $form = $this->createForm(SearchType::class, $data);
+        $form = $this->createForm(SearchType::class, $data, ['controller' => "portfolio"]);
         $form->handleRequest($request);
 
         /**

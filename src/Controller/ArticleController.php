@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Article;
-use App\Form\ArticleSearchType;
+use App\Form\SearchType;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +19,7 @@ class ArticleController extends BaseController
         $data = new SearchData();
         $data->setPage($request->get('page', 1));
 
-        $form = $this->createForm(ArticleSearchType::class, $data);
+        $form = $this->createForm(SearchType::class, $data, ['controller' => "article"]);
         $form->handleRequest($request);
 
         /**

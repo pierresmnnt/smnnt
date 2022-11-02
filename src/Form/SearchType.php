@@ -9,27 +9,41 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class SearchType extends AbstractType
 {
+    public function __construct(private SluggerInterface $slugger)
+    {  
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'query_builder' => function (CategoryRepository $categoryRepository) {
-                    return $categoryRepository->createQueryBuilder('c')
-                        ->andWhere('c.type = 1')
-                        ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
-                        ->setParameter(':name','Best')
-                        ->orderBy('ord')
-                        ;
+                'query_builder' => function (CategoryRepository $categoryRepository) use ($options) {
+                    $query = $categoryRepository->createQueryBuilder('c');
+
+                    switch ($options['controller']) {
+                        case 'article':
+                            $query->andWhere('c.type = 2');
+                            break;
+                        case 'portfolio':
+                            $query->andWhere('c.type = 1')
+                                ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
+                                ->setParameter(':name','Best')
+                                ->orderBy('ord');
+                            break;
+                    }
+                    
+                    return $query;
                 },
                 'choice_label' => function (Category $category) {
                     return $category->getName();
                 },
                 'choice_value' => function (?Category $category) {
-                    return $category ? $category->getName() : '';
+                    return $category ? $this->slugger->slug($category->getName())->lower() : '';
                 },
                 'label' => false,
                 'attr' => ['class' => 'multiple-checkbox'],
@@ -46,7 +60,8 @@ class SearchType extends AbstractType
         $resolver->setDefaults([
             'data_class' => SearchData::class,
             'method' => 'GET',
-            'csrf_protection' => false
+            'csrf_protection' => false,
+            'controller' => false,
         ]);
     }
 
