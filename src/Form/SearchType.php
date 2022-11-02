@@ -19,40 +19,48 @@ class SearchType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-            ->add('category', EntityType::class, [
-                'class' => Category::class,
-                'query_builder' => function (CategoryRepository $categoryRepository) use ($options) {
-                    $query = $categoryRepository->createQueryBuilder('c');
+        $formOptions = [
+            'class' => Category::class,
+            'query_builder' => function (CategoryRepository $categoryRepository) use ($options) {
+                $query = $categoryRepository->createQueryBuilder('c');
 
-                    switch ($options['controller']) {
-                        case 'article':
-                            $query->andWhere('c.type = 2');
-                            break;
-                        case 'portfolio':
-                            $query->andWhere('c.type = 1')
-                                ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
-                                ->setParameter(':name','Best')
-                                ->orderBy('ord');
-                            break;
-                    }
-                    
-                    return $query;
-                },
-                'choice_label' => function (Category $category) {
-                    return $category->getName();
-                },
-                'choice_value' => function (?Category $category) {
-                    return $category ? $this->slugger->slug($category->getName())->lower() : '';
-                },
-                'label' => false,
-                'attr' => ['class' => 'multiple-checkbox'],
-                'multiple' => false,
-                'expanded' => true,
-                'required' => false,
-                'placeholder' => 'Toutes les photos',
-            ])
-        ;
+                switch ($options['controller']) {
+                    case 'article':
+                        $query->andWhere('c.type = 2');
+                        break;
+                    case 'portfolio':
+                        $query->andWhere('c.type = 1')
+                            ->addSelect("(CASE When c.name = :name Then 0 ELSE 1 END) AS HIDDEN ord")
+                            ->setParameter(':name','Best')
+                            ->orderBy('ord');
+                        break;
+                }
+                
+                return $query;
+            },
+            'choice_label' => function (Category $category) {
+                return $category->getName();
+            },
+            'choice_value' => function (?Category $category) {
+                return $category ? $this->slugger->slug($category->getName())->lower() : '';
+            },
+            'label' => false,
+            'attr' => ['class' => 'multiple-checkbox'],
+            'multiple' => false,
+            'expanded' => true,
+            'required' => false,
+        ];
+
+        switch ($options['controller']) {
+            case 'article':
+                $formOptions['placeholder'] = 'Tous les articles';
+                break;
+            case 'portfolio':
+                $formOptions['placeholder'] = 'Toutes les photos';
+                break;
+        }
+
+        $builder->add('category', EntityType::class, $formOptions);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
