@@ -42,7 +42,7 @@ class SearchType extends AbstractType
                 return $category->getName();
             },
             'choice_value' => function (?Category $category) {
-                return $category ? $this->slugger->slug($category->getName())->lower() : '';
+                return $category ? ($category->getSlug() ?: $this->slugger->slug($category->getName())->lower()) : '';
             },
             'label' => false,
             'attr' => ['class' => 'multiple-checkbox'],

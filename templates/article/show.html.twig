@@ -21,7 +21,7 @@
         {% if article.topics|length > 0 %}
         <div class="article__category stack">
             {% for topic in article.topics %}
-                <div class="pill pill-primary">{{ topic.name }}</div>
+                <a href="{{ path('article_index', {'category': topic.slug}) }}" class="pill pill-primary">{{ topic.name }}</a>
             {% endfor %}
         </div>
         {% endif %}

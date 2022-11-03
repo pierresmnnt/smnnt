@@ -29,7 +29,7 @@
                 {% if image.aperture %}<li><strong>Aperture</strong>{{ image.apertureString }}</li>{% endif %}
                 {% if image.iso %}<li><strong>ISO</strong>{{ image.iso }}</li>{% endif %}
                 {% if image.focal %}<li><strong>Focal</strong>{{ image.focalString }}</li>{% endif %}
-                <li><div class="stack">{% for album in image.albums %}<a href="{{ path('portfolio_index', {'category': album.name}) }}" class="pill pill-primary">{{ album.name }}</a>{% endfor %}</div></li>
+                <li><div class="stack">{% for album in image.albums %}<a href="{{ path('portfolio_index', {'category': album.slug}) }}" class="pill pill-primary">{{ album.name }}</a>{% endfor %}</div></li>
             </ul>
         </div>
     </div>

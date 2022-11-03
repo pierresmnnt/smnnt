@@ -8,9 +8,16 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CategoryType extends AbstractType
 {
+    public function __construct(private SluggerInterface $slugger)
+    {  
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -24,6 +31,13 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true
             ])
+            ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
+                /** @var Category */
+                $category = $event->getData();
+                if (null !== $categoryName = $category->getName()) {
+                    $category->setSlug($this->slugger->slug($categoryName)->lower());
+                }
+            })
         ;
     }
 

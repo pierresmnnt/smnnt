@@ -47,6 +47,9 @@ class Category
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'topics')]
     private $articles;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $slug;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -137,6 +140,18 @@ class Category
         if ($this->articles->removeElement($article)) {
             $article->removeTopic($this);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
