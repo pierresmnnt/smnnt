@@ -55,6 +55,10 @@ const action = (key, value) => {
   return v;
 };
 
+const replaceWord = (string, start, end, newValue) => {
+  return string.substr(0, start) + newValue + string.substr(end);
+};
+
 const onClick = (e) => {
   e.preventDefault();
 
@@ -69,7 +73,12 @@ const onClick = (e) => {
     return;
   }
 
-  textarea.value = textarea.value.replace(selection, action(a, selection));
+  textarea.value = replaceWord(
+    value,
+    textarea.selectionStart,
+    textarea.selectionEnd,
+    action(a, selection)
+  );
 };
 
 const textarea = document.getElementById("article_content");
