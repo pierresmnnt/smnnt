@@ -9,8 +9,20 @@ article,
   margin-bottom: 2em;
 }
 
-.article__footer {
+.article__footer,
+.article__recommended {
   margin-top: 4em;
+}
+
+.recommended_list {
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.article__footer h5,
+.article__recommended h5 {
+  margin-bottom: var(--space);
 }
 
 .article__title {

@@ -90,4 +90,23 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $this->paginator->paginate($query, $data->getPage(), $limit);
     }
+
+    /**
+     * @return Article[]
+     */
+    public function findRecommendedArticle($id, $topic)
+    {
+        return $this->createQueryBuilder('a')
+            ->addSelect('t')
+            ->leftJoin('a.topics', 't')
+            ->andWhere('a.id != :id')
+            ->setParameter('id', $id)
+            ->andWhere('a.published = TRUE')
+            ->orderBy('a.publishedAt', 'DESC')
+            ->andWhere('t.id IN (:topic)')
+            ->setParameter('topic', $topic)
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
 }

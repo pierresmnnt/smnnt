@@ -44,14 +44,17 @@ class ArticleController extends BaseController
     }
 
     #[Route('/{slug}', name: 'article_show', methods: ['GET'])]
-    public function show(Article $article): Response
+    public function show(ArticleRepository $articleRepository, Article $article): Response
     {
         if (false === $article->getPublished() && false === $this->isGranted('ROLE_ADMIN')) {
             throw $this->createNotFoundException();
         }
 
+        $recommended = $articleRepository->findRecommendedArticle($article->getId(), $article->getTopics());
+
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'recommended' => $recommended,
             'menu' => 'articles'
         ]);
     }

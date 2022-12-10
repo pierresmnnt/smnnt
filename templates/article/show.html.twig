@@ -36,6 +36,16 @@
         {% endif %}
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
+    <div class="article__recommended">
+        {% if recommended %}
+        <h5>À lire aussi</h5>
+        <div class="recommended_list">
+        {% for article in recommended %}
+            {% include "article/_card_article_mini.html.twig" %}
+        {% endfor %}
+        </div>
+        {% endif %}
+    </div>
     <div class="article__footer">
         <h5>Partager cet article</h5>
         <div class="stack social">

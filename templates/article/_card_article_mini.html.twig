@@ -1,0 +1,11 @@
+<div class="card card-small card-hover">
+    <div class="card__header">
+        <div class="card__title">{{ article.title }}</div>
+    </div>
+    {% if article.heroImageUrl %}
+    <div class="card__img">
+        <img src="{{ article.heroImageUrl }}" alt="card image" loading="lazy">
+    </div>
+    {% endif %}
+    <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}"></a>
+</div>
