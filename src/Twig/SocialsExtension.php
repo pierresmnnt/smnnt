@@ -42,9 +42,7 @@ class SocialsExtension extends AbstractExtension
 
     public function getSocials(): string
     {
-        return $this->cache->get('socials', function (ItemInterface $item){
-            $item->expiresAfter(3600);
-
+        return $this->cache->get('socials', function (){
             return $this->renderSocials();
         });
     }

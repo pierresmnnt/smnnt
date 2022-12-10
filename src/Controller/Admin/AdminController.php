@@ -31,6 +31,7 @@ class AdminController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getEntityManager()->flush();
 
+            $this->getCacheInterface()->delete('socials');
             $this->addFlash('success', "User updated");
 
             return $this->redirectToRoute('admin_edit', [], Response::HTTP_SEE_OTHER);
