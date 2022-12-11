@@ -49,6 +49,9 @@ const action = (key, value) => {
     case "furigana":
       v = `<kanji-furigana reading="〇〇">${value}</kanji-furigana>`;
       break;
+    case "EOL":
+      v = `<br>`;
+      break;
     default:
       break;
   }
@@ -69,7 +72,7 @@ const onClick = (e) => {
     textarea.selectionEnd
   );
 
-  if (value === "" || selection === "") {
+  if ((value === "" || selection === "") && a !== "EOL") {
     return;
   }
 
@@ -82,7 +85,16 @@ const onClick = (e) => {
 };
 
 const textarea = document.getElementById("article_content");
-const mkdActions = ["h2", "bold", "italic", "link", "img", "video", "furigana"];
+const mkdActions = [
+  "h2",
+  "bold",
+  "italic",
+  "link",
+  "img",
+  "video",
+  "furigana",
+  "EOL",
+];
 const controls = renderControls();
 const buttons = controls.querySelectorAll("button");
 if (textarea) {
