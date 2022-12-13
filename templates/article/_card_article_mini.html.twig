@@ -7,5 +7,5 @@
         <img src="{{ article.heroImageUrl }}" alt="card image" loading="lazy">
     </div>
     {% endif %}
-    <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}"></a>
+    <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}" aria-label="lire l'article"></a>
 </div>
