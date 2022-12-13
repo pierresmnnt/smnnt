@@ -4,7 +4,7 @@
     </div>
     {% if article.heroImageUrl %}
     <div class="card__img">
-        <img src="{{ article.heroImageUrl }}" alt="card image" loading="lazy">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail540x360')}}" alt="card image" loading="lazy">
     </div>
     {% endif %}
     <a class="card__link" href="{{ path('article_show', {'slug': article.slug}) }}" aria-label="lire l'article"></a>
