@@ -17,12 +17,8 @@ article,
 .recommended_list {
   display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.article__footer h5,
-.article__recommended h5 {
-  margin-bottom: var(--space);
+  grid-template-columns: 1fr;
+  margin-top: var(--space);
 }
 
 .article__title {
@@ -77,4 +73,10 @@ article,
   object-fit: cover;
   width: 100%;
   aspect-ratio: 3/2;
+}
+
+@media only screen and (min-width: 520px) {
+  .recommended_list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -38,22 +38,13 @@
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
     <div class="article__recommended">
         {% if recommended %}
-        <h5>À lire aussi</h5>
+        <div class="h4">À lire aussi</div>
         <div class="recommended_list">
         {% for article in recommended %}
             {% include "article/_card_article_mini.html.twig" %}
         {% endfor %}
         </div>
         {% endif %}
-    </div>
-    <div class="article__footer">
-        <h5>Partager cet article</h5>
-        <div class="stack social">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('facebook') }}</a>
-            <a href="https://twitter.com/intent/tweet?text={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('twitter') }}</a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&#38;summary={{ article.kicker }}&#38;title={{ article.title }}&#38;url={{ app.request.uri }}" class="button" rel="nofollow noreferrer noopener" target="_blank">{{ icon('linkedin') }}</a>
-        </div>
-        <div class="help">(Ces boutons ne déposent pas de trackers)</div>
     </div>
 </article>
 {% endblock %}
