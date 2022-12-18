@@ -11,3 +11,8 @@
 {% block page__content %}
     {% include "admin/portfolio/_form.html.twig" %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('imageForm') }}
+{% endblock %}

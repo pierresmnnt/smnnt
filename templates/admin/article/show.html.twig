@@ -37,3 +37,8 @@
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
 </article>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('article') }}
+{% endblock %}
