@@ -16,6 +16,7 @@ aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: min-content;
 }
 
 .js-nav-visible {
@@ -26,7 +27,7 @@ aside {
   overflow: hidden;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .navbar-nav-wrapper {
     position: sticky;
     width: 280px;
