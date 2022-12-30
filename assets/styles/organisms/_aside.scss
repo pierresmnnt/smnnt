@@ -13,6 +13,9 @@ aside {
   background-color: var(--background);
   transition: left 0.5s ease-in-out;
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .js-nav-visible {
