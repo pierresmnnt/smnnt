@@ -133,6 +133,8 @@ form .help-text + * {
   padding: 2px 8px;
   border-radius: 23px;
   display: inline-block;
+  min-width: fit-content;
+  margin: 4px;
 }
 
 // Toggle

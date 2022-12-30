@@ -18,3 +18,11 @@ form:not(.delete-form, .filter-form, .article-form) {
   bottom: 4rem;
   right: 4rem;
 }
+
+.filter-categories > div {
+  display: flex;
+  overflow-x: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
