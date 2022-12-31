@@ -183,6 +183,7 @@ form .help-text + * {
 
 .article-form input[name="article[heroImageUrl]"] {
   background-color: var(--border);
+  margin-bottom: var(--space);
 }
 
 .article-form input[name="article[heroImageCredit]"] {

@@ -38,6 +38,9 @@
 
         <div class="input-group">
             {{ form_widget(form.heroImageUrl) }}
+            <figure class="article__heroimg">
+                <img src="" alt="preview image" id="image_preview" loading="lazy">
+            </figure>
             <div class="input-error">
                 {{ form_errors(form.heroImageUrl) }}
             </div>

@@ -61,7 +61,7 @@ class ArticleType extends AbstractType
             ->add('heroImageUrl', UrlType::class, [
                 'required' => false,
                 'attr' => [
-                    'placeholder' => "URL of the hero image. Image should have a 3/2 aspect ratio"
+                    'placeholder' => "URL of the hero image. Image should have a 3/2 aspect ratio. Ideal size is 780x520."
                 ]
             ])
             ->add('heroImageCredit', TextType::class, [
