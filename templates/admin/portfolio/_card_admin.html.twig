@@ -1,0 +1,33 @@
+<div class="card admin-card admin-card__photo">
+    <div class="card__img admin-card__img">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+    <div class="card__body admin-card__body">
+        <a href="{{ path('admin_portfolio_show', {'id': image.id}) }}">{{ image.description }} ({{ image.date|date("m/Y") }})</a>
+        <ul class="stack">
+            {% if image.gearCamera %}<li><strong>Camera : </strong>{{ image.gearCamera.model }}</li>{% endif %}
+            {% if image.gearLens %}<li><strong>Lens : </strong>{{ image.gearLens.model }}</li>{% endif %}
+        </ul>
+        <ul class="stack">
+            {% if image.exposure %}<li><strong>Exposure : </strong>{{ image.exposureString }}</li>{% endif %}
+            {% if image.aperture %}<li><strong>Aperture : </strong>{{ image.apertureString }}</li>{% endif %}
+            {% if image.iso %}<li><strong>ISO : </strong>{{ image.iso }}</li>{% endif %}
+            {% if image.focal %}<li><strong>Focal : </strong>{{ image.focalString }}</li>{% endif %}
+        </ul>
+    </div>
+    <div class="card__footer admin-card__footer">
+        {% if image.albums|length > 0 %}
+        <div class="stack">
+            {% for album in image.albums %}
+                <div class="pill pill-small pill-primary">{{ album.name }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="article-status article-status-{{ image.isInPortfolio ? "online" : "draft" }}">{{ image.isInPortfolio ? "Portfolio" : "Media" }}</div>
+        <a href="{{ path('portfolio_show', {'id': image.id}) }}" class="button">{{ icon('view') }}</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
+        {{ include('admin/portfolio/_delete.html.twig') }}
+        {% endif %}
+    </div>
+</div>

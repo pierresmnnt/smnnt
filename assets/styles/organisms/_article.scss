@@ -75,6 +75,32 @@ article,
   aspect-ratio: 3/2;
 }
 
+.article-status {
+  position: relative;
+  padding-left: calc(14px + var(--space));
+  margin: 0 calc(var(--space) * 2);
+}
+
+.article-status::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.article-status-online::after {
+  background-color: var(--success);
+}
+
+.article-status-draft::after {
+  background-color: var(--warning);
+}
+
 @media only screen and (min-width: 520px) {
   .recommended_list {
     grid-template-columns: repeat(3, 1fr);

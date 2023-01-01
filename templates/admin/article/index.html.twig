@@ -17,34 +17,7 @@
 {% block page__content %}
 <section class="stack-column">
     {% for article in articles %}
-    <div class="card admin-card admin-card__article card-hover">
-        <div class="card__header">
-            <div class="card__title">{{ article.id }}</div>
-        </div>
-        {% if article.heroImageUrl %}
-        <div class="card__img">
-            <img src="{{ article.heroImageUrl }}" alt="{{ article.heroImageCredit }}" loading="lazy">
-        </div>
-        {% endif %}
-        <div class="card__body">
-            <a href="{{ path('admin_article_show', {'id': article.id}) }}">{{ article.title }}</a>
-        </div>
-        <div class="card__footer">
-            {% if article.topics|length > 0 %}
-            <div class="stack">
-                {% for topic in article.topics %}
-                    <div class="pill pill-primary">{{ topic.name }}</div>
-                {% endfor %}
-            </div>
-            {% endif %}
-            <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
-            <a href="{{ path('article_show', {'slug': article.slug}) }}" class="button">{{ icon('view') }}</a>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">{{ icon('edit') }}</a>
-                {{ include('admin/article/_delete_form.html.twig') }}
-            {% endif %}
-        </div>
-    </div>
+        {% include "admin/article/_card_admin.html.twig" %}
     {% endfor %}
 </section>
 <section class="d-flex x-center y-center">

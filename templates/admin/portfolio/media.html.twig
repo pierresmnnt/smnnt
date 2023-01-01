@@ -7,35 +7,17 @@
 {% block page__desc %}
     <p>Currently {{ count }} photos in media</p>
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('admin_portfolio_new', {'portfolio': "false"}) }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Media</span></a>
+        <div class="stack">
+            <a href="{{ path('admin_portfolio_new', {'portfolio': "false"}) }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Media</span></a>
+            <a href="{{ path('admin_portfolio_index') }}" class="button">Portfolio</a>
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block page__content %}
-<section class="grid">
+<section class="stack-column">
     {% for image in images %}
-        <div class="card card-photo admin-card admin-card__photo card-hover">
-            <div class="card__img">
-                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
-                <div class="card__cta">
-                    <div class="stack">
-                        {% for album in image.albums %}
-                            <div class="pill pill-small pill-primary">{{ album.name }}</div>
-                        {% endfor %}
-                    </div>
-                    {% if image.isInPortfolio %}
-                        <div class="spot">{{ icon('suitcase') }}</div>
-                    {% endif %}
-                </div>
-            </div>
-            {% if is_granted('ROLE_ADMIN') %}
-            <div class="card__footer card__admin">
-                <a href="{{ path('admin_portfolio_edit', {'id': image.id}) }}" class="button">{{ icon('edit') }}</a>
-                {{ include('admin/portfolio/_delete.html.twig') }}
-            </div>
-            {% endif %}
-            <a class="card__link" href="{{ path('admin_portfolio_show', {'id': image.id}) }}"></a>
-        </div>
+        {% include "admin/portfolio/_card_admin.html.twig" %}
     {% endfor %}
 </section>
 <section class="d-flex x-center y-center">

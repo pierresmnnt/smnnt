@@ -77,62 +77,27 @@
 }
 
 // Admin card
-.card__admin {
+.admin-card {
   z-index: 9;
-}
-
-.admin-card__article {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.admin-card__article .card__header {
+.admin-card__header {
   background-color: var(--primary);
   color: var(--contrast);
 }
 
-.admin-card__article .card__img {
+.admin-card__img {
   max-width: 80px;
-  max-height: 80px;
 }
 
-.admin-card__article .card__img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: unset !important;
-}
-
-.admin-card__article .card__body {
+.admin-card__body {
   align-self: center;
+  min-width: 480px;
 }
 
-.admin-card__article .card__footer {
+.admin-card__footer {
   border: none;
-}
-
-.article-status {
-  position: relative;
-  padding-left: calc(14px + var(--space));
-  margin: 0 var(--space) 0 calc(var(--space) * 2);
-}
-
-.article-status::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-}
-
-.article-status-online::after {
-  background-color: var(--success);
-}
-
-.article-status-draft::after {
-  background-color: var(--warning);
+  flex-wrap: wrap;
 }
