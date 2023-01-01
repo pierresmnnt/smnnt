@@ -19,7 +19,7 @@
         {% if image.albums|length > 0 %}
         <div class="stack">
             {% for album in image.albums %}
-                <div class="pill pill-small pill-primary">{{ album.name }}</div>
+                <div class="pill pill-primary">{{ album.name }}</div>
             {% endfor %}
         </div>
         {% endif %}
