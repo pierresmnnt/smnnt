@@ -3,10 +3,17 @@
 {% block title %}Article{% endblock %}
 
 {% block page__desc %}
-<div class="d-flex y-center">
+<div class="stack">
     <a href="{{ path('admin_article_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
     {% if is_granted('ROLE_ADMIN') %}
         <div class="article-status article-status-{{ article.published ? "online" : "draft" }}">{{ article.published ? "online" : "draft" }}</div>
+        <div>
+        {% if article.privateAccess %}
+            <button data-action="copy" data-url="{{ privateUrl }}" class="button-cancel">Copier le lien privé</button>
+        {% else %}
+            private access disabled
+        {% endif %}
+        </div>
         <a href="{{ path('article_show', {'slug': article.slug}) }}" class="button">{{ icon('view') }}</a>
         <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="button">{{ icon('edit') }}</a>
         {{ include('admin/article/_delete_form.html.twig') }}
@@ -36,6 +43,22 @@
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
 </article>
+
+<script>
+    const btn = document.querySelector('button[data-action=copy]');
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            if (e.target.dataset.url !== "") {
+                const btnText = e.target.innerText
+                navigator.clipboard.writeText(e.target.dataset.url);
+                e.target.innerText = "Copied !";
+                setTimeout(() => {
+                    e.target.innerText = btnText;
+                }, 2500);
+            }
+        })
+    }
+</script>
 {% endblock %}
 
 {% block javascripts %}

@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[Route('/admin/article'), IsGranted('ROLE_ADMIN')]
 class ArticleAdminController extends BaseController
@@ -57,7 +58,10 @@ class ArticleAdminController extends BaseController
     #[Route('/{id<\d+>}', name: 'admin_article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
+        $privateUrl = $article->isPrivateAccess() ? $this->generateUrl('article_show', ['slug' => $article->getSlug(), 'token' => $article->getPrivateAccessToken()], UrlGeneratorInterface::ABSOLUTE_URL) : "";
+
         return $this->render('admin/article/show.html.twig', [
+            'privateUrl' => $privateUrl,
             'article' => $article,
             'menu' => 'admin-article'
         ]);
@@ -74,6 +78,12 @@ class ArticleAdminController extends BaseController
                 $event = new PublishedArticleEvent($article);
                 $this->getEventDispatcher()->dispatch($event, PublishedArticleEvent::NAME);
             }
+
+            // If article has a token, get it, else, create one.
+            $currentToken = $article->getPrivateAccessToken() ?: bin2hex(random_bytes(60));
+            // If article has private enable and is not published, get current token, else, token is null.
+            $token = $article->isPrivateAccess() && !$article->getPublished() ? $currentToken : null;
+            $article->setPrivateAccessToken($token);
 
             $this->getEntityManager()->flush();
 

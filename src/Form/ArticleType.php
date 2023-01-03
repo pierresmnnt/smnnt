@@ -30,6 +30,10 @@ class ArticleType extends AbstractType
                 'required' => false,
                 'help' => "Only you can see an unpublished article",
             ])
+            ->add('privateAccess', CheckboxType::class, [
+                'required' => false,
+                'help' => "Do you want to grant private access ?",
+            ])
             ->add('topics', EntityType::class, [
                 'class' => Category::class,
                 'query_builder' => function (CategoryRepository $categoryRepository) {

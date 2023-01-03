@@ -11,6 +11,16 @@
                     {{ form_errors(form.published) }}
                 </div>
             </div>
+             <div class="input-group card__body">
+                <div class="input-checkbox checkbox-toggle">
+                    {{ form_widget(form.privateAccess) }}
+                    {{ form_label(form.privateAccess) }}
+                    {{ form_help(form.privateAccess) }}
+                </div>  
+                <div class="input-error">
+                    {{ form_errors(form.privateAccess) }}
+                </div>
+            </div>
             <div class="input-group card__body">
                 {{ form_label(form.topics) }}
                 {{ form_help(form.topics) }}

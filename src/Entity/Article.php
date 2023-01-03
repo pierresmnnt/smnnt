@@ -56,6 +56,12 @@ class Article
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updatedAt;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $privateAccess = false;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $privateAccessToken = null;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -219,5 +225,29 @@ class Article
                 $this->updatedAt = new DateTimeImmutable();
             }
         }
+    }
+
+    public function isPrivateAccess(): ?bool
+    {
+        return $this->privateAccess;
+    }
+
+    public function setPrivateAccess(?bool $privateAccess): self
+    {
+        $this->privateAccess = $privateAccess;
+
+        return $this;
+    }
+
+    public function getPrivateAccessToken(): ?string
+    {
+        return $this->privateAccessToken;
+    }
+
+    public function setPrivateAccessToken(?string $privateAccessToken): self
+    {
+        $this->privateAccessToken = $privateAccessToken;
+
+        return $this;
     }
 }

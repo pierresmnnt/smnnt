@@ -46,8 +46,8 @@ class ArticleController extends BaseController
     #[Route('/{slug}', name: 'article_show', methods: ['GET'])]
     public function show(ArticleRepository $articleRepository, Article $article): Response
     {
-        if (false === $article->getPublished() && false === $this->isGranted('ROLE_ADMIN')) {
-            throw $this->createNotFoundException();
+        if (false === $article->getPublished()) {
+            $this->denyAccessUnlessGranted('POST_VIEW', $article);
         }
 
         $recommended = $articleRepository->findRecommendedArticle($article->getId(), $article->getTopics());
