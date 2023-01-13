@@ -22,7 +22,9 @@ form:not(.delete-form, .filter-form, .article-form) {
 .filter-categories > div {
   display: flex;
   overflow-x: scroll;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+}
+
+.filter-categories > div::-webkit-scrollbar {
+  width: 0;
 }
