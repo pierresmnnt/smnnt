@@ -1,6 +1,6 @@
 <div class="card admin-card admin-card__photo">
     <div class="card__img admin-card__img">
-        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy" width="400" height="400">
     </div>
     <div class="card__body admin-card__body">
         <a href="{{ path('admin_portfolio_show', {'id': image.id}) }}">{{ image.description }} ({{ image.date|date("m/Y") }})</a>

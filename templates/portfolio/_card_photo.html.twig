@@ -1,6 +1,6 @@
 <div class="card card-photo card-small card-hover">
     <div class="card__img">
-        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('thumbnail400x400')}}" alt="{{ image.alt }}" loading="lazy" width="400" height="400">
         <div class="card__cta">
             <div class="stack">
                 {% for album in image.albums %}
