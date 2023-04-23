@@ -4,25 +4,13 @@ export const playerStyle = `
         background-color: #2a303b;
         z-index: 4;
         clear: both;
-        height: 360px;
         width: 100%;
         overflow: hidden;
     }
 
-    .article__video-deny {
-        position: absolute;
-        inset: 0;
-    }
-
-    .article__video-deny-bg {
-        background-color: #2a303b;
-        background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: blur(2px);
-        -webkit-filter: blur(2px);
+    .article__video-container iframe {
+        width: 100%;
+        display: block;
     }
 
     .article__video-deny-msg {
@@ -33,12 +21,16 @@ export const playerStyle = `
         color: #fff;
         text-align: center;
         padding: 0 1.2rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 360px;
     }
 
     .article__video-deny-msg span{
         padding: .6rem 1rem;
         border-radius: .3rem;
-        background-color: rgba(0, 91, 133, .8);
+        background-color: #005b85;
     }
 
     .yt_player_load {
@@ -51,13 +43,5 @@ export const playerStyle = `
         padding: .6rem 1rem;
         margin-top: 1.2rem;
         font-size: 1rem;
-    }
-
-    iframe,
-    video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
     }
 `;
