@@ -20,8 +20,11 @@ export class YoutubePlayer extends HTMLElement {
     <style>${playerStyle}</style>
     <div class="article__video-container">
         <div class="player">
-            <div class="article__video-deny-msg">
-                Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Cliquez sur le bouton ci-dessous si vous souhaitez continuer et lire la vidéo.
+            <div class="article__video-deny article__video-deny-bg" style='background-image: url("https://i.ytimg.com/vi/${this.getAttribute(
+              "video"
+            )}/maxresdefault.jpg")'></div>
+            <div class="article__video-deny article__video-deny-msg">
+                <span>Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Cliquez sur le bouton ci-dessous si vous souhaitez continuer et lire la vidéo.</span>
                 <button class="yt_player_load">Lire la vidéo</button>
             </div>
         </div>
