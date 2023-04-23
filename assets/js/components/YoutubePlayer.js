@@ -21,7 +21,7 @@ export class YoutubePlayer extends HTMLElement {
     <div class="article__video-container">
         <div class="player">
             <div class="article__video-deny-msg">
-                Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Cliquez sur le buton ci-dessous si vous souhaitez continuer et lire la vidéo.
+                Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Cliquez sur le bouton ci-dessous si vous souhaitez continuer et lire la vidéo.
                 <button class="yt_player_load">Lire la vidéo</button>
             </div>
         </div>
