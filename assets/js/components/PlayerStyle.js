@@ -25,12 +25,22 @@ export const playerStyle = `
         background-repeat: no-repeat;
         background-size: cover;
         min-height: 360px;
+        position: relative
+    }
+
+    .article__video-deny-msg:before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        backdrop-filter: blur(2px);
     }
 
     .article__video-deny-msg span{
         padding: .6rem 1rem;
         border-radius: .3rem;
         background-color: #005b85;
+        z-index: 4;
     }
 
     .yt_player_load {
@@ -43,5 +53,6 @@ export const playerStyle = `
         padding: .6rem 1rem;
         margin-top: 1.2rem;
         font-size: 1rem;
+        z-index: 4;
     }
 `;
