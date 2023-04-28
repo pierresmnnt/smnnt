@@ -58,7 +58,7 @@ class AdvertController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $advertisementRepository->save($advertisement, true);
 
-            return $this->redirectToRoute('app_advertisement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_advertisement_show', ['id' => $advertisement->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/advert/edit.html.twig', [

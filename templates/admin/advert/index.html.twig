@@ -40,7 +40,7 @@
                 <td>{{ advertisement.title }}</td>
                 <td>{{ advertisement.description }}</td>
                 <td>{{ advertisement.advertiser }}</td>
-                <td>{{ advertisement.logo }}</td>
+                <td>{% if advertisement.logo %}<img src="{{ advertisement.logo }}" alt="logo" class="announce_logo" width="22" height="22">{% endif %}</td>
                 <td class="article-status article-status-{{ advertisement.active ? "online" : "draft" }}">{{ advertisement.active ? "Active" : "Inactive" }}</td>
                 <td>
                     <a href="{{ path('app_advertisement_show', {'id': advertisement.id}) }}">{{ icon('view') }}</a>

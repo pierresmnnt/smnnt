@@ -27,10 +27,12 @@
             <ul>
                 <li><strong>Name</strong>&nbsp;{{ advertisement.name }}</li>
                 <li><strong>Advertiser</strong>&nbsp;{{ advertisement.advertiser }}</li>
+                <li><strong>Logo</strong>&nbsp;{% if advertisement.logo %}<img src="{{ advertisement.logo }}" alt="logo" class="announce_logo" width="22" height="22">{% endif %}</li>
                 <li><strong>Landing Page</strong>&nbsp;{{ advertisement.landingPage }}</li>
                 <li><strong>CTA</strong>&nbsp;{{ advertisement.cta }}</li>
                 <li><strong>Title</strong>&nbsp;{{ advertisement.title }}</li>
                 <li><strong>Description</strong>&nbsp;{{ advertisement.description }}</li>
+                <li><strong>Background color</strong>&nbsp;{{ advertisement.backgroundColor }}</li>
                 <li><div class="stack">{% for adslot in advertisement.adslots %}<div class="pill pill-primary">{{ adslot.name }}</div>{% endfor %}</div></li>
             </ul>
         </div>

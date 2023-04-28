@@ -51,6 +51,9 @@ class Advert
     #[ORM\Column]
     private ?bool $active = false;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $backgroundColor = null;
+
     public function __construct()
     {
         $this->adslots = new ArrayCollection();
@@ -183,6 +186,18 @@ class Advert
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): self
+    {
+        $this->backgroundColor = $backgroundColor;
 
         return $this;
     }
