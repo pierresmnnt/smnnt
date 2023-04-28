@@ -11,13 +11,17 @@
   border-radius: 4px;
 }
 
-.announce_container > div:first-child {
+.announce_body-container {
   flex: 1;
 }
 
 .announce_title {
   font-size: 24px;
   font-weight: bold;
+}
+
+.announce_cta-container {
+  margin-left: var(--space);
 }
 
 /* Announce admin show page */
