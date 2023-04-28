@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Article;
 use App\Form\SearchType;
+use App\Repository\AdslotRepository;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends BaseController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository, Request $request): Response
+    public function index(ArticleRepository $articleRepository, AdslotRepository $adslotRepository, Request $request): Response
     {
         $data = new SearchData();
         $data->setPage($request->get('page', 1));
@@ -36,7 +37,8 @@ class ArticleController extends BaseController
                 ]);
         }
 
-        return $this->renderForm('article/index.html.twig', [
+        return $this->render('article/index.html.twig', [
+            'adslot' => $adslotRepository->findOneByName('article feed'),
             'articles' => $articles,
             'form' => $form,
             'menu' => 'articles'

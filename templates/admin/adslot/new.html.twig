@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Adslot{% endblock %}
+
+{% block body %}
+    <h1>Create new Adslot</h1>
+
+    {{ include('admin/adslot/_form.html.twig') }}
+
+    <a href="{{ path('app_adslot_index') }}">back to list</a>
+{% endblock %}

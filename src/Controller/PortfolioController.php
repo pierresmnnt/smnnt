@@ -35,7 +35,7 @@ class PortfolioController extends BaseController
                 ]);
         }
 
-        return $this->renderForm('portfolio/index.html.twig', [
+        return $this->render('portfolio/index.html.twig', [
             'images' => $images,
             'form' => $form,
             'menu' => 'portfolio'

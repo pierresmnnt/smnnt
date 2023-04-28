@@ -38,7 +38,7 @@ class CategoryAdminController extends BaseController
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/category/new.html.twig', [
+        return $this->render('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form,
             'menu' => 'admin-category'
@@ -58,7 +58,7 @@ class CategoryAdminController extends BaseController
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/category/edit.html.twig', [
+        return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
             'menu' => 'admin-category'

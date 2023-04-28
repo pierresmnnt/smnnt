@@ -37,7 +37,7 @@ class GearController extends BaseController
             return $this->redirectToRoute('app_gear_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/gear/new.html.twig', [
+        return $this->render('admin/gear/new.html.twig', [
             'gear' => $gear,
             'form' => $form,
             'menu' => 'admin-gear'
@@ -57,7 +57,7 @@ class GearController extends BaseController
             return $this->redirectToRoute('app_gear_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/gear/edit.html.twig', [
+        return $this->render('admin/gear/edit.html.twig', [
             'gear' => $gear,
             'form' => $form,
             'menu' => 'admin-gear'

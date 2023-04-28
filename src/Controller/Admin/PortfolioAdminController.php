@@ -59,7 +59,7 @@ class PortfolioAdminController extends BaseController
             return $this->redirectToRoute($redirect);
         }
 
-        return $this->renderForm('admin/portfolio/new.html.twig', [
+        return $this->render('admin/portfolio/new.html.twig', [
             'form' => $form,
             'menu' => 'admin-portfolio'
         ]);
@@ -88,7 +88,7 @@ class PortfolioAdminController extends BaseController
             return $this->redirectToRoute('admin_portfolio_show', ['id' => $image->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/portfolio/new.html.twig', [
+        return $this->render('admin/portfolio/new.html.twig', [
             'form' => $form,
             'menu' => 'admin-portfolio'
         ]);

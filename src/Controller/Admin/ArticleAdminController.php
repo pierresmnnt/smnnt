@@ -48,7 +48,7 @@ class ArticleAdminController extends BaseController
             return $this->redirectToRoute('admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/article/new.html.twig', [
+        return $this->render('admin/article/new.html.twig', [
             'article' => $article,
             'form' => $form,
             'menu' => 'admin-article'
@@ -91,7 +91,7 @@ class ArticleAdminController extends BaseController
             return $this->redirectToRoute('admin_article_show', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/article/edit.html.twig', [
+        return $this->render('admin/article/edit.html.twig', [
             'article' => $article,
             'form' => $form,
             'menu' => 'admin-article'

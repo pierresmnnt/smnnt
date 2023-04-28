@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Adslot{% endblock %}
+
+{% block body %}
+    <h1>Edit Adslot</h1>
+
+    {{ include('admin/adslot/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_adslot_index') }}">back to list</a>
+
+    {{ include('admin/adslot/_delete_form.html.twig') }}
+{% endblock %}

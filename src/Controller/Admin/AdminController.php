@@ -37,7 +37,7 @@ class AdminController extends BaseController
             return $this->redirectToRoute('admin_edit', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/profile/edit.html.twig', [
+        return $this->render('admin/profile/edit.html.twig', [
             'form' => $form,
             'menu' => 'admin'
         ]);

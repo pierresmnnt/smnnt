@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Advertisement{% endblock %}
+
+{% block body %}
+    <h1>Create new Advertisement</h1>
+
+    {{ include('admin/advert/_form.html.twig') }}
+
+    <a href="{{ path('app_advertisement_index') }}">back to list</a>
+{% endblock %}
