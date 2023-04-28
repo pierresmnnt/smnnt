@@ -1,0 +1,20 @@
+.newsletterCta_container {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.newsletterCta_container > div:first-child {
+  flex: 1;
+}
+
+.newsletterCta_name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.newsletterCta_name-jap {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin-left: var(--space);
+  font-size: 12px;
+}

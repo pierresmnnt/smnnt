@@ -20,7 +20,9 @@
     <div class="article__header stack-column">
         {% if article.topics|length > 0 %}
         <div class="article__category stack">
+            {% set isNewsletter = false %}
             {% for topic in article.topics %}
+                {% if topic.name is same as("Japon") or topic.name is same as("Uketsuke") %}{% set isNewsletter = true %}{% endif %}
                 <a href="{{ path('article_index', {'category': topic.slug}) }}" class="pill pill-primary">{{ topic.name }}</a>
             {% endfor %}
         </div>
@@ -36,6 +38,11 @@
         {% endif %}
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
+    <div class="article__footer">
+        {% if isNewsletter %}
+            {{ include("partials/_newsletterCta.html.twig", {"class": "card-small"}) }}
+        {% endif %}
+    </div>
     <div class="article__recommended">
         {% if recommended %}
         <div class="h4">À lire aussi</div>

@@ -1,4 +1,7 @@
 {% for article in articles %}
+    {% if loop.index is same as(2) %}
+        {{ include("partials/_newsletterCta.html.twig", {"class": "card-small"}) }}
+    {% endif %}
     {% include "article/_card_article.html.twig" %}
 {% else %}
     <div class="text-center">Je n'ai pas encore écrit d'articles...Revenez plus tard.</div>        
