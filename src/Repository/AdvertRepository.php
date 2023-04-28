@@ -46,14 +46,22 @@ class AdvertRepository extends ServiceEntityRepository
             ->leftJoin('a.adslots', 's');
     }
 
-    public function findOneByAdslot($value): ?Advert
+    /**
+     * @return Advert[] Returns an array of Advert objects
+     */
+    public function findByAdslot(string $value, array $context = null)
     {
-        return $this->queryWithJoin()
+        $query = $this->queryWithJoin()
             ->andWhere('s.name IN (:val)')
             ->setParameter('val', $value)
             ->andWhere('a.active = TRUE')
-            ->getQuery()
-            ->getOneOrNullResult()
         ; 
+
+        if ($context) {
+            $query->andWhere('a.context IN (:context)')
+                ->setParameter('context', $context);
+        }
+
+        return $query->getQuery()->getResult();
     }
 }

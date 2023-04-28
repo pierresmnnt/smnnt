@@ -58,6 +58,13 @@
             {{ form_errors(form.logo) }}
         </div>
     </div>
+    <div class="input-group">
+        {{ form_label(form.context) }}
+        {{ form_widget(form.context) }}
+        <div class="input-error">
+            {{ form_errors(form.context) }}
+        </div>
+    </div>
     <div class="form-submit">
         <button class="button-primary">{{ button_label|default('Save') }}</button>
     </div>

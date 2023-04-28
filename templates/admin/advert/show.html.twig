@@ -32,6 +32,7 @@
                 <li><strong>CTA</strong>&nbsp;{{ advertisement.cta }}</li>
                 <li><strong>Title</strong>&nbsp;{{ advertisement.title }}</li>
                 <li><strong>Description</strong>&nbsp;{{ advertisement.description }}</li>
+                <li><strong>Context</strong>&nbsp;{{ advertisement.context }}</li>
                 <li><div class="stack">{% for adslot in advertisement.adslots %}<div class="pill pill-primary">{{ adslot.name }}</div>{% endfor %}</div></li>
             </ul>
         </div>

@@ -30,9 +30,9 @@
                 <td>{{ adslot.id }}</td>
                 <td>{{ adslot.name }}</td>
                 <td>
-                {% if adslot.advert %}
-                    <a href="{{ path('app_advertisement_show', {'id': adslot.advert.id}) }}" class="article-status article-status-{{ adslot.advert.active ? "online" : "draft" }}">{{ adslot.advert.name }}</a>
-                {% endif %}
+                {% for advert in adslot.adverts %}
+                    <a href="{{ path('app_advertisement_show', {'id': advert.id}) }}" class="article-status article-status-{{ advert.active ? "online" : "draft" }}">{{ advert.name }}</a>
+                {% endfor %}
                 </td>
                 <td>
                     <a href="{{ path('app_adslot_edit', {'id': adslot.id}) }}" class="button">{{ icon('edit') }}</a>

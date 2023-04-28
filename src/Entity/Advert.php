@@ -45,11 +45,14 @@ class Advert
     #[Assert\Url]
     private ?string $logo = null;
 
-    #[ORM\OneToMany(mappedBy: 'advert', targetEntity: Adslot::class)]
-    private Collection $adslots;
-
     #[ORM\Column]
     private ?bool $active = false;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $context = null;
+
+    #[ORM\ManyToMany(targetEntity: Adslot::class, mappedBy: 'adverts')]
+    private Collection $adslots;
 
     public function __construct()
     {
@@ -121,36 +124,6 @@ class Advert
         return $this;
     }
 
-    /**
-     * @return Collection<int, Adslot>
-     */
-    public function getAdslots(): Collection
-    {
-        return $this->adslots;
-    }
-
-    public function addAdslot(Adslot $adslot): self
-    {
-        if (!$this->adslots->contains($adslot)) {
-            $this->adslots->add($adslot);
-            $adslot->setAdvert($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdslot(Adslot $adslot): self
-    {
-        if ($this->adslots->removeElement($adslot)) {
-            // set the owning side to null (unless already changed)
-            if ($adslot->getAdvert() === $this) {
-                $adslot->setAdvert(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -183,6 +156,45 @@ class Advert
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getContext(): ?string
+    {
+        return $this->context;
+    }
+
+    public function setContext(?string $context): self
+    {
+        $this->context = $context;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Adslot>
+     */
+    public function getAdslots(): Collection
+    {
+        return $this->adslots;
+    }
+
+    public function addAdslot(Adslot $adslot): self
+    {
+        if (!$this->adslots->contains($adslot)) {
+            $this->adslots->add($adslot);
+            $adslot->addAdvert($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdslot(Adslot $adslot): self
+    {
+        if ($this->adslots->removeElement($adslot)) {
+            $adslot->removeAdvert($this);
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdslotRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,8 +20,13 @@ class Adslot
     #[Assert\NotBlank]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'adslots')]
-    private ?Advert $advert = null;
+    #[ORM\ManyToMany(targetEntity: Advert::class, inversedBy: 'adslots')]
+    private Collection $adverts;
+
+    public function __construct()
+    {
+        $this->adverts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -38,14 +45,26 @@ class Adslot
         return $this;
     }
 
-    public function getAdvert(): ?Advert
+    /**
+     * @return Collection<int, Advert>
+     */
+    public function getAdverts(): Collection
     {
-        return $this->advert;
+        return $this->adverts;
     }
 
-    public function setAdvert(?Advert $advert): self
+    public function addAdvert(Advert $advert): self
     {
-        $this->advert = $advert;
+        if (!$this->adverts->contains($advert)) {
+            $this->adverts->add($advert);
+        }
+
+        return $this;
+    }
+
+    public function removeAdvert(Advert $advert): self
+    {
+        $this->adverts->removeElement($advert);
 
         return $this;
     }

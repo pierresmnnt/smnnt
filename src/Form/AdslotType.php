@@ -19,10 +19,13 @@ class AdslotType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true,
             ])
-            ->add('advert', EntityType::class, [
+            ->add('adverts', EntityType::class, [
                 'class' => Advert::class,
                 'choice_label' => 'name',
                 'required' => false,
+                'attr' => ['class' => 'multiple-checkbox'],
+                'multiple' => true,
+                'expanded' => true
             ])
         ;
     }

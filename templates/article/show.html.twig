@@ -20,9 +20,9 @@
     <div class="article__header stack-column">
         {% if article.topics|length > 0 %}
         <div class="article__category stack">
-            {% set isNewsletter = false %}
+            {% set adcontext = [] %}
             {% for topic in article.topics %}
-                {% if topic.name is same as("Japon") or topic.name is same as("Uketsuke") %}{% set isNewsletter = true %}{% endif %}
+                {% set adcontext = adcontext|merge([topic.name]) %}
                 <a href="{{ path('article_index', {'category': topic.slug}) }}" class="pill pill-primary">{{ topic.name }}</a>
             {% endfor %}
         </div>
@@ -39,7 +39,7 @@
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
     <div class="article__footer">
-        {{ adslot('article-inread') }}
+        {{ adslot('article-inread', adcontext) }}
     </div>
     <div class="article__recommended">
         {% if recommended %}

@@ -40,6 +40,9 @@ class AdvertType extends AbstractType
             ->add('logo', UrlType::class, [
                 'required' => false,
             ])
+            ->add('context', TextType::class, [
+                'required' => false,
+            ])
         ;
     }
 

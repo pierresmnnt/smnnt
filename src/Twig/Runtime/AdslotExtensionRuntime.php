@@ -9,20 +9,22 @@ use Twig\Extension\RuntimeExtensionInterface;
 
 class AdslotExtensionRuntime implements RuntimeExtensionInterface
 {
-    private AdslotRepository $adslotRepository;
     private AdvertRepository $advertRepository;
     private Environment $twig;
 
-    public function __construct(AdslotRepository $adslotRepository, AdvertRepository $advertRepository, Environment $twig)
+    public function __construct(AdvertRepository $advertRepository, Environment $twig)
     {
-        $this->adslotRepository = $adslotRepository;
         $this->advertRepository = $advertRepository;
         $this->twig = $twig;
     }
 
-    public function getAdslot($value)
+    public function getAdslot(string $value, array $context = null)
     {
-        $advertisement = $this->advertRepository->findOneByAdslot($value);
+        $advertisements = $this->advertRepository->findByAdslot($value, $context);
+
+        if (count($advertisements) === 0) return;
+        
+        $advertisement = $advertisements[array_rand($advertisements)];
 
         return $this->twig->render('admin/adslot/adslot.html.twig', [
             'adslotname' => $value,
