@@ -39,28 +39,21 @@ class AdvertRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Advert[] Returns an array of Advert objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    private function queryWithJoin()
+    {
+        return $this->createQueryBuilder('a')
+            ->addSelect('s')
+            ->leftJoin('a.adslots', 's');
+    }
 
-//    public function findOneBySomeField($value): ?Advert
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findOneByAdslot($value): ?Advert
+    {
+        return $this->queryWithJoin()
+            ->andWhere('s.name IN (:val)')
+            ->setParameter('val', $value)
+            ->andWhere('a.active = TRUE')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ; 
+    }
 }

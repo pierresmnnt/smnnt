@@ -1,9 +1,14 @@
 /* Adslot */
 .adslot_container {
+  width: 100%;
+}
+/* Announce */
+.announce_container {
   margin: 2rem auto;
+  max-width: 520px;
+  width: 100%;
 }
 
-/* Announce */
 .announce_container > div:first-child {
   flex: 1;
 }
@@ -13,7 +18,7 @@
   font-weight: bold;
 }
 
-/* Announce show page */
+/* Announce admin show page */
 .announce-details {
   padding-top: 2rem;
 }
@@ -29,7 +34,8 @@
   border-top: 1px solid var(--border);
 }
 
-.announce-preview .adslot_container {
+.announce-preview .adslot_container,
+.announce-preview .announce_container {
   border: 1px dashed var(--info);
 }
 

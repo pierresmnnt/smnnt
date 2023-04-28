@@ -51,7 +51,6 @@ class AdslotRepository extends ServiceEntityRepository
         return $this->queryWithJoin()
             ->andWhere('s.name = :val')
             ->setParameter('val', $value)
-            ->andWhere('a.active = TRUE')
             ->getQuery()
             ->getOneOrNullResult()
         ; 
