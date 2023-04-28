@@ -6,7 +6,12 @@
 
 {% block page__desc %}
     <p>Currently {{ advertisements|length }} categories</p>
-    <a href="{{ path('app_advertisement_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Advertisement</span></a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="stack">
+            <a href="{{ path('app_advertisement_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Advertisement</span></a>
+            <a href="{{ path('app_adslot_index') }}" class="button">Manage Adslot</a>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block page__content %}
@@ -36,7 +41,7 @@
                 <td>{{ advertisement.description }}</td>
                 <td>{{ advertisement.advertiser }}</td>
                 <td>{{ advertisement.logo }}</td>
-                <td class="article-status article-status-{{ advertisement.active ? "online" : "draft" }}">{{ advertisement.active ? "active" : "inactive" }}</td>
+                <td class="article-status article-status-{{ advertisement.active ? "online" : "draft" }}">{{ advertisement.active ? "Active" : "Inactive" }}</td>
                 <td>
                     <a href="{{ path('app_advertisement_show', {'id': advertisement.id}) }}">{{ icon('view') }}</a>
                     <a href="{{ path('app_advertisement_edit', {'id': advertisement.id}) }}" class="button">{{ icon('edit') }}</a>

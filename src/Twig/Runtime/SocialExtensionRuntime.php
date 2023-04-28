@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Twig;
+namespace App\Twig\Runtime;
 
 use App\Repository\UserRepository;
 use Symfony\Contracts\Cache\CacheInterface;
-use Symfony\Contracts\Cache\ItemInterface;
 use Twig\Environment;
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
-use Twig\TwigFunction;
+use Twig\Extension\RuntimeExtensionInterface;
 
-class SocialsExtension extends AbstractExtension
+class SocialExtensionRuntime implements RuntimeExtensionInterface
 {
     private UserRepository $userRepository;
     private Environment $twig;
@@ -21,23 +18,6 @@ class SocialsExtension extends AbstractExtension
         $this->userRepository = $userRepository;
         $this->twig = $twig;    
         $this->cache = $cache;
-    }
-
-    public function getFilters(): array
-    {
-        return [
-            // If your filter generates SAFE HTML, you should add a third
-            // parameter: ['is_safe' => ['html']]
-            // Reference: https://twig.symfony.com/doc/3.x/advanced.html#automatic-escaping
-            new TwigFilter('filter_name', [$this, 'doSomething']),
-        ];
-    }
-
-    public function getFunctions(): array
-    {
-        return [
-            new TwigFunction('socials', [$this, 'getSocials'], ['is_safe' => ['html']]),
-        ];
     }
 
     public function getSocials(): string

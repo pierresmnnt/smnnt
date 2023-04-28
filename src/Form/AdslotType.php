@@ -21,10 +21,6 @@ class AdslotType extends AbstractType
             ])
             ->add('advert', EntityType::class, [
                 'class' => Advert::class,
-                'query_builder' => function (AdvertRepository $categoryRepository) {
-                    return $categoryRepository->createQueryBuilder('a')
-                        ->andWhere('a.active = TRUE');
-                },
                 'choice_label' => 'name',
                 'required' => false,
             ])

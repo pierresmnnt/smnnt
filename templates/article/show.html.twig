@@ -39,9 +39,7 @@
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
     <div class="article__footer">
-        {% if isNewsletter %}
-            {{ include("partials/_newsletterCta.html.twig", {"class": "card-small"}) }}
-        {% endif %}
+        {{ adslot('article-bottom') }}
     </div>
     <div class="article__recommended">
         {% if recommended %}

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends BaseController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository, AdslotRepository $adslotRepository, Request $request): Response
+    public function index(ArticleRepository $articleRepository, Request $request): Response
     {
         $data = new SearchData();
         $data->setPage($request->get('page', 1));
@@ -38,7 +38,6 @@ class ArticleController extends BaseController
         }
 
         return $this->render('article/index.html.twig', [
-            'adslot' => $adslotRepository->findOneByName('article feed'),
             'articles' => $articles,
             'form' => $form,
             'menu' => 'articles'

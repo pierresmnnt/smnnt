@@ -6,7 +6,12 @@
 
 {% block page__desc %}
     <p>Currently {{ adslots|length }} adslot</p>
-    <a href="{{ path('app_adslot_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Adslot</span></a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="stack">
+            <a href="{{ path('app_adslot_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Adslot</span></a>
+            <a href="{{ path('app_advertisement_index') }}" class="button">Manage Advertisement</a>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block page__content %}
@@ -24,7 +29,11 @@
             <tr>
                 <td>{{ adslot.id }}</td>
                 <td>{{ adslot.name }}</td>
-                <td>{{ adslot.advert ? adslot.advert.name : "" }}</td>
+                <td>
+                {% if adslot.advert %}
+                    <a href="{{ path('app_advertisement_show', {'id': adslot.advert.id}) }}" class="article-status article-status-{{ adslot.advert.active ? "online" : "draft" }}">{{ adslot.advert.name }}</a>
+                {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('app_adslot_edit', {'id': adslot.id}) }}" class="button">{{ icon('edit') }}</a>
                     {{ include('admin/adslot/_delete_form.html.twig') }}

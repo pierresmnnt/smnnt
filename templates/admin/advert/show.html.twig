@@ -5,9 +5,10 @@
 {% block page__title %}Edit Advertisement{% endblock %}
 
 {% block page__desc %}
-<div class="d-flex y-center">
+<div class="stack">
     <a href="{{ path('app_advertisement_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
     {% if is_granted('ROLE_ADMIN') %}
+        <div class="article-status article-status-{{ advertisement.active ? "online" : "draft" }}">{{ advertisement.active ? "Active" : "Inactive" }}</div>
         <a href="{{ path('app_advertisement_edit', {'id': advertisement.id}) }}" class="button">{{ icon('edit') }}</a>
         {{ include('admin/advert/_delete_form.html.twig') }}
     {% endif %}
