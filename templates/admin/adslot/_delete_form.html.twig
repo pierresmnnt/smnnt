@@ -1,4 +1,6 @@
-<form method="post" action="{{ path('app_adslot_delete', {'id': adslot.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form method="post" action="{{ path('app_adslot_delete', {'id': adslot.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" class="delete-form">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adslot.id) }}">
-    <button class="btn">Delete</button>
+    <div class="form-submit">
+        <button type="submit">{{ icon('trash') }}</button>
+    </div>
 </form>

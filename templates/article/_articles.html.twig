@@ -1,6 +1,8 @@
 {% for article in articles %}
     {% if loop.index is same as(2) %}
-        {{ include("admin/adslot/adslot.html.twig") }}
+        {% if adslot %}
+            {{ include("admin/adslot/adslot.html.twig") }}
+        {% endif %}
     {% endif %}
     {% include "article/_card_article.html.twig" %}
 {% else %}

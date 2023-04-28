@@ -2,12 +2,13 @@
 
 {% block title %}Edit Advertisement{% endblock %}
 
-{% block body %}
-    <h1>Edit Advertisement</h1>
+{% block page__title %}Edit Advertisement{% endblock %}
 
-    {{ include('admin/advert/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_advertisement_index') }}">back to list</a>
-
+{% block page__desc %}
+    <a href="{{ path('app_advertisement_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
     {{ include('admin/advert/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block page__content %}
+    {{ include('admin/advert/_form.html.twig', {'button_label': 'Update'}) }}
 {% endblock %}

@@ -1,0 +1,52 @@
+/* Adslot */
+.adslot_container {
+  margin: 2rem auto;
+}
+
+/* Announce */
+.announce_container > div:first-child {
+  flex: 1;
+}
+
+.announce_title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Announce show page */
+.announce-details {
+  padding-top: 2rem;
+}
+
+.announce-details ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+  flex-wrap: wrap;
+}
+
+.announce-details ul > * + * {
+  border-top: 1px solid var(--border);
+}
+
+.announce-preview .adslot_container {
+  border: 1px dashed var(--info);
+}
+
+@media only screen and (min-width: 900px) {
+  .announce-preview {
+    flex: 1;
+  }
+
+  .announce-show__grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .announce-details {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}

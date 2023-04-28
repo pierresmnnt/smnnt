@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Advertisement index{% endblock %}
+{% block title %}Manage Advertisement{% endblock %}
 
-{% block body %}
-    <h1>Advertisement index</h1>
+{% block page__title %}Manage Advertisement{% endblock %}
 
+{% block page__desc %}
+    <p>Currently {{ advertisements|length }} categories</p>
+    <a href="{{ path('app_advertisement_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Advertisement</span></a>
+{% endblock %}
+
+{% block page__content %}
     <table class="table">
         <thead>
             <tr>
@@ -16,6 +21,7 @@
                 <th>Description</th>
                 <th>Advertiser</th>
                 <th>Logo</th>
+                <th>Status</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,9 +36,11 @@
                 <td>{{ advertisement.description }}</td>
                 <td>{{ advertisement.advertiser }}</td>
                 <td>{{ advertisement.logo }}</td>
+                <td class="article-status article-status-{{ advertisement.active ? "online" : "draft" }}">{{ advertisement.active ? "active" : "inactive" }}</td>
                 <td>
-                    <a href="{{ path('app_advertisement_show', {'id': advertisement.id}) }}">show</a>
-                    <a href="{{ path('app_advertisement_edit', {'id': advertisement.id}) }}">edit</a>
+                    <a href="{{ path('app_advertisement_show', {'id': advertisement.id}) }}">{{ icon('view') }}</a>
+                    <a href="{{ path('app_advertisement_edit', {'id': advertisement.id}) }}" class="button">{{ icon('edit') }}</a>
+                    {{ include('admin/advert/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -42,6 +50,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_advertisement_new') }}">Create new</a>
 {% endblock %}

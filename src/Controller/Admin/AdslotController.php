@@ -41,14 +41,6 @@ class AdslotController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_adslot_show', methods: ['GET'])]
-    public function show(Adslot $adslot): Response
-    {
-        return $this->render('admin/adslot/show.html.twig', [
-            'adslot' => $adslot,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_adslot_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Adslot $adslot, AdslotRepository $adslotRepository): Response
     {

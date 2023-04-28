@@ -48,6 +48,9 @@ class Advert
     #[ORM\OneToMany(mappedBy: 'advert', targetEntity: Adslot::class)]
     private Collection $adslots;
 
+    #[ORM\Column]
+    private ?bool $active = false;
+
     public function __construct()
     {
         $this->adslots = new ArrayCollection();
@@ -168,6 +171,18 @@ class Advert
     public function setLandingPage(?string $landingPage): self
     {
         $this->landingPage = $landingPage;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adslot index{% endblock %}
+{% block title %}Manage Adslot{% endblock %}
 
-{% block body %}
-    <h1>Adslot index</h1>
+{% block page__title %}Manage Adslot{% endblock %}
 
+{% block page__desc %}
+    <p>Currently {{ adslots|length }} adslot</p>
+    <a href="{{ path('app_adslot_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New Adslot</span></a>
+{% endblock %}
+
+{% block page__content %}
     <table class="table">
         <thead>
             <tr>
@@ -19,10 +24,10 @@
             <tr>
                 <td>{{ adslot.id }}</td>
                 <td>{{ adslot.name }}</td>
-                <td>{{ adslot.advert.name }}</td>
+                <td>{{ adslot.advert ? adslot.advert.name : "" }}</td>
                 <td>
-                    <a href="{{ path('app_adslot_show', {'id': adslot.id}) }}">show</a>
-                    <a href="{{ path('app_adslot_edit', {'id': adslot.id}) }}">edit</a>
+                    <a href="{{ path('app_adslot_edit', {'id': adslot.id}) }}" class="button">{{ icon('edit') }}</a>
+                    {{ include('admin/adslot/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -32,6 +37,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_adslot_new') }}">Create new</a>
 {% endblock %}

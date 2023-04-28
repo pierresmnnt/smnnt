@@ -1,0 +1,14 @@
+<div class="announce_container">
+    <div class="d-flex y-center space-between">
+        <div>
+            <div class="d-flex y-center">
+                <div class="announce_title">{{ advertisement.title }}</div>
+                {% if advertisement.logo %}<img src="{{ advertisement.logo }}" alt="logo" class="announce_logo" width="22" height="22">{% endif %}
+            </div>
+            <p class="announce_description">{{ advertisement.description }}</p>
+        </div>
+        <div>
+            <a href="{{ advertisement.landingPage }}" class="button button-primary announce-cta">{{ advertisement.cta }}</a>
+        </div>
+    </div>
+</div>

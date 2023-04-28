@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Adslot;
 use App\Entity\Advert;
+use App\Repository\AdvertRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,12 @@ class AdslotType extends AbstractType
             ])
             ->add('advert', EntityType::class, [
                 'class' => Advert::class,
-                'choice_label' => 'name'
+                'query_builder' => function (AdvertRepository $categoryRepository) {
+                    return $categoryRepository->createQueryBuilder('a')
+                        ->andWhere('a.active = TRUE');
+                },
+                'choice_label' => 'name',
+                'required' => false,
             ])
         ;
     }
