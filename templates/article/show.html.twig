@@ -38,9 +38,9 @@
         {% endif %}
     </div>
     <div class="article__body">{{ article.content|markdown_to_html }}</div>
-    <div class="article__footer">
-        {{ adslot('article-inread', adcontext) }}
-    </div>
+</article>
+<div class="article__footer">
+    {{ adslot('article-inread', adcontext) }}
     <div class="article__recommended">
         {% if recommended %}
         <div class="h4">À lire aussi</div>
@@ -51,7 +51,7 @@
         </div>
         {% endif %}
     </div>
-</article>
+</div>
 {% endblock %}
 
 {% block javascripts %}

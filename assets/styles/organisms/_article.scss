@@ -1,8 +1,8 @@
 article,
-.article {
+.article,
+.article__footer {
   max-width: 680px;
   margin: 0 auto;
-  letter-spacing: 0.025em;
 }
 
 .article__header {
@@ -11,7 +11,7 @@ article,
 
 .article__footer,
 .article__recommended {
-  margin-top: 4em;
+  margin-top: 2em;
 }
 
 .recommended_list {

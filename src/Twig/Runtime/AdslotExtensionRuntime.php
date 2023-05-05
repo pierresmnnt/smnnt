@@ -22,13 +22,17 @@ class AdslotExtensionRuntime implements RuntimeExtensionInterface
     {
         $advertisements = $this->advertRepository->findByAdslot($value, $context);
 
-        if (count($advertisements) === 0) return;
-        
-        $advertisement = $advertisements[array_rand($advertisements)];
+        if (count($advertisements) > 1) {
+            $advertisement = $advertisements[array_rand($advertisements)];
+        } else if (count($advertisements) === 1) {
+            $advertisement = $advertisements[0];
+        } else {
+            $advertisement = false;
+        }
 
         return $this->twig->render('admin/adslot/adslot.html.twig', [
             'adslotname' => $value,
-            'advertisement' => $advertisement ?? false,
+            'advertisement' => $advertisement,
         ]);
     }
 }

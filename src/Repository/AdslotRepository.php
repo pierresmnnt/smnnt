@@ -43,7 +43,7 @@ class AdslotRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
             ->addSelect('a')
-            ->leftJoin('s.advert', 'a');
+            ->leftJoin('s.adverts', 'a');
     }
 
     public function findOneByName($value): ?Adslot
@@ -54,5 +54,20 @@ class AdslotRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ; 
+    }
+
+    public function findOneByNameWithAds(string $value, array $context = null): ?Adslot
+    {
+        $query = $this->queryWithJoin()
+            ->andWhere('s.name = :val')
+            ->setParameter('val', $value)
+        ; 
+
+        if ($context) {
+            $query->andWhere('a.context IN (:context)')
+                ->setParameter('context', $context);
+        }
+
+        return $query->getQuery()->getOneOrNullResult();
     }
 }
