@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}smnnt.fr - Mes projets Web{% endblock %}
+{% block description %}Mes projets Web développés pour apprendre le code.{% endblock %}
+
+{% block page__title %}Mes Projets Web{% endblock %}
+
+{% block page__content %}
+    <section class="stack-column grid-items-center">
+        {% for web_project in web_projects %}        
+            {% include "webproject/_card_project.html.twig" %}
+        {% else %}
+            <div class="text-center">Je n'ai pas encore réalisé de projets Web...Revenez plus tard.</div>        
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('filter') }}
+{% endblock %}

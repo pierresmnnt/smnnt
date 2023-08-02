@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New WebProject{% endblock %}
+
+{% block page__title %}Create new WebProject{% endblock %}
+
+{% block page__desc %}
+    <a href="{{ path('webproject_admin_index') }}" class="button button-cancel">{{ icon('back-arrow') }}Back to list</a>
+{% endblock %}
+
+{% block page__content %}
+   {{ include('admin/webproject/_form.html.twig') }}
+{% endblock %}

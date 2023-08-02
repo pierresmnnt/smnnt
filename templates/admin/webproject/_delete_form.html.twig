@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('webproject_admin_delete', {'id': web_project.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" class="delete-form">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ web_project.id) }}">
+    <div class="form-submit">
+        <button type="submit">{{ icon('trash') }}</button>
+    </div>
+</form>
+

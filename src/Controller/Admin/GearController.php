@@ -34,6 +34,7 @@ class GearController extends BaseController
             $gearRepository->add($gear, true);
 
             $this->addFlash('success', "New gear created");
+            
             return $this->redirectToRoute('app_gear_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -54,6 +55,7 @@ class GearController extends BaseController
             $gearRepository->add($gear, true);
 
             $this->addFlash('success', "Gear edited");
+
             return $this->redirectToRoute('app_gear_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -72,6 +74,7 @@ class GearController extends BaseController
         }
 
         $this->addFlash('success', "Gear removed");
+
         return $this->redirectToRoute('app_gear_index', [], Response::HTTP_SEE_OTHER);
     }
 }

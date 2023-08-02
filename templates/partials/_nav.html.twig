@@ -6,13 +6,14 @@
             <ul class="nested-list">
                 <li><a href="{{ path('admin_portfolio_index') }}" class="button nav-link" {{ menu('admin-portfolio') }}>Manage Portfolio</a></li>
                 <li><a href="{{ path('admin_article_index') }}" class="button nav-link" {{ menu('admin-article') }}>Manage Articles</a></li>
-                <li><a href="{{ path('category_index') }}" class="button nav-link" {{ menu('admin-category') }}>Manage Categories</a></li>
-                <li><a href="{{ path('app_gear_index') }}" class="button nav-link" {{ menu('admin-gear') }}>Manage Gear</a></li>
             </ul>
         </li>
         {% endif %}
         <li>
             <a href="{{ path('portfolio_index') }}" class="button nav-link" {{ menu('portfolio') }}>{{ icon('images') }}<span class="icon-label">Mes photos</span></a>
+        </li>
+        <li>
+            <a href="{{ path('webproject_index') }}" class="button nav-link" {{ menu('webproject') }}>{{ icon('code') }}<span class="icon-label">Mes projets Web</span></a>
         </li>
         <li>
             <a href="{{ path('article_index') }}" class="button nav-link" {{ menu('articles') }}>{{ icon('newspaper') }}<span class="icon-label">Mes articles</span></a>

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WebProject index{% endblock %}
+
+{% block page__title %}Manage WebProject{% endblock %}
+
+{% block page__desc %}
+    <a href="{{ path('webproject_admin_new') }}" class="button button-primary">{{ icon('add') }}<span class="icon-label ">New WebProject</span></a>
+{% endblock %}
+
+{% block page__content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for web_project in web_projects %}
+            <tr>
+                <td>{{ web_project.id }}</td>
+                <td>{{ web_project.name }}</td>
+                <td>{{ web_project.description }}</td>
+                <td>{{ web_project.link }}</td>
+                <td>
+                    <a href="{{ path('webproject_admin_edit', {'id': web_project.id}) }}" class="button">{{ icon('edit') }}</a>
+                    {{ include('admin/webproject/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
