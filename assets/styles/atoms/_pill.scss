@@ -1,6 +1,6 @@
 .pill {
   padding: 2px 12px;
-  border-radius: 24px;
+  border-radius: var(--btn-radius);
   display: inline-flex;
   color: var(--contrast);
 }

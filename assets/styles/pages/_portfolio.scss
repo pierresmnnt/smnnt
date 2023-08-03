@@ -6,7 +6,7 @@
   display: block;
   margin: 0 auto;
   max-height: calc(100vh - var(--topBarHeight));
-  border-radius: 4px;
+  border-radius: var(--card-radius);
 }
 
 .portfolio-image figcaption {

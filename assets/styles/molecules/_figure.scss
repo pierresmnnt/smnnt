@@ -6,7 +6,7 @@ figure {
 
 figure img {
   display: block;
-  border-radius: 4px;
+  border-radius: var(--card-radius);
 }
 
 figcaption {

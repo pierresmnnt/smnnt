@@ -4,8 +4,7 @@
 }
 
 .alert {
-  border-radius: var(--radius);
-  box-shadow: 0 2px 4px var(--shadow);
+  border-radius: var(--card-radius);
   padding: 8px 14px;
   margin: var(--space) 0;
 }

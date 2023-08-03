@@ -1,10 +1,10 @@
 button,
 .button {
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--btn-radius);
   font-size: inherit;
   color: inherit;
-  padding: 6px 8px;
+  padding: 6px 10px;
   cursor: pointer;
   background-color: unset;
   display: inline-flex;

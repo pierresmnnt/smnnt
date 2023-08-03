@@ -36,7 +36,7 @@ article,
 }
 
 .article__body img {
-  border-radius: 4px;
+  border-radius: var(--card-radius);
   display: block;
   margin: 0 auto;
 }

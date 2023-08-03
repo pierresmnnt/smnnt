@@ -3,12 +3,13 @@
 $font: "Arial", sans-serif;
 // Dynamic variables
 :root {
-  --background: #ecf0f4;
-  --molecule-bg: #fff; // Background color of card elements (cards, forms)
+  --background: #fff;
+  --molecule-bg: #fbfcfd; // Background color of molecule elements (forms, table, nav)
+  --card-bg: #fff; // Background color of card elements
   --color: #222; // Default font color
   --primary: #111111; // Primary background color for CTAs, titles, links and important elements
   --contrast: #f0f0f0; // Color for text in importants elements
-  --border: #dce1ea;
+  --border: #e8ebf0;
   --shadow: #d2d7e1;
 
   --success: #76ff5b;
@@ -19,7 +20,8 @@ $font: "Arial", sans-serif;
 
   --gap: 20px;
   --space: 8px;
-  --radius: 8px;
+  --card-radius: 4px;
+  --btn-radius: 24px;
   --topBarHeight: 42px;
 }
 
@@ -72,10 +74,11 @@ $font: "Arial", sans-serif;
 @include dark {
   --background: #222;
   --molecule-bg: #333;
+  --card-bg: #333;
   --color: #f4f4f4;
   --primary: #f5f5f5;
   --contrast: #0f0f0f;
-  --border: #8c8c8c;
+  --border: #444;
   --shadow: #464646;
   --muted: #aeaeae;
   --info: #878a91;

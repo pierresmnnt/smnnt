@@ -1,12 +1,13 @@
 .card {
-  background-color: var(--molecule-bg);
-  border-radius: 4px;
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   transition: 0.3s;
+  border: 1px solid var(--border);
 }
 
 .card-small {
@@ -72,7 +73,7 @@
   height: 100%;
   z-index: 2 !important;
   transition: 0.3s;
-  border-radius: 3px;
+  border-radius: var(--card-radius);
   cursor: pointer;
 }
 

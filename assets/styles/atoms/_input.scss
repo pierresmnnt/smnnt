@@ -1,5 +1,5 @@
 fieldset {
-  border-radius: var(--radius);
+  border-radius: var(--card-radius);
   border: 1px solid var(--border);
   padding: 1em;
 }
@@ -15,7 +15,7 @@ fieldset legend {
   font-family: inherit;
   line-height: inherit;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--card-radius);
   background-color: var(--muted);
   width: 100%;
   color: var(--color);
@@ -94,7 +94,7 @@ form .help-text + * {
   width: 24px;
   height: 24px;
   background-color: var(--muted);
-  border-radius: 100px;
+  border-radius: var(--btn-radius);
   top: 1px;
   right: 0;
 }
@@ -107,7 +107,7 @@ form .help-text + * {
   height: 14px;
   top: 6px;
   right: 5px;
-  border-radius: 100px;
+  border-radius: var(--btn-radius);
   transition: all 0.3s;
 }
 
@@ -131,7 +131,7 @@ form .help-text + * {
   border: 1px solid var(--primary);
   cursor: pointer;
   padding: 2px 8px;
-  border-radius: 23px;
+  border-radius: var(--btn-radius);
   display: inline-block;
   min-width: fit-content;
   margin: 4px;

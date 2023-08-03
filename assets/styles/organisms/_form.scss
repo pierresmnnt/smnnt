@@ -1,6 +1,7 @@
 form:not(.delete-form, .filter-form, .article-form) {
   background-color: var(--molecule-bg);
-  border-radius: 8px;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
   padding: 14px;
 }
 
