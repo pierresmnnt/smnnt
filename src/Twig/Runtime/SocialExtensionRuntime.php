@@ -31,8 +31,12 @@ class SocialExtensionRuntime implements RuntimeExtensionInterface
     {
         $user = $this->userRepository->findAll()[0];
 
-        return $this->twig->render('partials/_socials.html.twig', [
-            'user' => $user,
-        ]);
+        if($user) {
+            return $this->twig->render('partials/_socials.html.twig', [
+                'user' => $user,
+            ]);
+        }
+
+        return "";
     }
 }
